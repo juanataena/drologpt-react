@@ -14,9 +14,11 @@ const __dirname = path.dirname(__filename);
 dotenv.config({path:'./.env'})
 
 const apiKey = process.env.OPENAI_API_KEY;
+const orgId = process.env.OPENAI_ORG_ID;
 // const apiKey = "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";
 const configuration = new Configuration({
   apiKey,
+    orgId
 });
 console.log(configuration);
 
@@ -53,7 +55,8 @@ app.post('/', async (req, res) => {
     });
 
   } catch (error) {
-    console.error(error)
+    
+    console.error("errorrrrr")
     res.status(500).send(error || 'Something went wrong');
   }
 })
@@ -64,7 +67,4 @@ app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/client')); // Link with client!
 
-
-app.use(express.urlencoded({extended: true}));
-app.use(express.static(__dirname + '/client')); // Link with client!
-app.listen(5001, () => console.log('AI server started on http://localhost:5001'));
+app.listen(5000, () => console.log('AI server started on http://localhost:5000'));

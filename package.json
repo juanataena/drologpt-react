@@ -8,7 +8,6 @@
     "install": "cd ./server && npm install && cd ../client && npm install"
   },
   "devDependencies": {
-    "dot-env": "^0.0.1",
     "dotenv": "^16.0.3"
   }
 }

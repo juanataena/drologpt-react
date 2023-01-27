@@ -87,7 +87,7 @@ const handleSubmit = async (e) => {
     loader(messageDiv)
 
     let targetUrl = 'https://chat.drolo.club';
-    targetUrl = 'http:localhost:5001';
+    targetUrl = 'http:localhost:5000';
     const response = await fetch(targetUrl, {
         method: 'POST',
         headers: {

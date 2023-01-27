@@ -18,12 +18,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: './.env' })
 
-const apiKey = process.env.OPENAI_API_KEY;
-// const apiKey = "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";
 const configuration = new Configuration({
-    apiKey,
+    apiKey: process.env.OPENAI_API_KEY,
 });
-console.log(configuration);
+// console.log(configuration);
 
 const openai = new OpenAIApi(configuration);
 
