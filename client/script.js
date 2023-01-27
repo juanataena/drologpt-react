@@ -1,9 +1,8 @@
-import "./App.css";
-import axios from "axios";
-import { useState } from "react";
-import bot from '../assets/bot.svg'
-import user from '../assets/user.svg'
+import bot from './assets/bot.svg'
+import user from './assets/user.svg'
 
+const form = document.querySelector('form')
+const chatContainer = document.querySelector('#chat_container')
 
 let loadInterval
 
@@ -115,63 +114,9 @@ const handleSubmit = async (e) => {
     }
 }
 
-// form.addEventListener('submit', handleSubmit)
-// form.addEventListener('keyup', (e) => {
-//     if (e.keyCode === 13) {
-//         handleSubmit(e)
-//     }
-// })
-
-
-
-function App() {
-  const [data, setData] = useState();
-  const urlWithProxy = "/api/v1";
-  const urlWithProxyPost = "/api/ask";
-
-  function getDataFromServer() {
-    axios
-      .get(urlWithProxy)
-      .then((res) => setData(res.data))
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-
-  function getDataFromServerPost(prompt) {
-    axios
-      .post(urlWithProxyPost, {prompt})
-      .then((res) => setData(res.data))
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  const handleDataForServerPost = function (e) {
-    e.preventDefault();
-    const form = document.querySelector('form')
-    const chatContainer = document.querySelector('#chat_container')
-
-    const data = new FormData(form)
-    getDataFromServerPost(data.get('prompt'));
-  }
-  return (
-    <div id="app" className="App">
-      <button onClick={getDataFromServer}>Access server using proxy</button>
-      <p>data : {data}</p>
-      <div id="chat_container"></div>
-
-        <form>
-            <textarea name="prompt" rows="1" cols="1" placeholder="Ask codex..."></textarea>
-            <button onClick={handleDataForServerPost} >
-            <img src="assets/send.svg" alt="send" />
-            </button>
-        </form>
-    </div>
-
-
-
-  );
-}
-
-export default App;
+form.addEventListener('submit', handleSubmit)
+form.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) {
+        handleSubmit(e)
+    }
+})
