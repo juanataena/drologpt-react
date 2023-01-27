@@ -1,0 +1,438 @@
+[2023-01-27T23:38:02.073] [DEBUG] default - Configuration: Configuration {
+  apiKey: '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',
+  organization: undefined,
+  username: undefined,
+  password: undefined,
+  accessToken: undefined,
+  basePath: undefined,
+  baseOptions: {
+    headers: {
+      'User-Agent': 'OpenAI/NodeJS/3.1.0',
+      Authorization: 'Bearer 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'
+    }
+  },
+  formDataCtor: <ref *1> [Function: FormData] {
+    [length]: 1,
+    [name]: 'FormData',
+    [arguments]: null,
+    [caller]: null,
+    [prototype]: CombinedStream {
+      [constructor]: [Circular *1],
+      append: <ref *2> [Function (anonymous)] {
+        [length]: 3,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *2] }
+      },
+      _trackLength: <ref *3> [Function (anonymous)] {
+        [length]: 3,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *3] }
+      },
+      _lengthRetriever: <ref *4> [Function (anonymous)] {
+        [length]: 2,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *4] }
+      },
+      _multiPartHeader: <ref *5> [Function (anonymous)] {
+        [length]: 3,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *5] }
+      },
+      _getContentDisposition: <ref *6> [Function (anonymous)] {
+        [length]: 2,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *6] }
+      },
+      _getContentType: <ref *7> [Function (anonymous)] {
+        [length]: 2,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *7] }
+      },
+      _multiPartFooter: <ref *8> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *8] }
+      },
+      _lastBoundary: <ref *9> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *9] }
+      },
+      getHeaders: <ref *10> [Function (anonymous)] {
+        [length]: 1,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *10] }
+      },
+      setBoundary: <ref *11> [Function (anonymous)] {
+        [length]: 1,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *11] }
+      },
+      getBoundary: <ref *12> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *12] }
+      },
+      getBuffer: <ref *13> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *13] }
+      },
+      _generateBoundary: <ref *14> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *14] }
+      },
+      getLengthSync: <ref *15> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *15] }
+      },
+      hasKnownLength: <ref *16> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *16] }
+      },
+      getLength: <ref *17> [Function (anonymous)] {
+        [length]: 1,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *17] }
+      },
+      submit: <ref *18> [Function (anonymous)] {
+        [length]: 2,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *18] }
+      },
+      _error: <ref *19> [Function (anonymous)] {
+        [length]: 1,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *19] }
+      },
+      toString: <ref *20> [Function (anonymous)] {
+        [length]: 0,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *20] }
+      },
+      _events: undefined,
+      _eventsCount: 0,
+      _maxListeners: undefined,
+      [Symbol(kCapture)]: false
+    },
+    [super_]: <ref *21> [Function: CombinedStream] {
+      [length]: 0,
+      [name]: 'CombinedStream',
+      [arguments]: null,
+      [caller]: null,
+      [prototype]: Stream {
+        [constructor]: [Circular *21],
+        append: [Function (anonymous)] {
+          [length]: 1,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        pipe: [Function (anonymous)] {
+          [length]: 2,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _getNext: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _realGetNext: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _pipeNext: [Function (anonymous)] {
+          [length]: 1,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _handleErrors: [Function (anonymous)] {
+          [length]: 1,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        write: [Function (anonymous)] {
+          [length]: 1,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        pause: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        resume: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        end: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        destroy: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _reset: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _checkDataSize: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _updateDataSize: [Function (anonymous)] {
+          [length]: 0,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _emitError: [Function (anonymous)] {
+          [length]: 1,
+          [name]: '',
+          [arguments]: null,
+          [caller]: null,
+          [prototype]: [Object]
+        },
+        _events: undefined,
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        [Symbol(kCapture)]: false
+      },
+      [super_]: <ref *22> [Function: Stream] {
+        [length]: 1,
+        [name]: 'Stream',
+        [prototype]: EventEmitter {
+          [constructor]: [Circular *22],
+          pipe: [Function],
+          _events: undefined,
+          _eventsCount: 0,
+          _maxListeners: undefined,
+          [Symbol(kCapture)]: false
+        },
+        isDisturbed: [Function: isDisturbed] {
+          [length]: 1,
+          [name]: 'isDisturbed',
+          [prototype]: [Object]
+        },
+        isErrored: [Function: isErrored] {
+          [length]: 1,
+          [name]: 'isErrored',
+          [prototype]: [Object]
+        },
+        isReadable: [Function: isReadable] {
+          [length]: 1,
+          [name]: 'isReadable',
+          [prototype]: [Object]
+        },
+        Readable: [Function: Readable] {
+          [length]: 1,
+          [name]: 'Readable',
+          [prototype]: [Stream],
+          ReadableState: [Function],
+          _fromList: [Function],
+          from: [Function],
+          wrap: [Function],
+          promises: [Getter],
+          usingDomains: false,
+          captureRejectionSymbol: Symbol(nodejs.rejection),
+          captureRejections: [Getter/Setter],
+          EventEmitterAsyncResource: [Getter],
+          errorMonitor: Symbol(events.errorMonitor),
+          defaultMaxListeners: [Getter/Setter],
+          [kMaxEventTargetListeners]: Symbol(events.maxEventTargetListeners),
+          [kMaxEventTargetListenersWarned]: Symbol(events.maxEventTargetListenersWarned)
+        },
+        Writable: [Function: Writable] {
+          [length]: 1,
+          [name]: 'Writable',
+          [prototype]: [Stream],
+          WritableState: [Function],
+          [Symbol(Symbol.hasInstance)]: [Function],
+          promises: [Getter],
+          usingDomains: false,
+          captureRejectionSymbol: Symbol(nodejs.rejection),
+          captureRejections: [Getter/Setter],
+          EventEmitterAsyncResource: [Getter],
+          errorMonitor: Symbol(events.errorMonitor),
+          defaultMaxListeners: [Getter/Setter],
+          [kMaxEventTargetListeners]: Symbol(events.maxEventTargetListeners),
+          [kMaxEventTargetListenersWarned]: Symbol(events.maxEventTargetListenersWarned)
+        },
+        Duplex: [Function: Duplex] {
+          [length]: 1,
+          [name]: 'Duplex',
+          [prototype]: [Readable],
+          from: [Function],
+          promises: [Getter],
+          usingDomains: false,
+          captureRejectionSymbol: Symbol(nodejs.rejection),
+          captureRejections: [Getter/Setter],
+          EventEmitterAsyncResource: [Getter],
+          errorMonitor: Symbol(events.errorMonitor),
+          defaultMaxListeners: [Getter/Setter],
+          [kMaxEventTargetListeners]: Symbol(events.maxEventTargetListeners),
+          [kMaxEventTargetListenersWarned]: Symbol(events.maxEventTargetListenersWarned)
+        },
+        Transform: [Function: Transform] {
+          [length]: 1,
+          [name]: 'Transform',
+          [prototype]: [Duplex],
+          promises: [Getter]
+        },
+        PassThrough: [Function: PassThrough] {
+          [length]: 1,
+          [name]: 'PassThrough',
+          [prototype]: [Transform]
+        },
+        pipeline: [Function: pipeline] {
+          [length]: 0,
+          [name]: 'pipeline',
+          [prototype]: [Object],
+          [Symbol(nodejs.util.promisify.custom)]: [Getter]
+        },
+        addAbortSignal: [Function: addAbortSignal] {
+          [length]: 2,
+          [name]: 'addAbortSignal',
+          [prototype]: [Object]
+        },
+        finished: [Function: eos] {
+          [length]: 3,
+          [name]: 'eos',
+          [prototype]: [Object],
+          [Symbol(nodejs.util.promisify.custom)]: [Getter]
+        },
+        destroy: [Function: destroyer] {
+          [length]: 2,
+          [name]: 'destroyer',
+          [prototype]: [Object]
+        },
+        compose: [Function: compose] {
+          [length]: 0,
+          [name]: 'compose',
+          [prototype]: [Object]
+        },
+        promises: [Getter],
+        Stream: [Circular *22],
+        _isUint8Array: [Function: isUint8Array] {
+          [length]: 1,
+          [name]: 'isUint8Array',
+          [prototype]: [Object]
+        },
+        _uint8ArrayToBuffer: [Function: _uint8ArrayToBuffer] {
+          [length]: 1,
+          [name]: '_uint8ArrayToBuffer',
+          [prototype]: [Object]
+        },
+        usingDomains: false,
+        captureRejectionSymbol: Symbol(nodejs.rejection),
+        captureRejections: [Getter/Setter],
+        EventEmitterAsyncResource: [Getter],
+        errorMonitor: Symbol(events.errorMonitor),
+        defaultMaxListeners: [Getter/Setter],
+        [kMaxEventTargetListeners]: Symbol(events.maxEventTargetListeners),
+        [kMaxEventTargetListenersWarned]: Symbol(events.maxEventTargetListenersWarned)
+      },
+      create: <ref *23> [Function (anonymous)] {
+        [length]: 1,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *23] }
+      },
+      isStreamLike: <ref *24> [Function (anonymous)] {
+        [length]: 1,
+        [name]: '',
+        [arguments]: null,
+        [caller]: null,
+        [prototype]: { [constructor]: [Circular *24] }
+      }
+    },
+    LINE_BREAK: '\r\n',
+    DEFAULT_CONTENT_TYPE: 'application/octet-stream'
+  }
+}
+[2023-01-27T23:38:02.107] [INFO] default - [0] App souces in /Users/txeo/Git/drolo.club/drologpt-react/server.
+[2023-01-27T23:38:02.107] [INFO] default - [0] App Server Listening at 5000
+[2023-01-27T23:38:20.318] [INFO] default - [0] App souces in /Users/txeo/Git/drolo.club/drologpt-react/server.
+[2023-01-27T23:38:20.319] [INFO] default - [0] App Server Listening at 5000
+[2023-01-27T23:40:52.851] [INFO] default - [0] App souces in /Users/txeo/Git/drolo.club/drologpt-react/server.
+[2023-01-27T23:40:52.852] [INFO] default - [0] App Server Listening at 5000
+[2023-01-27T23:41:02.711] [INFO] default - [GET] Sending Hello to destroyers in the world.
+[2023-01-27T23:41:05.370] [INFO] default - [GET] Sending Hello to destroyers in the world.
+[2023-01-27T23:43:31.441] [INFO] default - [0] App souces in /Users/txeo/Git/drolo.club/drologpt-react/server.
+[2023-01-27T23:43:31.442] [INFO] default - [0] App Server Listening at 5000

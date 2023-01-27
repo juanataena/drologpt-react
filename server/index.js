@@ -1,32 +1,57 @@
+import express from 'express'
 import * as dotenv from 'dotenv'
-import { Configuration, OpenAIApi } from 'openai'
-import { fileURLToPath } from 'url';
-import express from 'express';
+import bodyParser from 'body-parser';
+// import cors from 'cors'
 import path from 'path';
+import { Configuration, OpenAIApi } from 'openai'
+import {fileURLToPath} from 'url';
+import log4js from 'log4js';
+
+// Logging configuration
+var logger = log4js.getLogger();
+logger.level = "debug";
+log4js.configure({
+    appenders: {
+      out: { type: 'stdout' },
+      app: { type: 'file', filename: 'app.log' }
+    },
+    categories: {
+      default: { appenders: [ 'out', 'app' ], level: 'debug' }
+    }
+  });
+
+// Path configuration
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+// OPENAI API Configuration
+dotenv.config({path:'./.env'})
+const apiKey = process.env.OPENAI_API_KEY;
+const organization = process.env.OPENAI_ORG_ID;
+const configuration = new Configuration({
+    apiKey,
+    organization
+});
+// logger.debug("Configuration: %o", configuration);
+const openai = new OpenAIApi(configuration);
 
 const app = express();
+
+// 5. Configure app
 const PORT = process.env.PORT || 5000;
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
+app.use(express.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/client')); // Link with client!
+
+// app.use(cors())
 
 
-
-
-const __filename = fileURLToPath(import.meta.url);
-
-// 👇️ "/home/john/Desktop/javascript"
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: './.env' })
-
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-// console.log(configuration);
-
-const openai = new OpenAIApi(configuration);
 
 
 app.get("/api/v1", (req, res) => {
+    logger.info(`[GET] Sending Hello to destroyers in the world.`);
     res.send("hello !!!!");
 });
 
@@ -53,4 +78,11 @@ app.post("/api/ask", async (req, res) => {
     }
 });
 
-app.listen(PORT, () => console.log(`start listening on port : ${PORT}`));
+
+// 14. start the server
+app.listen(PORT, () => {
+    console.log(`AI server started and listening on port : ${PORT}`);
+    logger.info(`[0] App souces in ${__dirname}.`);
+    logger.info(`[0] App Server Listening at ${PORT}`);
+});
+  
