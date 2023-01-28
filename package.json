@@ -4,6 +4,7 @@
     "openai": "^3.1.0"
   },
   "scripts": {
+    "dev": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
     "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
     "install": "cd ./server && npm install && cd ../client && npm install"
   },

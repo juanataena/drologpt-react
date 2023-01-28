@@ -1,17 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
+
 import * as utils from './core/utils';
+
 import Prompt from './components/Prompt';
 import ChatContainer from './components/ChatContainer';
-let loadInterval;
-// form.addEventListener('submit', handleSubmit)
-// form.addEventListener('keyup', (e) => {
-//     if (e.keyCode === 13) {
-//         handleSubmit(e)
-//     }
-// })
-
-
 
 function App() {
     
@@ -78,6 +71,12 @@ function App() {
         }
     }
 
+    // form.addEventListener('submit', handleSubmit)
+    // form.addEventListener('keyup', (e) => {
+    //     if (e.keyCode === 13) {
+    //         handleSubmit(e)
+    //     }
+    // })
 
 
 
