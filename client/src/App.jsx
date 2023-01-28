@@ -1,120 +1,9 @@
-import "./App.css";
 import axios from "axios";
 import { useState } from "react";
-import bot from '../assets/bot.svg'
-import user from '../assets/user.svg'
-
-
-let loadInterval
-
-function loader(element) {
-    element.textContent = ''
-
-    loadInterval = setInterval(() => {
-        // Update the text content of the loading indicator
-        element.textContent += '.';
-
-        // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
-            element.textContent = '';
-        }
-    }, 300);
-}
-
-function typeText(element, text) {
-    let index = 0
-
-    let interval = setInterval(() => {
-        if (index < text.length) {
-            element.innerHTML += text.charAt(index)
-            index++
-        } else {
-            clearInterval(interval)
-        }
-    }, 20)
-}
-
-// generate unique ID for each message div of bot
-// necessary for typing text effect for that specific reply
-// without unique ID, typing text will work on every element
-function generateUniqueId() {
-    const timestamp = Date.now();
-    const randomNumber = Math.random();
-    const hexadecimalString = randomNumber.toString(16);
-
-    return `id-${timestamp}-${hexadecimalString}`;
-}
-
-function chatStripe(isAi, value, uniqueId) {
-    return (
-        `
-        <div class="wrapper ${isAi && 'ai'}">
-            <div class="chat">
-                <div class="profile">
-                    <img 
-                      src=${isAi ? bot : user} 
-                      alt="${isAi ? 'bot' : 'user'}" 
-                    />
-                </div>
-                <div class="message" id=${uniqueId}>${value}</div>
-            </div>
-        </div>
-    `
-    )
-}
-
-const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const data = new FormData(form)
-
-    // user's chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
-
-    // to clear the textarea input 
-    form.reset()
-
-    // bot's chatstripe
-    const uniqueId = generateUniqueId()
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
-
-    // to focus scroll to the bottom 
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-
-    // specific message div 
-    const messageDiv = document.getElementById(uniqueId)
-
-    // messageDiv.innerHTML = "..."
-    loader(messageDiv)
-
-    let targetUrl = 'https://chat.drolo.club';
-    targetUrl = 'http:localhost:5000';
-    const response = await fetch(targetUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            prompt: data.get('prompt')
-        })
-    })
-
-    clearInterval(loadInterval)
-    messageDiv.innerHTML = " "
-
-    if (response.ok) {
-        const data = await response.json();
-        const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
-
-        typeText(messageDiv, parsedData)
-    } else {
-        const err = await response.text()
-
-        messageDiv.innerHTML = "Something went wrong"
-        console.log(err)
-    }
-}
-
+import * as utils from './core/utils';
+import Prompt from './components/Prompt';
+import ChatContainer from './components/ChatContainer';
+let loadInterval;
 // form.addEventListener('submit', handleSubmit)
 // form.addEventListener('keyup', (e) => {
 //     if (e.keyCode === 13) {
@@ -125,53 +14,109 @@ const handleSubmit = async (e) => {
 
 
 function App() {
-  const [data, setData] = useState();
-  const urlWithProxy = "/api/v1";
-  const urlWithProxyPost = "/api/ask";
+    
+    const [data, setData] = useState();
+    const [prompt, setPrompt] = useState();
+    const [chatContainer, setChatContainer] = useState();
+    const [form, setForm] = useState();
 
-  function getDataFromServer() {
-    axios
-      .get(urlWithProxy)
-      .then((res) => setData(res.data))
-      .catch((err) => {
-        console.error(err);
-      });
-  }
+    const [loadInterval, setLoadInterval] = useState();
+
+    const urlWithProxy = "/api/v1";
+    const urlWithProxyPost = "/api/ask";
+
+    // Funciones para el chat
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+    
+        const data = new FormData(form)
+    
+        // user's chatstripe
+        chatContainer.innerHTML += utils.chatStripe(false, data.get('prompt'))
+    
+        // to clear the textarea input 
+        form.reset()
+    
+        // bot's chatstripe
+        const uniqueId = utils.generateUniqueId()
+        chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
+    
+        // to focus scroll to the bottom 
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    
+        // specific message div 
+        const messageDiv = document.getElementById(uniqueId)
+    
+        // messageDiv.innerHTML = "..."
+        loader(messageDiv)
+    
+        let targetUrl = 'https://chat.drolo.club';
+        targetUrl = 'http:localhost:5000';
+        const response = await fetch(targetUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                prompt: data.get('prompt')
+            })
+        })
+    
+        utils.clearInterval(this.loadInterval)
+        messageDiv.innerHTML = " "
+    
+        if (response.ok) {
+            const data = await response.json();
+            const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
+    
+            typeText(messageDiv, parsedData)
+        } else {
+            const err = await response.text()
+    
+            messageDiv.innerHTML = "Something went wrong"
+            console.log(err)
+        }
+    }
 
 
-  function getDataFromServerPost(prompt) {
-    axios
-      .post(urlWithProxyPost, {prompt})
-      .then((res) => setData(res.data))
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  const handleDataForServerPost = function (e) {
-    e.preventDefault();
-    const form = document.querySelector('form')
-    const chatContainer = document.querySelector('#chat_container')
-
-    const data = new FormData(form)
-    getDataFromServerPost(data.get('prompt'));
-  }
-  return (
-    <div id="app" className="App">
-      <button onClick={getDataFromServer}>Access server using proxy</button>
-      <p>data : {data}</p>
-      <div id="chat_container"></div>
-
-        <form>
-            <textarea name="prompt" rows="1" cols="1" placeholder="Ask codex..."></textarea>
-            <button onClick={handleDataForServerPost} >
-            <img src="assets/send.svg" alt="send" />
-            </button>
-        </form>
-    </div>
 
 
+    // Peticiones al servidor
+    function getDataFromServer() {
+        axios
+        .get(urlWithProxy)
+        .then((res) => setData(res.data))
+        .catch((err) => {
+            console.error(err);
+        });
+    }
+    function getDataFromServerPost(prompt) {
+        axios
+        .post(urlWithProxyPost, {prompt})
+        .then((res) => setData(res.data))
+        .catch((err) => {
+            console.error(err);
+        });
+    }
+    const handleDataForServerPost = function (e) {
+        e.preventDefault();
+        const form = document.querySelector('form')
+        const chatContainer = document.querySelector('#chat_container')
 
-  );
+        const data = new FormData(form)
+        getDataFromServerPost(data.get('prompt'));
+    }
+    
+    return (
+        <div id="drologpt_app" className="drologpt-app-container">
+            
+            {/* Chat container de Drolo GPT */}
+            <ChatContainer chatContainer={chatContainer} setChatContainer={setChatContainer} />
+
+            {/* Prompt de Drolo GPT */}
+            <Prompt prompt={prompt} setPrompt={setPrompt} handleDataForServerPost={handleDataForServerPost} />
+        </div>
+    );
 }
 
 export default App;
