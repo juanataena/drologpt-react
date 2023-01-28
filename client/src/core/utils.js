@@ -39,6 +39,7 @@ export function generateUniqueId() {
 }
 
 export function chatStripe(isAi, value, uniqueId) {
+    debugger;
     return (
         `
         <div class="wrapper ${isAi && 'ai'}">
