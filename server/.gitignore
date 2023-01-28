@@ -1,7 +1,4 @@
 node_modules/
 build/
 coverage/
-server/app.log
-server/coverage/
-server/node_modules/
-server/.env
+.env
