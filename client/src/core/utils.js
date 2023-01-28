@@ -1,20 +1,38 @@
 // Intervals for loading and typing text
 export function loader(element, loadInterval) {
-    element.textContent = ''
+
+    // Clear any existing intervals
+    clearInterval(loadInterval);
+
+    // Remove any existing loading indicators
+    var loadingIndicators = document.querySelectorAll('.loading-indicator');
+    loadingIndicators.forEach(function (loadingIndicator) {
+        // Remove the loading indicator
+        loadingIndicator.remove();
+    });
+
+    // Create a loading indicator below the element
+    var loadingIndicator = document.createElement('span');
+    loadingIndicator.className = 'loading-indicator';
+    element.appendChild(loadingIndicator);
+    
+    loadingIndicator.textContent = ''
 
     loadInterval = setInterval(() => {
         // Update the text content of the loading indicator
-        element.textContent += '.';
+        loadingIndicator.textContent += '.';
 
         // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
-            element.textContent = '';
+        if (loadingIndicator.textContent === '....') {
+            loadingIndicator.textContent = '';
         }
     }, 300);
 }
-
-
-
+/**
+ * Type text effect
+ * @param {HTMLElement} element 
+ * @param {String} text 
+ */
 export function typeText(element, text) {
     let index = 0
 
@@ -27,9 +45,14 @@ export function typeText(element, text) {
         }
     }, 20)
 }
-// generate unique ID for each message div of bot
-// necessary for typing text effect for that specific reply
-// without unique ID, typing text will work on every element
+/**
+ * 
+ * generate unique ID for each message div of bot
+ * necessary for typing text effect for that specific reply
+ * without unique ID, typing text will work on every element
+ * 
+ * @returns 
+ */
 export function generateUniqueId() {
     const timestamp = Date.now();
     const randomNumber = Math.random();
@@ -37,22 +60,18 @@ export function generateUniqueId() {
 
     return `id-${timestamp}-${hexadecimalString}`;
 }
-
+/**
+ *  Chat stripe
+ * @param {*} isAi 
+ * @param {*} value 
+ * @param {*} uniqueId 
+ * @returns 
+ */
 export function chatStripe(isAi, value, uniqueId) {
     debugger;
     return (
         `
-        <div class="wrapper ${isAi && 'ai'}">
-            <div class="chat">
-                <div class="profile">
-                    <img 
-                      src=${isAi ? bot : user} 
-                      alt="${isAi ? 'bot' : 'user'}" 
-                    />
-                </div>
-                <div class="message" id=${uniqueId}>${value}</div>
-            </div>
-        </div>
+
     `
     )
 }

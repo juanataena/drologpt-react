@@ -7,39 +7,20 @@ import Prompt from './components/Prompt';
 import ChatContainer from './components/ChatContainer';
 
 function App() {
-    const [placeholder, setPlaceholder] = useState("Hola. Soy Drolo. Pregúntame.");
+    const [placeholder, setPlaceholder] = useState("Hola. Soy DroloGPT. Pregúntame.");
     const [prompt, setPrompt] = useState("Cuánto sangra?");
     const [data, setData] = useState();
+    const [stripes, setStripes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [loadInterval, setLoadInterval] = useState();
-
-    // React Effect for prompt state change
-    // useEffect(() => {
-
-    //     // Log the prompt
-    //     console.log("Prompt: %o", prompt);
-        
-    //     // Get the result from the state
-    //     const result = data?.bot;
-
-    //     // Clear the interval
-    //     clearInterval(loadInterval);
-
-    //     if (result) {
-
-    //         // Get the unique ID from the state
-    //         const uniqueId = data?.uniqueId;
-
-    //         // Get the message div
-    //         const messageDiv = document.getElementById(uniqueId);
-
-    //         // Type the text
-    //         const parsedData = result.trim() // trims any trailing spaces/'\n'
-    //         utils.typeText(messageDiv, parsedData);    
-    //     }
-
-    // }, [prompt]);
+    const [loadInterval, setLoadInterval] = useState(); 
     
+
+    useEffect(() => {
+        if (loading) {
+            setLoading (false);
+        }
+    }, [loading])
+
     // React Effect for data state change
     useEffect(() => {
 
@@ -70,22 +51,16 @@ function App() {
         }
     }, [data]);
 
-    // React Effect for loading state change
-    useEffect(() => {
-        if (loading) {
-            const chatContainer = document.querySelector('#chat_container')
-            const uniqueId = utils.generateUniqueId();
-            chatContainer.innerHTML += utils.chatStripe(false, prompt, uniqueId)
-            const messageDiv = document.getElementById(uniqueId);
-            utils.loader(messageDiv, loadInterval);
-        }
-    }, [loading]);
     // Funciones para el chat
     const handleDataForServerPost = async (e) => {
         
         // Prevent page from reloading
         e.preventDefault()
         
+        if (!prompt) {
+            return;
+        }
+
         // Log the prompt
         console.log("Prompt Before: ", prompt);
 
@@ -97,7 +72,11 @@ function App() {
         // .catch((err) => parseErrorResponse(err))
 
         // Clear prompt
-        setPrompt(prompt);
+        setPrompt("");
+        const uniqueId = utils.generateUniqueId();
+        const newStripe = {isAi: false, value: prompt, uniqueId: uniqueId};
+        setStripes([...stripes, newStripe]);
+        setLoading(true);
     }
     const parseResponse = (res) => {
         debugger;
@@ -129,7 +108,6 @@ function App() {
         console.log(err)
     }
 
-
     return (
         <div id="drologpt_app" className="drologpt-app-container">
             
@@ -137,6 +115,9 @@ function App() {
             <ChatContainer
                 prompt={prompt}
                 data={data}
+                stripes={stripes}
+                loading={loading}
+                loadInterval={loadInterval}
             />
 
             {/* Prompt de Drolo GPT */}
