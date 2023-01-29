@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import { Card, Content, Level, Heading } from 'react-bulma-components';
 import * as utils from '../../../core/utils';
-import { Console } from 'console-feed';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 // import { LazyLog } from 'react-lazylog';
 
@@ -46,12 +45,7 @@ export default function LogTerminal (props) {
             <div className="terminal-container">
                 <div style={{  }}>
 
-                    <Console
-                        logs={props.logs}
-                        variant={props.theme}
-                        filter={['info', 'table', 'error', 'debug']}
-                    />
-                    
+dsñljk                    
                 </div>
             </div>
         );

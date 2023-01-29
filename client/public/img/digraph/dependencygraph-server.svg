@@ -14,16 +14,6 @@
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M20,-82C20,-82 486,-82 486,-82 492,-82 498,-88 498,-94 498,-94 498,-366 498,-366 498,-372 492,-378 486,-378 486,-378 20,-378 20,-378 14,-378 8,-372 8,-366 8,-366 8,-94 8,-94 8,-88 14,-82 20,-82"/>
 <text text-anchor="middle" x="253" y="-366.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">src</text>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_src/resolvers</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M286.5,-300C286.5,-300 464,-300 464,-300 470,-300 476,-306 476,-312 476,-312 476,-340 476,-340 476,-346 470,-352 464,-352 464,-352 286.5,-352 286.5,-352 280.5,-352 274.5,-346 274.5,-340 274.5,-340 274.5,-312 274.5,-312 274.5,-306 280.5,-300 286.5,-300"/>
-<text text-anchor="middle" x="375.25" y="-340.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">resolvers</text>
-</g>
-<g id="clust7" class="cluster">
-<title>cluster_src/routes</title>
-<path fill="#ffffff" stroke="black" stroke-width="2" d="M120.5,-228C120.5,-228 166.5,-228 166.5,-228 172.5,-228 178.5,-234 178.5,-240 178.5,-240 178.5,-268 178.5,-268 178.5,-274 172.5,-280 166.5,-280 166.5,-280 120.5,-280 120.5,-280 114.5,-280 108.5,-274 108.5,-268 108.5,-268 108.5,-240 108.5,-240 108.5,-234 114.5,-228 120.5,-228"/>
-<text text-anchor="middle" x="143.5" y="-268.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">routes</text>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_src/actions</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M199,-228C199,-228 245,-228 245,-228 251,-228 257,-234 257,-240 257,-240 257,-268 257,-268 257,-274 251,-280 245,-280 245,-280 199,-280 199,-280 193,-280 187,-274 187,-268 187,-268 187,-240 187,-240 187,-234 193,-228 199,-228"/>
@@ -43,6 +33,16 @@
 <title>cluster_src/core</title>
 <path fill="#ffffff" stroke="black" stroke-width="2" d="M277,-90C277,-90 478,-90 478,-90 484,-90 490,-96 490,-102 490,-102 490,-220 490,-220 490,-226 484,-232 478,-232 478,-232 277,-232 277,-232 271,-232 265,-226 265,-220 265,-220 265,-102 265,-102 265,-96 271,-90 277,-90"/>
 <text text-anchor="middle" x="377.5" y="-220.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">core</text>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_src/resolvers</title>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M286.5,-300C286.5,-300 464,-300 464,-300 470,-300 476,-306 476,-312 476,-312 476,-340 476,-340 476,-346 470,-352 464,-352 464,-352 286.5,-352 286.5,-352 280.5,-352 274.5,-346 274.5,-340 274.5,-340 274.5,-312 274.5,-312 274.5,-306 280.5,-300 286.5,-300"/>
+<text text-anchor="middle" x="375.25" y="-340.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">resolvers</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_src/routes</title>
+<path fill="#ffffff" stroke="black" stroke-width="2" d="M120.5,-228C120.5,-228 166.5,-228 166.5,-228 172.5,-228 178.5,-234 178.5,-240 178.5,-240 178.5,-268 178.5,-268 178.5,-274 172.5,-280 166.5,-280 166.5,-280 120.5,-280 120.5,-280 114.5,-280 108.5,-274 108.5,-268 108.5,-268 108.5,-240 108.5,-240 108.5,-234 114.5,-228 120.5,-228"/>
+<text text-anchor="middle" x="143.5" y="-268.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="9.00">routes</text>
 </g>
 <!-- ./scrappingUtils -->
 <g id="node1" class="node">
