@@ -13,14 +13,18 @@ import '../public/css/drologpt.css'
 
 function App() {
     const [placeholder, setPlaceholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
-    // const [prompt, setPrompt] = useState("¿Cuánto sangra?");
-    const [prompt, setPrompt] = useState("hola");
+    const [prompt, setPrompt] = useState("¿Cuánto sangra?");
+    // const [prompt, setPrompt] = useState("hola");
     const [data, setData] = useState();
     const [stripes, setStripes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [loadInterval, setLoadInterval] = useState(); 
     const [userAvatar, setUserAvatar] = useState();
     
+    // urls for the proxy
+    // const urlWithProxy = "/api/v1";
+    const urlWithProxyPost = "/api/ask";
+
 
     // Setup first time
     useEffect(() => {
@@ -138,28 +142,20 @@ function App() {
   
         // Stop any other previous requests
 
-        // Fake response
-        setTimeout(() => {
-
-            const fakeData = {
-                bot: "Sangra mucho"
-                // bot:"\n\nThe word \"eo\" is not a word in English. It is a root word in Esperanto, an international language created in the late 19th century. In Esperanto, \"eo\" means \"of or belonging to.\""
-            }
-
-            
-            // Set the data
-            setData(fakeData);
-            setLoading(false);
-        }, 2000);
+        // Check if we have the comodin prompt
+        if (prompt === "¿Cuánto sangra?") {
+            utils.sendFakeRequest(setData, setLoading);
+        } else {
+            // Post data to server
+            axios
+            .post(urlWithProxyPost, {prompt})
+            .then((res) => parseResponse(res))
+            .catch((err) => parseErrorResponse(err))
+        }
         
-        // // Post data to server
-        // axios
-        // .post(urlWithProxyPost, {prompt})
-        // .then((res) => parseResponse(res))
-        // .catch((err) => parseErrorResponse(err))
     }
     const parseResponse = (res) => {
-        debugger;
+        // debugger;
         setData(res.data);
         // clearInterval(this.loadInterval)
         // messageDiv.innerHTML = " "

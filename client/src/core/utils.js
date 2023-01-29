@@ -93,3 +93,18 @@ export function scrollToBottom () {
     const messages = document.querySelector('.chat-container');
     messages.scrollTop = messages.scrollHeight;
 }
+
+export function sendFakeRequest (setData, setLoading) {
+        // Fake response
+        setTimeout(() => {
+
+            const fakeData = {
+                bot: "Sangra mucho"
+                // bot:"\n\nThe word \"eo\" is not a word in English. It is a root word in Esperanto, an international language created in the late 19th century. In Esperanto, \"eo\" means \"of or belonging to.\""
+            }
+
+            
+            // Set the data
+            setData(fakeData);
+            setLoading(false);
+        }, 2000);}
