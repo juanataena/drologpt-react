@@ -8,9 +8,10 @@ import * as openAIUtils from './core/openAIUtils';
 import appRoutes from './routes'; // 1. Import routes
 import cron from 'node-cron';
 import * as dotenv from 'dotenv'
-
-
 import { Configuration, OpenAIApi } from 'openai'
+
+
+
 // OPENAI API Configuration
 dotenv.config({path:'./.env'})
 const apiKey = process.env.OPENAI_API_KEY;
@@ -21,9 +22,6 @@ const configuration = new Configuration({
 });
 // logger.debug("Configuration: %o", configuration);
 const openai = new OpenAIApi(configuration);
-
-
-
 
 // Logger
 var log4js = require("log4js");
