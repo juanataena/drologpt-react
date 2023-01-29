@@ -35,7 +35,7 @@ export default function ChatContainer (props) {
                         <div className="message">
                             <b>{stripe.isAi ? 'DroloGPT' : 'user'}: </b>
                             {stripe.value}
-                            {stripe.isAi && <div className="loader"></div>}
+                            {stripe.isAi && <div className="chat-stripe-loader"></div>}
                         </div>
                     </div>
                 </div>

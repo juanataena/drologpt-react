@@ -43,23 +43,27 @@ function App() {
             // Remove the last stripe (the one with the loader), if any
             if (stripes.length > 0) {
 
-            // For each stripe check if isAi is true and the value is " ". If so, remove it
-            const nonLoadingStripes = stripes.filter(stripe => !(stripe.isAi && stripe.value === " "));
+                // For each stripe check if isAi is true and the value is " ". If so, remove it
+                const nonLoadingStripes = stripes.filter(stripe => !(stripe.isAi && stripe.value === " "));
 
-            // Add a new stripe loading stripe
-            const newStripe = {isAi: true, value: " ", uniqueId: utils.generateUniqueId()};
-            const newStripes = [...nonLoadingStripes, newStripe];
-            setStripes(newStripes);
-
-            // get last stripe
-            const lastStripe = newStripes[newStripes.length - 1];
-            const uniqueId = lastStripe.uniqueId;
-            
-            utils.loader(uniqueId, loadInterval);
-            
+                // Add a new stripe loading stripe
+                const newStripe = {isAi: true, value: " ", uniqueId: utils.generateUniqueId()};
+                const newStripes = [...nonLoadingStripes, newStripe];
+                setStripes(newStripes);            
             }
         }
-    }, [loading]);
+    }, [loading, prompt]);
+
+    // React Effect for stripes state change
+    useEffect(() => {
+        console.log("Stripes: %o", stripes);
+        if (stripes.length > 0) {
+            const lastStripe = stripes[stripes.length - 1];
+            if (lastStripe.isAi) {
+                utils.loader(lastStripe.uniqueId, loadInterval);
+            }
+        }
+    }, [stripes]);
 
     // React Effect for data state change
     useEffect(() => {
@@ -90,18 +94,6 @@ function App() {
     
         }
     }, [data]);
-
-    // React Effect for load interval state change
-    useEffect(() => {
-        if (loadInterval) {
-            // get last stripe
-            const lastStripe = stripes[stripes.length - 1];
-            const uniqueId = lastStripe.uniqueId;
-            // get the message div
-            const messageDiv = document.getElementById(uniqueId)
-            utils.loader(messageDiv, loadInterval);
-        }
-    }, [loadInterval]);
 
     // Funciones para el chat
     const handleDeleteStripes = () => {

@@ -234,11 +234,8 @@ body {
 .chat-container .wrapper .message::-webkit-scrollbar {
   display: none;
 }
-.chat-container .wrapper .loading-indicator {
-  color: #888;
-  font-size: 30px;
-  margin: 8px;
-  /* font-weight: bold; */
+.chat-container .wrapper .message .chat-stripe-loader {
+  display: inline;
 }
 .chat-prompt {
   width: 100%;
