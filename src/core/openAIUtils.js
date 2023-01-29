@@ -1,24 +1,47 @@
-import {Configuration, OpenAIApi} from 'openai';
+import { Configuration, OpenAIApi } from 'openai';
+import dotenv from 'dotenv';
+import log4js from 'log4js';
 
-export async function getAiResponse(topic) {
+// Logging configuration
+var logger = log4js.getLogger();
+logger.level = "debug";
+log4js.configure({
+    appenders: {
+        out: { type: 'stdout' },
+        app: { type: 'file', filename: 'app.log' }
+    },
+    categories: {
+        default: { appenders: [ 'out', 'app' ], level: 'debug' }
+    }
+});
 
-    // API Key and configuration
-    const OPENAI_API_KEY="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";
+// OPENAI API Configuration
+dotenv.config({path:'./.env'})
+
+export async function prompt(prompt, maxTokens=100, temperature=0.9, topP=1, frequencyPenalty=0, presencePenalty=0, stop=" "){
+
+    // OPENAI API Configuration
+    dotenv.config({path:'./.env'})
+    const apiKey = process.env.OPENAI_API_KEY;
+    const organization = process.env.OPENAI_ORG_ID;
     const configuration = new Configuration({
-      apiKey: OPENAI_API_KEY,
+        apiKey,
+        organization
     });
-    
     // Create the API instance
     const openai = new OpenAIApi(configuration);
 
     // Create the completion
     const completion = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: topic,
-        max_tokens: 1024,
+        prompt: prompt,
+        max_tokens: maxTokens,
         n: 1,
-        stop: null,
-        temperature: 0.7
+        stop: stop,
+        temperature: temperature,
+        top_p: topP,
+        frequency_penalty: frequencyPenalty,
+        presence_penalty: presencePenalty
     });
 
     // Log the result
@@ -26,8 +49,4 @@ export async function getAiResponse(topic) {
     console.log("later " + firstResult);
     return firstResult;
 }
-
-
-// console.log("now");
-// getAiResponse("Cuéntame un chiste");
     

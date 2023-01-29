@@ -7,6 +7,23 @@ import * as utils from './core/utils';
 import * as openAIUtils from './core/openAIUtils';
 import appRoutes from './routes'; // 1. Import routes
 import cron from 'node-cron';
+import * as dotenv from 'dotenv'
+
+
+import { Configuration, OpenAIApi } from 'openai'
+// OPENAI API Configuration
+dotenv.config({path:'./.env'})
+const apiKey = process.env.OPENAI_API_KEY;
+const organization = process.env.OPENAI_ORG_ID;
+const configuration = new Configuration({
+    apiKey,
+    organization
+});
+// logger.debug("Configuration: %o", configuration);
+const openai = new OpenAIApi(configuration);
+
+
+
 
 // Logger
 var log4js = require("log4js");
@@ -75,58 +92,52 @@ app.use((err, req, res/* , next*/) => {
     res.status(500).send('Unexpected server error');
 });
 
-let droloGPTData = {};
-// 12. Initialize the data
-const initDataPromise = new Promise( (resolve,reject) => {
+// let droloGPTData = {};
+// // 12. Initialize the data
+// const initDataPromise = new Promise( (resolve,reject) => {
 
-    // 1. Get nodes json from local file
-    const nodes = utils.getNodesJson();
+//     // 1. Get nodes json from local file
+//     const nodes = utils.getNodesJson();
     
-    logger.info ('[0] - Initializing nodes data...');
-    droloGPTData = {
-        nodes: nodes,
-        lastUpdate: new Date().toISOString()
-    };
-    resolve(droloGPTData);
-});
+//     logger.info ('[0] - Initializing nodes data...');
+//     droloGPTData = {
+//         nodes: nodes,
+//         lastUpdate: new Date().toISOString()
+//     };
+//     resolve(droloGPTData);
+// });
 
-// Initializing the data when app starts.
-initDataPromise.then( droloGPTData => {
+// // Initializing the data when app starts.
+// initDataPromise.then( droloGPTData => {
 
-    // Storing the nodes in the app, filtering out the ones that are not active
-    // droloGPTData.nodes = droloGPTData.nodes || {};
-    // console.log("NODES: %o", droloGPTData.nodes);
-    // utils.initNodes(app, droloGPTData);
-});
+//     // Storing the nodes in the app, filtering out the ones that are not active
+//     // droloGPTData.nodes = droloGPTData.nodes || {};
+//     // console.log("NODES: %o", droloGPTData.nodes);
+//     // utils.initNodes(app, droloGPTData);
+// });
 
-// 13. Start the crons
+// // 13. Start the crons
 
-cron.schedule('* * * * *', () => {
-  console.log('running a task every minute');
-});
+// cron.schedule('* * * * *', () => {
+//   console.log('running a task every minute');
+// });
 
-cron.schedule('* * * * *', () => {
-    console.log('reloading data...');
+// cron.schedule('* * * * *', () => {
+//     console.log('reloading data...');
     
-    // Initializing the data when app starts.
-    initDataPromise.then( droloGPTData => {
+//     // Initializing the data when app starts.
+//     initDataPromise.then( droloGPTData => {
 
-        // Storing the nodes in the app, filtering out the ones that are not active
-        // droloGPTData.nodes = droloGPTData.nodes || {};
-        // console.log("NODES: %o", droloGPTData.nodes);
-        // utils.initNodes(app, droloGPTData);
-    });
+//         // Storing the nodes in the app, filtering out the ones that are not active
+//         // droloGPTData.nodes = droloGPTData.nodes || {};
+//         // console.log("NODES: %o", droloGPTData.nodes);
+//         // utils.initNodes(app, droloGPTData);
+//     });
 
-  });
+//   });
   
 // 14. start the server
 app.listen(port, () => {
     logger.info(`[0] App souces in ${__dirname}.`);
     logger.info(`[0] App Server Listening at ${port}`);
 });
-
-
-// Call openAIUtils.getAiResponse and wait for the response
-// const response = await openAIUtils.getAiResponse("Cuéntame un chiste");
-
-// console.log  ("now "+response);

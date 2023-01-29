@@ -420,7 +420,7 @@ export default function FreqUINodesTree (props) {
                     <span id={oneNode.name} className="main-node">
                         {false && machineStatusIcon}
                         {showInChartIcon}
-                        <img className="tree-icon" alt="tree-icon" src="img/freqtrade-logo.png"/>
+                        <img className="tree-icon" alt="tree-icon" src="img/drologpt-logo.png"/>
                         {databaseIcon}
                         <span>{oneNode.name} [{oneNode.configFromFile.stake_currency}] <b>[{oneNode.configFromFile.strategy}]</b></span>
                         {false && showInChartIcon}

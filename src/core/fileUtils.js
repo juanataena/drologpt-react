@@ -20,23 +20,6 @@ export const readFile = (filePath) => {
   }
   
 
-export const writeBTCFile = (config, date) => {
-
-  // Get the target path for BTC
-  const targetBTCFilePath = process.env.TARGET_BTC_PATH;
-  const targetBTCFile = targetBTCFilePath + '/config.json';
-
-  // Write the file on target path
-  const fileAsString = JSON.stringify(config, null, 2);
-  fs.writeFileSync(targetBTCFile, fileAsString);
-
-  // Store a copy of this file and add the date for future references
-  const dateMarker = date ? date.toISOString().split('T')[0] + '_' + date.toISOString().split('T')[1].split('.')[0].replaceAll(":",".") : new Date().toISOString().split('T')[0] + '_' + new Date().toISOString().split('T')[1].split('.')[0].replaceAll(":",".");
-  const targetBTCFileBackup = 'generated/btc/config_' + dateMarker + '.json';
-  fs.writeFileSync(targetBTCFileBackup, fileAsString);
-  return fileAsString;  
-}
-
 export const getHtmlContentFor = (who, bestBTCKeysArray, configAsString, date) => {
 
   const templatePath = bestBTCKeysArray.length > 0 ? './templates/email/success-deploy.handlebars' : './templates/email/fail-deploy.handlebars';
@@ -65,29 +48,6 @@ export const getHtmlContentFor = (who, bestBTCKeysArray, configAsString, date) =
   };
   var result = template(data);
   return result;
-}
-
-export const writeResultsFile = (fileAsString) => {
-
-  // Get the target path for the results file
-  const targetResultsPath = process.env.TARGET_RESULTS_FILE_PATH;
-  const targetResultsFile = targetResultsPath + '/results.html';
-
-  fs.writeFileSync(targetResultsFile, fileAsString);
-}
-
-export const createConfigFileForBTC = (BTCKeys, date) => {
-
-  // Read the original file and convert it to JSON
-  const originalConfigAsJSON = readBTCFile();
-
-  // Substitute the values with the ones in params
-  originalConfigAsJSON.exchange.pair_whitelist = BTCKeys;
-
-  // Write the file in the targetPath for BTC
-  const fileAsString = writeBTCFile(originalConfigAsJSON, date);
-  console.log('BTC config file created');
-  return fileAsString;
 }
 
 export const writeFile = (filePath, fileAsString) => {

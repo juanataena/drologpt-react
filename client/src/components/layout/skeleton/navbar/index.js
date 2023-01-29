@@ -113,7 +113,7 @@ export default function NavBar (props) {
                 <div className="navbar is-inline-flex is-transparentttt is-info is-bold is-hiddenn">
                     <div className="navbar-brand">
                         <button className="navbar-item">
-                            <img src="img/freqtrade-logo.png" alt="Freqtrade" />
+                            <img src="img/drologpt-logo.png" alt="Freqtrade" />
                             {true && <AppName name="drolo_gpt" textLeft="drolo_" textRight="GPT" />}
 
                         </button>

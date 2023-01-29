@@ -538,7 +538,7 @@ export default function NodesTable (props) {
             >
 
                 <Item className="left">
-                    <img src="img/freqtrade-logo.png" className={iconClassname} alt="Freqtrade" />
+                    <img src="img/drologpt-logo.png" className={iconClassname} alt="Freqtrade" />
                     <b className="is-hidden">Instance: </b> <span className="name">{renderInstanceCell(record)} </span>
                 </Item>
                 <Item className="right">

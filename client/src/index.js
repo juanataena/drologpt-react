@@ -10,16 +10,3 @@ root.render(
         <App />
     </CookiesProvider>,
 );
-
-
-// OLD!!! REACT 17
-// ReactDOM.render(
-
-//     <CookiesProvider>
-//         <App />
-//     </CookiesProvider>,
-
-//     document.getElementById('root')
-
-// );
-
