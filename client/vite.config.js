@@ -9,8 +9,12 @@ export default defineConfig({
         "/api/ask": "http://localhost:5000/",
     },
     hmr: {
-        clientPort: 5173
-    }
-  },
+        clientPort: 5173,
+        port: 443
+    },
+    port: 5173,
+    https: true,
+    cors: true
+    },
   plugins: [react()],
 });
