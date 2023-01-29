@@ -5,6 +5,7 @@
   },
   "scripts": {
     "dev": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
+    "dev-prod": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run preview\"",
     "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
     "install": "cd ./server && npm install && cd ../client && npm install"
   },
