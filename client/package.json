@@ -2,29 +2,10 @@
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
-  "proxy": "http://localhost:5000",
   "scripts": {
-    "dev": "vite --host --port 5173",
+    "dev": "vite -https --host --port 5173",
     "build": "vite build",
-    "preview": "vite preview --host --port 5173"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "preview": "vite preview"
   },
   "dependencies": {
     "@dicebear/collection": "^5.2.0",
