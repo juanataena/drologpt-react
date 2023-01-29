@@ -1,0 +1,25 @@
+digraph {edge [color=black];fileUtils_js->fs;
+edge [color=black];systemUtils_js->fs;
+edge [color=black];fileUtils_js->handlebars;
+edge [color=black];fileUtils_js->inspirational_quotes;
+edge [color=black];fileUtils_js->codemirror_node;
+edge [color=black];fileUtils_js->really_relaxed_json;
+edge [color=black];sqlite3Utils_js->utils;
+edge [color=black];systemUtils_js->utils;
+edge [color=black];server_js->utils;
+edge [color=black];sqlite3Utils_js->scrappingUtils;
+edge [color=black];systemUtils_js->child_process;
+edge [color=black];utils_js->Utils;
+edge [color=black];utils_js->fileUtils;
+edge [color=black];server_js->express;
+edge [color=black];server_js->body_parser;
+edge [color=black];server_js->source_map_support;
+edge [color=black];server_js->routes;
+edge [color=black];process_email_js->imap;
+edge [color=black];process_email_js->mailparser;
+edge [color=black];process_email_js->emailUtils_js;
+edge [color=black];process_email_js->fileUtils_js;
+edge [color=black];process_email_js->systemUtils_js;
+edge [color=black];process_email_js->queueUtils_js;
+edge [color=black];process_email_js->dotenv;
+}

@@ -1,0 +1,194 @@
+[
+    {
+        "name": "freqtrade01_CK_F01_C01_01",
+        "color": "#d32f2f",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata01/",
+        "useDynamicList": false,
+        "active": true
+     },
+    {
+        "name": "freqtrade02_CK_F01_C01_02",
+        "color": "#c2185b",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata02/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade03_CK_F01_C01_03",
+        "color": "#7b1fa2",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata03/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade04_CK_F01_C01_04",
+        "color": "#512da8",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata04/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade05_CK_F01_C01_05",
+        "color": "#303f9f",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata05/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade06_CK_F01_C01_06",
+        "color": "#1976d2",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata06/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade07_FTX_F01_C02_01",
+        "color": "#0288d1",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata07/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade08_FTX_F01_C02_02",
+        "color": "#0097a7",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata08/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade09_FTX_F01_C02_03",
+        "color": "#00796b",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata09/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade10_FTX_F01_C02_04",
+        "color": "#388e3c",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata10/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade11_FTX_F01_C02_05",
+        "color": "#689f38",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata11/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade12_FTX_F01_C02_06",
+        "color": "#afb42b",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata12/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade13_CK_NF_C01_01",
+        "color": "#fbc02d",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata13/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade14_CK_NF_C01_02",
+        "color": "#ffa000",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata14/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade15_CK_NF_C01_03",
+        "color": "#f57c00",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata15/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade16_CK_NF_C01_04",
+        "color": "#e64a19",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata16/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade17_CK_NF_C01_05",
+        "color": "#34282C",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata17/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade18_CK_NF_C01_06",
+        "color": "#3D3C3A",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata18/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade19_FTX_NF_C02_01",
+        "color": "#52595D",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata19/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade20_FTX_NF_C02_02",
+        "color": "#A9A9A9",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata20/",
+        "useDynamicList": true,
+        "active": true
+    },
+    {
+        "name": "freqtrade21_FTX_NF_C02_03",
+        "color": "#CECECE",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata21/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade22_FTX_NF_C02_04",
+        "color": "#657383",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata22/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade23_FTX_NF_C02_05",
+        "color": "#566D7E",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata23/",
+        "useDynamicList": false,
+        "active": true
+    },
+    {
+        "name": "freqtrade24_FTX_NF_C02_06",
+        "color": "#4863A0",
+        "configFilePath": "./original/btc/config.json",
+        "targetPath": "./ft_userdata24/",
+        "useDynamicList": false,
+        "active": true
+    }
+]

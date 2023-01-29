@@ -1,0 +1,24 @@
+{{! ----------------------------------------------------------------------------------}}
+{{! INIT CONSTANTS SECTION }}
+{{! ----------------------------------------------------------------------------------}}
+  {{#constants}}
+    {{! Generate Comment if coming from the template }}
+    {{#fromTemplate}}
+    // '{{key}}' from template '{{templateName}}' automatically generated on {{date}}
+    {{/fromTemplate}}
+    {{^fromTemplate}}
+    {{{originalComment}}}
+    {{/fromTemplate}}
+    {{! Printing String case}}
+    {{#quoted}}
+    {{key}}: '{{{value}}}',
+    {{/quoted}}
+    {{! Printing Number case}}
+    {{^quoted}}
+    {{key}}: {{{value}}},
+    {{/quoted}}
+
+  {{/constants}}
+  {{! ----------------------------------------------------------------------------------}}
+  {{! END CONSTANTS SECTION }}
+  {{! ----------------------------------------------------------------------------------}}

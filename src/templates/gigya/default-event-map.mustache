@@ -1,0 +1,29 @@
+{{! ----------------------------------------------------------------------------------}}
+{{! INIT DEFAULT CUSTOM EVENT MAP SECTION }}
+{{! ----------------------------------------------------------------------------------}}// Bind globally to events.
+customEventMap: {
+    eventMap: [{
+        events: '*',
+        args: [function(e) {
+            {{#addLog}}
+                // 'logging' capabilities generated automatically on date: {{date}}
+                var logEvents = gigya.thisScript.globalConf.logEvents;
+                var CAN_LOG_EVENTS = typeof(logEvents) !== 'undefined';
+                if (CAN_LOG_EVENTS) {
+                    logEvents(e);
+                }
+            {{/addLog}}
+            return e;
+        }],
+        method: function(e) {
+            if (e.fullEventName === 'login') {
+                // Handle login event here.
+            } else if (e.fullEventName === 'logout') {
+                // Handle logout event here.
+            }
+        }
+    }]
+}
+{{! ----------------------------------------------------------------------------------}}
+{{! END DEFAULT CUSTOM EVENT MAP SECTION }}
+{{! ----------------------------------------------------------------------------------}}

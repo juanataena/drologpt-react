@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+    },
+    "ts-node": {
+      "esm": true,
+      "experimentalSpecifierResolution": "node"
+  }
+  }

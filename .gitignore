@@ -1,5 +1,38 @@
-node_modules/
-build/
-coverage/
-server/.env
-server/app.log
+# Logs
+logs
+*.log
+*.lock
+package-lock.json
+npm-debug.log*
+log.txt
+.env
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+
+# client-side build artifacts
+client/node_modules/
+client/build/
+client/package-lock.json
+client/*.lock
+api/.vscode/
+dist
+
+# doc
+doc
+
+# data files
+data/app-drolo-gpt.sqlite
+client/public/img/digraph/dependencygraph-client.svg
+client/public/img/digraph/dependencygraph-server.svg

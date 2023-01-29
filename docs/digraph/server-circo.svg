@@ -1,0 +1,300 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1446pt" height="2242pt" viewBox="0.00 0.00 1446.45 2242.21">
+<g id="graph0" class="graph" transform="translate(21.255899954303004,2208.5167058432535) scale(0.9862327044933665)" data-name="">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-2238.21 1442.45,-2238.21 1442.45,4 -4,4"/>
+<!-- fileUtils_js -->
+<g id="node1" class="node" pointer-events="visible" data-name="fileUtils_js">
+
+<ellipse fill="none" stroke="black" cx="768.89" cy="-449.06" rx="53.91" ry="18"/>
+<text text-anchor="middle" x="768.89" y="-444.86" font-family="Times,serif" font-size="14.00">fileUtils_js</text>
+</g>
+<!-- fs -->
+<g id="node2" class="node" pointer-events="visible" data-name="fs">
+
+<ellipse fill="none" stroke="black" cx="624.32" cy="-593.63" rx="27" ry="18"/>
+<text text-anchor="middle" x="624.32" y="-589.43" font-family="Times,serif" font-size="14.00">fs</text>
+</g>
+<!-- fileUtils_js&#45;&gt;fs -->
+<g id="edge1" class="edge" data-name="fileUtils_js-&gt;fs">
+
+<path fill="none" stroke="black" d="M751.74,-466.21C725.65,-492.31 675.96,-541.99 646.95,-571.01"/>
+<polygon fill="black" stroke="black" points="644.29,-568.71 639.69,-578.26 649.24,-573.66 644.29,-568.71"/>
+</g>
+<!-- handlebars -->
+<g id="node4" class="node" pointer-events="visible" data-name="handlebars">
+
+<ellipse fill="none" stroke="black" cx="429.67" cy="-119.82" rx="52.73" ry="18"/>
+<text text-anchor="middle" x="429.67" y="-115.62" font-family="Times,serif" font-size="14.00">handlebars</text>
+</g>
+<!-- fileUtils_js&#45;&gt;handlebars -->
+<g id="edge3" class="edge" data-name="fileUtils_js-&gt;handlebars">
+
+<path fill="none" stroke="black" d="M751.13,-431.82C694.8,-377.15 520.02,-207.51 454.66,-144.08"/>
+<polygon fill="black" stroke="black" points="456.86,-141.34 447.25,-136.89 451.99,-146.36 456.86,-141.34"/>
+</g>
+<!-- inspirational_quotes -->
+<g id="node5" class="node" pointer-events="visible" data-name="inspirational_quotes">
+
+<ellipse fill="none" stroke="black" cx="622.61" cy="-29.56" rx="89.21" ry="18"/>
+<text text-anchor="middle" x="622.61" y="-25.36" font-family="Times,serif" font-size="14.00">inspirational_quotes</text>
+</g>
+<!-- fileUtils_js&#45;&gt;inspirational_quotes -->
+<g id="edge4" class="edge" data-name="fileUtils_js-&gt;inspirational_quotes">
+
+<path fill="none" stroke="black" d="M762.61,-431.04C739.63,-365.15 660.1,-137.06 632.3,-57.33"/>
+<polygon fill="black" stroke="black" points="635.47,-55.81 628.87,-47.52 628.86,-58.12 635.47,-55.81"/>
+</g>
+<!-- codemirror_node -->
+<g id="node6" class="node" pointer-events="visible" data-name="codemirror_node">
+
+<ellipse fill="none" stroke="black" cx="859.55" cy="-18" rx="77.57" ry="18"/>
+<text text-anchor="middle" x="859.55" y="-13.8" font-family="Times,serif" font-size="14.00">codemirror_node</text>
+</g>
+<!-- fileUtils_js&#45;&gt;codemirror_node -->
+<g id="edge5" class="edge" data-name="fileUtils_js-&gt;codemirror_node">
+
+<path fill="none" stroke="black" d="M772.67,-431.09C786.78,-363.99 836.45,-127.84 853.64,-46.1"/>
+<polygon fill="black" stroke="black" points="857.12,-46.56 855.75,-36.05 850.27,-45.12 857.12,-46.56"/>
+</g>
+<!-- really_relaxed_json -->
+<g id="node7" class="node" pointer-events="visible" data-name="really_relaxed_json">
+
+<ellipse fill="none" stroke="black" cx="1079.64" cy="-100.67" rx="87.38" ry="18"/>
+<text text-anchor="middle" x="1079.64" y="-96.47" font-family="Times,serif" font-size="14.00">really_relaxed_json</text>
+</g>
+<!-- fileUtils_js&#45;&gt;really_relaxed_json -->
+<g id="edge6" class="edge" data-name="fileUtils_js-&gt;really_relaxed_json">
+
+<path fill="none" stroke="black" d="M784.3,-431.79C835.02,-374.92 996.94,-193.39 1056.96,-126.09"/>
+<polygon fill="black" stroke="black" points="1059.72,-128.26 1063.76,-118.47 1054.49,-123.6 1059.72,-128.26"/>
+</g>
+<!-- systemUtils_js -->
+<g id="node3" class="node" pointer-events="visible" data-name="systemUtils_js">
+
+<ellipse fill="none" stroke="black" cx="768.89" cy="-738.2" rx="67.83" ry="18"/>
+<text text-anchor="middle" x="768.89" y="-734" font-family="Times,serif" font-size="14.00">systemUtils_js</text>
+</g>
+<!-- systemUtils_js&#45;&gt;fs -->
+<g id="edge2" class="edge" data-name="systemUtils_js-&gt;fs">
+
+<path fill="none" stroke="black" d="M751.45,-720.77C725.25,-694.57 675.74,-645.06 646.84,-616.16"/>
+<polygon fill="black" stroke="black" points="649.17,-613.53 639.62,-608.94 644.22,-618.48 649.17,-613.53"/>
+</g>
+<!-- utils -->
+<g id="node9" class="node" pointer-events="visible" data-name="utils">
+
+<ellipse fill="none" stroke="black" cx="868.94" cy="-2010.5" rx="27.85" ry="18"/>
+<text text-anchor="middle" x="868.94" y="-2006.3" font-family="Times,serif" font-size="14.00">utils</text>
+</g>
+<!-- systemUtils_js&#45;&gt;utils -->
+<g id="edge8" class="edge" data-name="systemUtils_js-&gt;utils">
+
+<path fill="none" stroke="black" d="M770.34,-756.68C781.47,-898.19 853.12,-1809.35 866.72,-1982.21"/>
+<polygon fill="black" stroke="black" points="863.24,-1982.61 867.51,-1992.3 870.22,-1982.06 863.24,-1982.61"/>
+</g>
+<!-- child_process -->
+<g id="node12" class="node" pointer-events="visible" data-name="child_process">
+
+<ellipse fill="none" stroke="black" cx="64.14" cy="-1826.86" rx="64.27" ry="18"/>
+<text text-anchor="middle" x="64.14" y="-1822.66" font-family="Times,serif" font-size="14.00">child_process</text>
+</g>
+<!-- systemUtils_js&#45;&gt;child_process -->
+<g id="edge11" class="edge" data-name="systemUtils_js-&gt;child_process">
+
+<path fill="none" stroke="black" d="M757.25,-756.19C674.86,-883.46 180.28,-1647.46 81.35,-1800.27"/>
+<polygon fill="black" stroke="black" points="78.16,-1798.76 75.66,-1809.05 84.04,-1802.56 78.16,-1798.76"/>
+</g>
+<!-- sqlite3Utils_js -->
+<g id="node8" class="node" pointer-events="visible" data-name="sqlite3Utils_js">
+
+<ellipse fill="none" stroke="black" cx="1165.4" cy="-1989.57" rx="66.68" ry="18"/>
+<text text-anchor="middle" x="1165.4" y="-1985.37" font-family="Times,serif" font-size="14.00">sqlite3Utils_js</text>
+</g>
+<!-- sqlite3Utils_js&#45;&gt;utils -->
+<g id="edge7" class="edge" data-name="sqlite3Utils_js-&gt;utils">
+
+<path fill="none" stroke="black" d="M1100.71,-1994.14C1041.35,-1998.33 955.44,-2004.39 906.62,-2007.84"/>
+<polygon fill="black" stroke="black" points="906.22,-2004.36 896.49,-2008.56 906.71,-2011.34 906.22,-2004.36"/>
+</g>
+<!-- scrappingUtils -->
+<g id="node11" class="node" pointer-events="visible" data-name="scrappingUtils">
+
+<ellipse fill="none" stroke="black" cx="1371.09" cy="-1975.04" rx="67.22" ry="18"/>
+<text text-anchor="middle" x="1371.09" y="-1970.84" font-family="Times,serif" font-size="14.00">scrappingUtils</text>
+</g>
+<!-- sqlite3Utils_js&#45;&gt;scrappingUtils -->
+<g id="edge10" class="edge" data-name="sqlite3Utils_js-&gt;scrappingUtils">
+
+<path fill="none" stroke="black" d="M1230.2,-1984.99C1251.04,-1983.52 1274.3,-1981.88 1295.83,-1980.36"/>
+<polygon fill="black" stroke="black" points="1296.18,-1983.84 1305.91,-1979.65 1295.69,-1976.86 1296.18,-1983.84"/>
+</g>
+<!-- server_js -->
+<g id="node10" class="node" pointer-events="visible" data-name="server_js">
+
+<ellipse fill="none" stroke="black" cx="469.38" cy="-2038.72" rx="45.79" ry="18"/>
+<text text-anchor="middle" x="469.38" y="-2034.52" font-family="Times,serif" font-size="14.00">server_js</text>
+</g>
+<!-- server_js&#45;&gt;utils -->
+<g id="edge9" class="edge" data-name="server_js-&gt;utils">
+
+<path fill="none" stroke="black" d="M514.83,-2035.51C594.37,-2029.89 757.36,-2018.38 831.16,-2013.17"/>
+<polygon fill="black" stroke="black" points="831.65,-2016.65 841.38,-2012.45 831.15,-2009.66 831.65,-2016.65"/>
+</g>
+<!-- express -->
+<g id="node16" class="node" pointer-events="visible" data-name="express">
+
+<ellipse fill="none" stroke="black" cx="639.24" cy="-2161.16" rx="40" ry="18"/>
+<text text-anchor="middle" x="639.24" y="-2156.96" font-family="Times,serif" font-size="14.00">express</text>
+</g>
+<!-- server_js&#45;&gt;express -->
+<g id="edge14" class="edge" data-name="server_js-&gt;express">
+
+<path fill="none" stroke="black" d="M491.59,-2054.73C521.72,-2076.45 575.65,-2115.32 609.32,-2139.6"/>
+<polygon fill="black" stroke="black" points="607.67,-2142.72 617.83,-2145.73 611.77,-2137.05 607.67,-2142.72"/>
+</g>
+<!-- body_parser -->
+<g id="node17" class="node" pointer-events="visible" data-name="body_parser">
+
+<ellipse fill="none" stroke="black" cx="358.29" cy="-2216.21" rx="58.54" ry="18"/>
+<text text-anchor="middle" x="358.29" y="-2212.01" font-family="Times,serif" font-size="14.00">body_parser</text>
+</g>
+<!-- server_js&#45;&gt;body_parser -->
+<g id="edge15" class="edge" data-name="server_js-&gt;body_parser">
+
+<path fill="none" stroke="black" d="M458.32,-2056.39C438.74,-2087.67 397.88,-2152.95 374.9,-2189.67"/>
+<polygon fill="black" stroke="black" points="371.8,-2188.01 369.47,-2198.35 377.74,-2191.73 371.8,-2188.01"/>
+</g>
+<!-- source_map_support -->
+<g id="node18" class="node" pointer-events="visible" data-name="source_map_support">
+
+<ellipse fill="none" stroke="black" cx="314.73" cy="-1897.55" rx="91.49" ry="18"/>
+<text text-anchor="middle" x="314.73" y="-1893.35" font-family="Times,serif" font-size="14.00">source_map_support</text>
+</g>
+<!-- server_js&#45;&gt;source_map_support -->
+<g id="edge16" class="edge" data-name="server_js-&gt;source_map_support">
+
+<path fill="none" stroke="black" d="M451.03,-2021.97C423.89,-1997.19 372.88,-1950.63 341.54,-1922.02"/>
+<polygon fill="black" stroke="black" points="343.77,-1919.32 334.03,-1915.16 339.05,-1924.49 343.77,-1919.32"/>
+</g>
+<!-- routes -->
+<g id="node19" class="node" pointer-events="visible" data-name="routes">
+
+<ellipse fill="none" stroke="black" cx="620.35" cy="-1893.62" rx="34.77" ry="18"/>
+<text text-anchor="middle" x="620.35" y="-1889.42" font-family="Times,serif" font-size="14.00">routes</text>
+</g>
+<!-- server_js&#45;&gt;routes -->
+<g id="edge17" class="edge" data-name="server_js-&gt;routes">
+
+<path fill="none" stroke="black" d="M486.99,-2021.79C514.1,-1995.74 566.08,-1945.78 596.52,-1916.52"/>
+<polygon fill="black" stroke="black" points="598.98,-1919.01 603.77,-1909.55 594.13,-1913.96 598.98,-1919.01"/>
+</g>
+<!-- utils_js -->
+<g id="node13" class="node" pointer-events="visible" data-name="utils_js">
+
+<ellipse fill="none" stroke="black" cx="1168.89" cy="-1268.63" rx="38.88" ry="18"/>
+<text text-anchor="middle" x="1168.89" y="-1264.43" font-family="Times,serif" font-size="14.00">utils_js</text>
+</g>
+<!-- Utils -->
+<g id="node14" class="node" pointer-events="visible" data-name="Utils">
+
+<ellipse fill="none" stroke="black" cx="1322.52" cy="-1268.63" rx="29.64" ry="18"/>
+<text text-anchor="middle" x="1322.52" y="-1264.43" font-family="Times,serif" font-size="14.00">Utils</text>
+</g>
+<!-- utils_js&#45;&gt;Utils -->
+<g id="edge12" class="edge" data-name="utils_js-&gt;Utils">
+
+<path fill="none" stroke="black" d="M1208.05,-1268.63C1230.87,-1268.63 1259.58,-1268.63 1282.54,-1268.63"/>
+<polygon fill="black" stroke="black" points="1282.64,-1272.13 1292.64,-1268.63 1282.64,-1265.13 1282.64,-1272.13"/>
+</g>
+<!-- fileUtils -->
+<g id="node15" class="node" pointer-events="visible" data-name="fileUtils">
+
+<ellipse fill="none" stroke="black" cx="1015.26" cy="-1268.63" rx="42.87" ry="18"/>
+<text text-anchor="middle" x="1015.26" y="-1264.43" font-family="Times,serif" font-size="14.00">fileUtils</text>
+</g>
+<!-- utils_js&#45;&gt;fileUtils -->
+<g id="edge13" class="edge" data-name="utils_js-&gt;fileUtils">
+
+<path fill="none" stroke="black" d="M1129.73,-1268.63C1111.02,-1268.63 1088.35,-1268.63 1068.14,-1268.63"/>
+<polygon fill="black" stroke="black" points="1068.14,-1265.13 1058.14,-1268.63 1068.14,-1272.13 1068.14,-1265.13"/>
+</g>
+<!-- process_email_js -->
+<g id="node20" class="node" pointer-events="visible" data-name="process_email_js">
+
+<ellipse fill="none" stroke="black" cx="913.46" cy="-593.63" rx="77.59" ry="18"/>
+<text text-anchor="middle" x="913.46" y="-589.43" font-family="Times,serif" font-size="14.00">process_email_js</text>
+</g>
+<!-- process_email_js&#45;&gt;fileUtils_js -->
+<g id="edge21" class="edge" data-name="process_email_js-&gt;fileUtils_js">
+
+<path fill="none" stroke="black" d="M895.73,-575.91C870.13,-550.3 822.67,-502.85 793.63,-473.8"/>
+<polygon fill="black" stroke="black" points="795.86,-471.08 786.31,-466.48 790.91,-476.03 795.86,-471.08"/>
+</g>
+<!-- process_email_js&#45;&gt;systemUtils_js -->
+<g id="edge22" class="edge" data-name="process_email_js-&gt;systemUtils_js">
+
+<path fill="none" stroke="black" d="M895.73,-611.36C870.13,-636.97 822.67,-684.42 793.63,-713.47"/>
+<polygon fill="black" stroke="black" points="790.91,-711.24 786.31,-720.78 795.86,-716.19 790.91,-711.24"/>
+</g>
+<!-- imap -->
+<g id="node21" class="node" pointer-events="visible" data-name="imap">
+
+<ellipse fill="none" stroke="black" cx="1187.06" cy="-260.38" rx="30.19" ry="18"/>
+<text text-anchor="middle" x="1187.06" y="-256.18" font-family="Times,serif" font-size="14.00">imap</text>
+</g>
+<!-- process_email_js&#45;&gt;imap -->
+<g id="edge18" class="edge" data-name="process_email_js-&gt;imap">
+
+<path fill="none" stroke="black" d="M928.17,-575.72C974.06,-519.82 1114.64,-348.58 1167.07,-284.73"/>
+<polygon fill="black" stroke="black" points="1169.94,-286.74 1173.58,-276.8 1164.53,-282.3 1169.94,-286.74"/>
+</g>
+<!-- mailparser -->
+<g id="node22" class="node" pointer-events="visible" data-name="mailparser">
+
+<ellipse fill="none" stroke="black" cx="1264.54" cy="-393.01" rx="51.58" ry="18"/>
+<text text-anchor="middle" x="1264.54" y="-388.81" font-family="Times,serif" font-size="14.00">mailparser</text>
+</g>
+<!-- process_email_js&#45;&gt;mailparser -->
+<g id="edge19" class="edge" data-name="process_email_js-&gt;mailparser">
+
+<path fill="none" stroke="black" d="M942.79,-576.87C1006.82,-540.28 1158.97,-453.34 1228.62,-413.54"/>
+<polygon fill="black" stroke="black" points="1230.54,-416.47 1237.48,-408.47 1227.06,-410.4 1230.54,-416.47"/>
+</g>
+<!-- emailUtils_js -->
+<g id="node23" class="node" pointer-events="visible" data-name="emailUtils_js">
+
+<ellipse fill="none" stroke="black" cx="1303.25" cy="-574.31" rx="62.57" ry="18"/>
+<text text-anchor="middle" x="1303.25" y="-570.11" font-family="Times,serif" font-size="14.00">emailUtils_js</text>
+</g>
+<!-- process_email_js&#45;&gt;emailUtils_js -->
+<g id="edge20" class="edge" data-name="process_email_js-&gt;emailUtils_js">
+
+<path fill="none" stroke="black" d="M989.54,-589.86C1059.51,-586.39 1162.51,-581.29 1231.18,-577.88"/>
+<polygon fill="black" stroke="black" points="1231.66,-581.36 1241.47,-577.37 1231.31,-574.37 1231.66,-581.36"/>
+</g>
+<!-- queueUtils_js -->
+<g id="node24" class="node" pointer-events="visible" data-name="queueUtils_js">
+
+<ellipse fill="none" stroke="black" cx="1273.8" cy="-769.64" rx="64.29" ry="18"/>
+<text text-anchor="middle" x="1273.8" y="-765.44" font-family="Times,serif" font-size="14.00">queueUtils_js</text>
+</g>
+<!-- process_email_js&#45;&gt;queueUtils_js -->
+<g id="edge23" class="edge" data-name="process_email_js-&gt;queueUtils_js">
+
+<path fill="none" stroke="black" d="M947.04,-610.03C1013.25,-642.38 1160.48,-714.29 1232.51,-749.47"/>
+<polygon fill="black" stroke="black" points="1231.22,-752.74 1241.74,-753.98 1234.29,-746.45 1231.22,-752.74"/>
+</g>
+<!-- dotenv -->
+<g id="node25" class="node" pointer-events="visible" data-name="dotenv">
+
+<ellipse fill="none" stroke="black" cx="1191.37" cy="-921.4" rx="37.14" ry="18"/>
+<text text-anchor="middle" x="1191.37" y="-917.2" font-family="Times,serif" font-size="14.00">dotenv</text>
+</g>
+<!-- process_email_js&#45;&gt;dotenv -->
+<g id="edge24" class="edge" data-name="process_email_js-&gt;dotenv">
+
+<path fill="none" stroke="black" d="M928.8,-611.72C975.63,-666.95 1116.8,-833.46 1170.41,-896.69"/>
+<polygon fill="black" stroke="black" points="1167.95,-899.19 1177.08,-904.56 1173.29,-894.67 1167.95,-899.19"/>
+</g>
+</g>
+</svg>

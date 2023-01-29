@@ -1,14 +1,70 @@
 {
-  "dependencies": {
-    "concurrently": "^7.0.0",
-    "openai": "^3.1.0"
-  },
-  "scripts": {
-    "dev": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
-    "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
-    "install": "cd ./server && npm install && cd ../client && npm install"
-  },
-  "devDependencies": {
-    "dotenv": "^16.0.3"
-  }
+    "name": "app-drolo-gpt",
+    "version": "0.0.2",
+    "description": "DroloGPT",
+    "license": "UNLICENSED",
+    "repository": {
+        "type": "git",
+        "url": "git+git@github.com:juanataena/drologpt-react.git"
+    },
+    "main": "src/server.js",
+    "engines": {
+        "node": ">=6"
+    },
+    "files": [
+        "dist/"
+    ],
+    "keywords": [
+        "Gigya CDC Sites Console Generator gigya SAPCDC nodejs"
+    ],
+    "jest": {
+        "testEnvironment": "node",
+        "reporters": [
+            "default"
+        ]
+    },
+    "scripts": {
+        "start": "concurrently \"npm run apiDev\" \"cd client && npm start\"",
+        "dev": "concurrently \"npm run generate-dependency-graphs\" \"npm run apiDev\" \"cd client && npm start\"",
+        "dist": "npm run buildProd -s && NODE_ENV=production node ./dist/server",
+        "buildProd": "rm -rf ./dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js && cd client && npm run build",
+        "apiDev": "PORT=5000 nodemon --inspect=0.0.0.0:9009 --exec babel-node src/server.js ",
+        "installDeps": "cd client && yarn install && pwd && cd ../ && yarn install",
+        "clean": "rimraf node_modules && rm -r yarn.lock && cd client && npm run clean && cd ../",
+        "generate-server-dependency-graph": "depcruise --max-depth 2 --exclude \"^node_modules\" --output-type dot src | dot -T svg > ./client/public/img/digraph/dependencygraph-server.svg",
+        "generate-client-dependency-graph": "cd client && depcruise --max-depth 2 --exclude \"^(node_modules|forks|__tests__|jshint)\" --output-type dot src | dot -T svg > ./public/img/digraph/dependencygraph-client.svg",
+        "generate-dependency-graphs": "npm run generate-server-dependency-graph && npm run generate-client-dependency-graph"
+    },
+    "dependencies": {
+        "@babel/preset-env": "^7.18.10",
+        "@babel/preset-react": "^7.18.6",
+        "body-parser": "^1.20.0",
+        "codemirror-node": "^1.0.1",
+        "concurrently": "^7.3.0",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "handlebars": "^4.7.7",
+        "imap": "^0.8.19",
+        "import-meta-resolve": "^2.2.1",
+        "inspirational-quotes": "^2.0.1",
+        "log4js": "^6.6.1",
+        "mailparser": "^3.5.0",
+        "node-cron": "^3.0.2",
+        "nodemailer": "^6.7.8",
+        "openai": "^3.1.0",
+        "react": "^18.2.0",
+        "really-relaxed-json": "^0.3.1",
+        "request": "^2.88.2",
+        "source-map-support": "^0.5.21",
+        "sqlite3": "^5.0.11",
+        "sync-request": "^6.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.2",
+        "@babel/node": "^7.0.0",
+        "@babel/preset-env": "^7.1.0",
+        "babel-eslint": "10.1.0",
+        "dependency-cruiser": "^12.6.0",
+        "nodemon": "^2.0.19"
+    }
 }

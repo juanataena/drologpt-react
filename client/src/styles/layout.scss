@@ -1,0 +1,541 @@
+// 0. General
+@import url('constants.scss');
+@import 'themes/theme-light';
+@import 'themes/theme-dark';
+
+
+.header {
+    background-color: #2f2f2f;
+    color: whitesmoke;
+    padding: 25px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.quote {
+    font-weight: normal;
+}
+.text-green-bold {
+    font-weight: bold;
+    color: #95c515!important;
+}
+.main-list {
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: larger;
+    & > li {
+        list-style: none;padding: 0;margin: 0;text-align: center;margin-bottom: 40px;font-weight: bold;font-size: larger}
+}
+.separator {
+    list-style: none;padding: 10px;margin: 0;border: none;border-bottom: 1px solid #95c51533;
+}
+.text-simple {
+    font-weight: normal;
+    color:whitesmoke;
+}
+.best-keys {
+
+    border: 2px solid #0f693850;
+    width: auto;
+    background: white;
+    display: inline-block;
+    padding:1% 10%;
+    margin-top: 2%;
+    font-size: 1.0rem;
+    text-align: left;
+    code {
+        font-weight: normal;
+        color: #a31515;
+    }
+}
+.code-container {
+    background-color: whitesmoke;
+    width: 80%;
+    margin:10px auto 0;
+    padding: 1%;
+    text-align: left;
+    font-weight: normal;
+}
+
+.link-list {
+
+
+    li {
+        font-weight: normal;
+        font-size: .8em;
+        list-style: none;display: inline-block;
+    }
+    a {
+
+        text-decoration: none!important;
+        color: #7bb4c2!important;
+        &:hover {
+            font-weight: bold;
+        }
+    }
+}
+
+.footer {
+
+    background-color: #2f2f2f;padding: 0px 0 0px 0;font-size: 14px;text-align: center;
+     display: block;position:relative;bottom: 0%;width: 100%;font-weight: bold;
+    .footer-quote {
+        color: whitesmoke;
+        width: 80%;
+        margin:20px auto 0;
+        padding: 2%;
+        font-weight: normal;
+    }
+}
+
+
+
+// 1. General
+html {
+    overflow: hidden!important;
+}
+body {
+
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,roboto,oxygen,ubuntu,cantarell,fira sans,droid sans,helvetica neue,sans-serif;
+    font-family: 'Courier New', Courier, monospace;
+    font-family: monospace, Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-size: .9em;
+    background-color: #2f2f2f!important;
+    color: #95c515!important;
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+:not(pre):not(code) {
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+// 2. Gigya APP Title (Generic. Move to component!)
+.gigya-app {
+
+    cursor: default;
+    pointer-events: none;
+    left: 20px;
+    position: relative;
+    top: 1px;
+
+    .text-coded {
+
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 15px;
+        position: relative;
+        top: -1px;
+        left: -6px;
+    }
+    .text-non-coded {
+
+        font-family: "Quicksand";
+        font-weight: bold;
+        font-size: 1.2em;
+        position: relative;
+        left: 10px;
+    }
+    .grayed {
+        color: #5CC9F5;
+    }
+    .status-message {
+
+        position: relative;
+        top: -3px;
+        right: 20px;
+        font-weight: bold;
+        opacity: 0.2;
+    }
+}
+
+// 3. NAV MENU (Generic. Move to component!)
+.navbar {
+
+
+    // Fixed navbar!!
+    // background-color: transparent!important;
+    // border: 0px solid transparent!important;
+    position: absolute!important;
+
+    position: fixed!important;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background-color:#0089a1!important;
+    justify-content: space-around;
+    width: 100%;
+    cursor: default;
+    user-select: none;
+
+    // Original
+    border-bottom: 1px solid #ccc;
+
+    // Con sombra
+    // box-shadow: 1px 2px 3px #ccc;
+
+    &.is-info {
+
+        // background: linear-gradient(141deg, #159dc6 0%, #3298dc 71%, #4389e5 100%);
+    }
+
+    .navbar-item, .navbar-link {
+
+        // color: #0087d2c4;
+        color: whitesmoke;
+        background: transparent;
+        border: none;
+
+        &:hover {
+            color: #333;
+            background: transparent;
+            border: none;
+        }
+        &:active {
+            border: none;
+            ouline: none;
+        }
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+    .navbar-menu {
+
+        flex-grow: .5;
+        justify-content: center;
+        .navbar-item {
+
+            flex-grow: 1;
+            justify-content: center;
+            .control {
+
+                width: 50%;
+            }
+        }
+    }
+
+    .react-version {
+        margin: 0 40px;
+    }
+}
+.fallback-navbar {
+    text-align: center;
+    background: transparent;
+    border: none;
+    height: 20px;
+}
+// 4. HERO (Generic. Move to component!)
+.section.hero {
+    // border: 2px solid red!important;
+    margin-top: 50px!important;
+    .header-section {
+
+
+        padding: 30px 0 27px;
+        // Gigya Logo Header
+        h1 {
+
+            .gigya-app {
+
+                margin-top: 10px;
+                padding-bottom: 6px;
+            }
+        }
+        .gigya-logo-header {
+
+            position: relative;
+            top: -10px!important;
+            filter: saturate(0%);
+            opacity: .8;
+        }
+        .loading-img {
+
+            position: relative;
+            top: -10px!important;
+            filter: saturate(0%);
+            opacity: .8;
+        }
+    }
+
+    // Body Columns
+    .body-columns {
+
+
+        .column  {
+
+            padding: 0;
+        }
+        // Description
+        .app-description {
+
+            margin-bottom: 15px;
+        }
+
+        // JWT Tiles (Main one)
+        .jwt-tile {
+
+
+            height: fit-content;
+
+            // Clean headers
+            .clean-article {
+
+
+                // First Level titles (global page)
+                >p {
+
+                    &.title {
+
+                        margin-top: 8px;
+                        margin-bottom: 16px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        padding: 0;
+                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: #3297dd!important;
+                        &::after {
+                            margin-left: 24px;
+                            content: '';
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 100%;
+                            height: 1px;
+                            background: linear-gradient(to right, rgba(116, 95, 181, .2), transparent 80%)
+                        }
+                    }
+                    &.subtitle {
+                        font-size: 14px;
+                        padding-top: 10px;
+                        color: #888!important;
+                    }
+                }
+
+                // Second level titles (inside summary) (Generic. Move to component!)
+                .info-tiles {
+                    .title {
+                        color: #363636;
+                        font-size: 2rem;
+                        font-weight: 600;
+                        line-height: 1.125;
+                    }
+                }
+
+                padding: 0.75em!important;
+                margin: 0.75em!important;
+                // box-shadow: 2px 2px 2px #ccc;
+            }
+
+            // Card
+            .card {
+
+                // Magic!!!!!
+                overflow-wrap: anywhere;
+
+                // height: 100%;
+
+                // margin-top: 5rem;
+                .header {
+                    padding: 5px 10px;
+                }
+                .card-header {
+                    border: 0px solid blue;
+                    padding: 5px 10px;
+                    background: whitesmoke;
+                }
+                &.result-value{
+
+                    // Only for OK!
+                    .card-content {
+                        .json-valid{
+                            border: 0px solid red;
+                            // padding: 0;
+                            padding: 1.0rem;
+                        }
+
+                    }
+                }
+                .card-footer {
+                    border: 0px solid green;
+                    padding: 5px 10px;
+                    background: whitesmoke;
+                    // display: none;
+                    .columns {
+                    width: 100%;
+
+                    // For overflow footers
+                    .with-ellipsis {
+                        text-overflow: ellipsis;
+                        overflow: auto;
+                    }
+
+                    input {
+                        border: 0;
+                        border-radius: 0;
+                        box-shadow: none;
+                    }
+                    .column {
+                        &:last-child {
+                            align-items: center;
+                            display: flex;
+
+                            button {
+                                border: 0;
+                            }
+                        }
+
+                    }
+                }
+                }
+            }
+        }
+
+        // VALIDATION RESULTS (Generic. Move to component!)
+        .validation-results-tile {
+
+            position: absolute;
+            // bottom: 0;
+            // width: 100%;
+        }
+
+        .validation-results {
+            .tile {
+                &.is-parent {
+                    padding: 0rem;
+                }
+            }
+        }
+    }
+}
+// FOOTER
+//
+// Customize the git icon and the font
+.app-footer {
+    background-color: #333!important;
+    color: whitesmoke!important;
+    font-size: 12px;
+    a {
+        color: #777;
+    }
+    .material-icons {
+        margin-right: 10px;
+    }
+}
+
+
+// 5. Media Queries
+@media screen and (max-width: 1024px) {
+    .hero-foot {
+        .material-icons {
+            display: none;
+        }
+    }
+}
+
+
+// ALGORITHM SELECTOR
+.algorithm-select {
+    // border: 2px solid red!important;
+    // font-size: 0.8em;
+    width: 113px;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+// RESIZER
+.fXAXjb, .hEACtv {
+  background: #555;
+  opacity: 0.1;
+  z-index: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+
+  &:hover {
+    -webkit-transition: all 1.5s ease;
+    transition: all 2s ease;
+  }
+
+  &.horizontal {
+    height: 11px;
+    margin: -5px 0;
+    border-top: 5px solid rgba(255, 255, 255, 0);
+    border-bottom: 5px solid rgba(255, 255, 255, 0);
+    cursor: row-resize;
+    width: 100%;
+
+    &:hover {
+        border-top: 5px solid rgba(0, 0, 0, 0.5);
+        border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &.vertical {
+    width: 11px;
+    margin: 0 -5px;
+    border-left: 5px solid rgba(255, 255, 255, 0);
+    border-right: 5px solid rgba(255, 255, 255, 0);
+    cursor: col-resize;
+    opacity: 0;
+    &:hover {
+        border-left: 5px solid rgba(0, 0, 0, 0.5);
+        border-right: 5px solid rgba(0, 0, 0, 0.5);
+        opacity: 1;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    &:hover {
+        border-color: transparent;
+    }
+  }
+
+}
+
+
+// Icon Date 📅 added
+.renew-date {
+    // border: 2px solid red;
+    display: inline-block;
+    float: right;
+    right: 54px !important;
+    top: 4px;
+    position: relative;
+    background: white;
+    display: none;
+    i {
+        // border: 2px solid red;
+
+        font-size: 17px;
+        font-weight: 400;
+        color: #378e55;
+        cursor: pointer;
+    }
+}
+.react-json-view .variable-row:hover .renew-date {
+    display: inline-block;
+}
+
+// DEPLOYMENT FIXES
+//
+.content blockquote:not(:last-child), .content dl:not(:last-child), .content ol:not(:last-child), .content p:not(:last-child), .content pre:not(:last-child), .content table:not(:last-child), .content ul:not(:last-child) {
+    margin-bottom: 0!important;
+}

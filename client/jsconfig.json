@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "baseUrl": "./src",
+        "paths": {
+            "@deployer/*": [
+                "./components/deployer/*"
+            ],
+            "@deployer2/*": [
+                "components/deployer/*"
+            ],
+            "@deployer3/*": [
+                "src/components/deployer/*"
+            ],
+            "@deployer4/*": [
+                "./src/components/deployer/*"
+            ]
+        }
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "build",
+        "coverage",
+        "dist",
+        "lib"
+    ]
+}

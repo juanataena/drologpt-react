@@ -1,0 +1,38 @@
+{{! ----------------------------- }}
+{{!  MAIN GLOBAL CONFIG TEMPLATE  }}
+{{! ----------------------------- }}
+{{! * Main Structure:             }}
+{{!                               }}
+{{!   1. - Constants              }}
+{{!   2. - Functions              }}
+{{!   3. - Log function           }}
+{{!   4. - Event Maps             }}
+{{!   5. - OnGigyaServiceReady    }}
+{{!                               }}
+{{! ----------------------------- }}
+
+{{!> header}}
+{
+    {{! 1. - Constants  }}
+    {{> constants}}
+    {{#addLog}}
+        {{> loggingConstant }}
+    {{/addLog}}
+
+    {{! 2. - Functions }}
+    {{> functions}}
+
+    {{! 3. - Log function  }}
+    {{#addLog}}
+        {{> loggingFunction }}
+    {{/addLog}}
+
+    {{! 4. - Event Maps  }}
+    {{> events }}
+
+    {{! 5. - OnGigyaServiceReady  }}
+    {{#addOnGigyaServiceReady}}
+        {{> onGigyaServiceReadyFunction }}
+    {{/addOnGigyaServiceReady}}
+    {{> footer}}
+}
