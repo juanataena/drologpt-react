@@ -76,11 +76,15 @@
   src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
 }
 /* Class variables */
+.is-hidden {
+  display: none!important;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Alegreya Sans", 'Source Sans Pro', sans-serif;
+  font-family: "Alegreya Sans", 'Source Sans Pro', sans-serif !important;
+  overflow: hidden!important;
 }
 body {
   background: #343541;
@@ -95,20 +99,18 @@ body {
   justify-content: space-between;
 }
 .drologpt-header {
-  /*width: 100%;
-    height: 60px;
-    background: @header-background-color;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    */
-  position: absolute;
-  right: 0;
-  margin: 2%;
-  opacity: 0;
+  width: 100%;
+  height: 60px;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  /*position: absolute;
+    right: 0;
+    margin: 2%;
+    opacity: .0;*/
   transition: opacity 0.5s;
 }
 .drologpt-header:hover {
@@ -212,6 +214,7 @@ body {
 .chat-container .wrapper .message {
   flex: 1;
   color: #dcdcdc;
+  background-color: transparent;
   font-size: 20px;
   max-width: 100%;
   overflow-x: scroll;

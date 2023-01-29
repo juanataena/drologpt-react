@@ -7,6 +7,10 @@ import Header from './components/Header';
 import Prompt from './components/Prompt';
 import ChatContainer from './components/ChatContainer';
 
+import 'bulma/css/bulma.min.css';
+import '../public/css/drologpt.css'
+
+
 function App() {
     const [placeholder, setPlaceholder] = useState("Qué quieres preguntar?");
     const [prompt, setPrompt] = useState("Cuánto sangra?");
@@ -21,39 +25,39 @@ function App() {
     useEffect(() => {
 
         // Set one initial stripe (welcome message from Drolo GPT)
-        // const initialStripe = {isAi: true, value: "Hola, soy Drolo GPT. ¿Qué quieres preguntar?", uniqueId: utils.generateUniqueId()};
-        // Set the stripes
-        // setStripes([initialStripe]);
-
-        // Set the loading
-        setLoading(false);
-
-        // Set the load interval
-        setLoadInterval();
+        // setStripes([{isAi: true, value: "Hola, soy Drolo GPT. ¿Qué quieres preguntar?", uniqueId: utils.generateUniqueId()}]);
 
         // Set the user avatar
-        // Taken from dicebear.com
         utils.getRandomAvatarAsPNG().then (png => {
             
-        setUserAvatar(png);
+            setUserAvatar(png);
         });
+
     }, []);
 
     // React Effect for loading state change // FAKE
     useEffect(() => {
+        console.log("Loading: ", loading);
         if (loading) {
 
             // Remove the last stripe (the one with the loader), if any
             if (stripes.length > 0) {
 
             // For each stripe check if isAi is true and the value is " ". If so, remove it
-            const nonLoadingStripes = stripes.filter(stripe => !(stripe.isAi && stripe.value === " "));            
+            const nonLoadingStripes = stripes.filter(stripe => !(stripe.isAi && stripe.value === " "));
 
-            // Add a new stripe
+            // Add a new stripe loading stripe
             const newStripe = {isAi: true, value: " ", uniqueId: utils.generateUniqueId()};
-            setStripes([...nonLoadingStripes, newStripe]);
-            setLoading (false);
-        }
+            const newStripes = [...nonLoadingStripes, newStripe];
+            setStripes(newStripes);
+
+            // get last stripe
+            const lastStripe = newStripes[newStripes.length - 1];
+            const uniqueId = lastStripe.uniqueId;
+            
+            utils.loader(uniqueId, loadInterval);
+            
+            }
         }
     }, [loading]);
 
@@ -165,6 +169,7 @@ function App() {
             
             {/* Header de Drolo GPT */}
             <Header
+                loading={loading}
                 handleSendPrompt={handleSendPrompt}
                 handleDeleteStripes={handleDeleteStripes}
             />

@@ -33,8 +33,14 @@ export function loaderdd(element, loadInterval) {
         }
     }, 300);
 }
-export function loader(element, loadInterval) {
-    debugger;
+export function loader(uniqueId, loadInterval) {
+
+    // get the message div
+    const element = document.getElementById(uniqueId)
+
+    if (!element) {
+        return;
+    }
     element.textContent = ''
 
     loadInterval = setInterval(() => {
@@ -81,6 +87,11 @@ export function generateUniqueId() {
     return `id-${timestamp}-${hexadecimalString}`;
 }
 
+/**
+ *         // Taken from dicebear.com
+ * Get a random avatar as a PNG
+ * @returns 
+ */
 export async function getRandomAvatarAsPNG () {
     const options = {
         seed: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),

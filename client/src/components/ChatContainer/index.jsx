@@ -7,23 +7,10 @@ export default function ChatContainer (props) {
     // Render
     let stripes = props.stripes;
     let HAS_STRIPES = stripes.length > 0;
-   
-
-    // React Effect for loading state change
-    useEffect(() => {
-        if (props.loading) {
-            // get last stripe
-            const lastStripe = stripes[stripes.length - 1];
-            const uniqueId = lastStripe.uniqueId;
-            // get the message div
-            const messageDiv = document.getElementById(uniqueId)
-            // utils.loader(messageDiv, props.loadInterval);
-        }
-    }, [props.loading]);
 
     const renderEmptyChat = () => {
         return (
-            <div className="wrapper ai">
+            <div className="wrapper ai is-hidden">
             <div className="chat">
                 <div className="profile">
                     Empty
