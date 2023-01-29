@@ -7,7 +7,9 @@ export default function Prompt (props) {
 
         // Add ENTER key listener
         document.addEventListener('keydown', handleKeyDown);
-        document.querySelector(".chat-prompt textarea").focus();
+        const promptTexArea = document.querySelector(".chat-prompt textarea");
+        promptTexArea.focus();
+        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
         // Remove ENTER key listener
         // return () => {
         //     document.removeEventListener('keydown', handleKeyDown);
@@ -16,7 +18,9 @@ export default function Prompt (props) {
 
     // Focus each time stripes change
     useEffect(() => {
-        document.querySelector(".chat-prompt textarea").focus();
+        const promptTexArea = document.querySelector(".chat-prompt textarea");
+        promptTexArea.focus();
+        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
     }, [props.stripes]);
 
     const handleKeyDown = (e) => {

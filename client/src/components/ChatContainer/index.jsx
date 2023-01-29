@@ -8,6 +8,18 @@ export default function ChatContainer (props) {
     let stripes = props.stripes;
     let HAS_STRIPES = stripes.length > 0;
 
+    // Scroll to bottom
+    useEffect(() => {
+        const chatContainer = document.getElementById("chat-container");
+
+        if (!chatContainer) {
+            return;
+        }
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }, [stripes]);
+
+
+
     const renderEmptyChat = () => {
         return (
             <div className="wrapper ai is-hidden">
@@ -29,6 +41,7 @@ export default function ChatContainer (props) {
             return (
                 <div id={stripe.uniqueId} key={stripe.uniqueId} className={'wrapper is-' + (stripe.isAi ? 'bot':'user')}>
                     <div className="chat">
+                        <div className="stripe-index">{index}</div>
                         <div className="profile">
                             <img src = {stripe.isAi ? bot : props.userAvatar} alt={stripe.isAi ? 'bot' : 'user'} />
                         </div>

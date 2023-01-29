@@ -27,10 +27,28 @@ export default function Header (props) {
             </div>
         );
     }
+
+    const renderPromptBar = () => {
+        return (
+            <div className="prompt-bar">
+                <b>Prompt</b>:&nbsp;&nbsp;&nbsp;<span className="has-text-warning">{props.prompt}</span>
+            </div>
+        );
+    }
+    const renderIntervalInfo = () => {
+        return (
+            <div className="interval-info">
+                <b>Interval</b>:&nbsp;&nbsp;&nbsp;<span className="has-text-success">{props.loadInterval}</span>
+            </div>
+        );
+    }
+    
     // Render
     return (
         <div className="drologpt-header">
+            {renderIntervalInfo()}
             {renderLoadingBar()}
+            {renderPromptBar()}
             {renderActionButtonBar()}
         </div>
         

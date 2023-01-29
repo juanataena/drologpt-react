@@ -5,7 +5,7 @@ import * as avatarCollections from '@dicebear/collection';
 
 // Intervals for loading and typing text
 
-export function loader(uniqueId, loadInterval) {
+export function loader(uniqueId, loadInterval, setLoadInterval) {
 
     // get the message div
     const element = document.getElementById(uniqueId)
@@ -28,6 +28,11 @@ export function loader(uniqueId, loadInterval) {
             loader.textContent = '';
         }
     }, 300);
+    setLoadInterval(loadInterval);
+}
+
+export function loaderStop (loadInterval) {
+    clearInterval(loadInterval);
 }
 
 /**
@@ -81,4 +86,10 @@ export async function getRandomAvatarAsPNG () {
         options
     });
     return png.toDataUri();
+}
+
+
+export function scrollToBottom () {
+    const messages = document.querySelector('.chat-container');
+    messages.scrollTop = messages.scrollHeight;
 }

@@ -12,8 +12,8 @@ import '../public/css/drologpt.css'
 
 
 function App() {
-    const [placeholder, setPlaceholder] = useState("Qué quieres preguntar?");
-    const [prompt, setPrompt] = useState("Cuánto sangra?");
+    const [placeholder, setPlaceholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
+    const [prompt, setPrompt] = useState("¿Cuánto sangra?");
     const [data, setData] = useState();
     const [stripes, setStripes] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ function App() {
 
     }, []);
 
-    // React Effect for loading state change // FAKE
+    // React Effect for loading & prompt state change // FAKE
     useEffect(() => {
         console.log("Loading: ", loading);
         if (loading) {
@@ -51,46 +51,78 @@ function App() {
                 const newStripes = [...nonLoadingStripes, newStripe];
                 setStripes(newStripes);            
             }
+        } else {
+            // debugger;
+            // setLoadInterval(null);
         }
+
+
     }, [loading, prompt]);
 
-    // React Effect for stripes state change
+    // React Effect for STRIPES state change
     useEffect(() => {
         console.log("Stripes: %o", stripes);
         if (stripes.length > 0) {
             const lastStripe = stripes[stripes.length - 1];
             if (lastStripe.isAi) {
-                utils.loader(lastStripe.uniqueId, loadInterval);
-            }
+                
+                // If it has text and it is the last one, then stop the loader
+                // debugger;
+                if (lastStripe.value.trim() === "") {
+                    console.log("cargando");
+                    utils.loader(lastStripe.uniqueId, loadInterval, setLoadInterval);
+                } else {
+                    console.log("no cargando");
+                    if (loadInterval) {
+                        clearInterval(loadInterval);
+                        setLoadInterval(null);
+
+                    }
+                }
+            } 
+
+            // Scroll to bottom
+            utils.scrollToBottom();
+
         }
     }, [stripes]);
 
-    // React Effect for data state change
+    // useEffect(() => {
+    //     if (loadInterval === null) {
+    //       const id = setInterval(() => {
+    //         console.log('Interval tick');
+    //       }, 1000); // 1000ms delay
+    //       setLoadInterval   (id);
+    //     } else {
+    //       clearInterval(loadInterval);
+    //       setLoadInterval   (null);
+    //     }
+    //   }, [loadInterval]);
+    
+    // React Effect for DATA state change
     useEffect(() => {
 
         // Log the data
         console.log("Data: %o", data);
-
         // Get the result from the state
         const result = data?.bot;
 
         if (result) {
 
-            // Get the unique ID from the state
-            const uniqueId = data?.uniqueId;
+            // Remove the last stripe (the one with the loader), if any
+            if (stripes.length > 0) {
 
-            // Get the message div
-            const messageDiv = document.getElementById(uniqueId);
+                // For each stripe check if isAi is true and the value is " ". If so, remove it
+                const nonLoadingStripes = stripes.filter(stripe => !(stripe.isAi && stripe.value === " "));
 
-            // Type the text
-            const parsedData = result.trim() // trims any trailing spaces/'\n'
-            utils.typeText(messageDiv, parsedData);
+                // Add a new stripe with the result
+                const newStripe = {isAi: true, value: result, uniqueId: utils.generateUniqueId()};
+                const newStripes = [...nonLoadingStripes, newStripe];
+                setStripes(newStripes);
 
-            // const chatContainer = document.querySelector('#chat_container')
-            // chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
-            // clearInterval(this.loadInterval)
-            // messageDiv.innerHTML = " "
-            // utils.typeText(messageDiv, parsedData)
+                // Set Loading to false
+                setLoading(false);
+            }
     
         }
     }, [data]);
@@ -119,6 +151,22 @@ function App() {
         setData(null);
         setStripes([...stripes, newStripe]);
         setLoading(true);
+  
+        // Stop any other previous requests
+
+        // Fake response
+        setTimeout(() => {
+
+            const fakeData = {
+                bot: "Sangra mucho"
+                // bot:"\n\nThe word \"eo\" is not a word in English. It is a root word in Esperanto, an international language created in the late 19th century. In Esperanto, \"eo\" means \"of or belonging to.\""
+            }
+
+            
+            // Set the data
+            setData(fakeData);
+            setLoading(false);
+        }, 2000);
         
         // // Post data to server
         // axios
@@ -161,7 +209,12 @@ function App() {
             
             {/* Header de Drolo GPT */}
             <Header
+                prompt={prompt}
+                data={data}
+                stripes={stripes}
                 loading={loading}
+                loadInterval={loadInterval}
+                userAvatar={userAvatar}
                 handleSendPrompt={handleSendPrompt}
                 handleDeleteStripes={handleDeleteStripes}
             />
@@ -182,7 +235,7 @@ function App() {
                 stripes = {stripes}
                 placeholder={placeholder}
                 data={data}
-
+                loadInterval={loadInterval}
                 setPrompt={setPrompt}
                 userAvatar={userAvatar}
 
