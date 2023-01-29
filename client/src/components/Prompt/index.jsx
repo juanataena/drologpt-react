@@ -69,7 +69,7 @@ export default function Prompt (props) {
                     value={props.prompt}
                     onChange={handlePromptChange}>                   
                 </textarea>
-                <button onClick={props.handleDataForServerPost}>
+                <button onClick={props.handleSendPrompt}>
                     <img src="assets/send.svg" alt="send" />
                 </button>
             </form>

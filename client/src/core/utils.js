@@ -4,7 +4,7 @@ import * as avatarCollections from '@dicebear/collection';
 
 
 // Intervals for loading and typing text
-export function loader(element, loadInterval) {
+export function loaderdd(element, loadInterval) {
 
     // Clear any existing intervals
     clearInterval(loadInterval);
@@ -17,22 +17,37 @@ export function loader(element, loadInterval) {
     });
 
     // Create a loading indicator below the element
-    var loadingIndicator = document.createElement('span');
-    loadingIndicator.className = 'loading-indicator';
-    element.appendChild(loadingIndicator);
+    // var loadingIndicator = document.createElement('span');
+    // loadingIndicator.className = 'loading-indicator';
+    // element.appendChild(loadingIndicator);
     
-    loadingIndicator.textContent = ''
+    element.textContent = ''
 
     loadInterval = setInterval(() => {
         // Update the text content of the loading indicator
-        loadingIndicator.textContent += '.';
+        element.textContent += '.';
 
         // If the loading indicator has reached three dots, reset it
-        if (loadingIndicator.textContent === '....') {
-            loadingIndicator.textContent = '';
+        if (element.textContent === '....') {
+            element.textContent = '';
         }
     }, 300);
 }
+export function loader(element, loadInterval) {
+    debugger;
+    element.textContent = ''
+
+    loadInterval = setInterval(() => {
+        // Update the text content of the loading indicator
+        element.textContent += '.';
+
+        // If the loading indicator has reached three dots, reset it
+        if (element.textContent === '....') {
+            element.textContent = '';
+        }
+    }, 300);
+}
+
 /**
  * Type text effect
  * @param {HTMLElement} element 

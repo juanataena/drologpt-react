@@ -1,4 +1,4 @@
-import bot from '../../../assets/icon-macarrones.png'
+import bot from '../../../assets/favicon.png';
 import { useEffect, useState } from "react";
 import * as utils from '../../core/utils';
 
@@ -17,7 +17,7 @@ export default function ChatContainer (props) {
             const uniqueId = lastStripe.uniqueId;
             // get the message div
             const messageDiv = document.getElementById(uniqueId)
-            utils.loader(messageDiv, props.loadInterval);
+            // utils.loader(messageDiv, props.loadInterval);
         }
     }, [props.loading]);
 
@@ -40,7 +40,7 @@ export default function ChatContainer (props) {
         return stripes.map((stripe, index) => {
             // debugger;
             return (
-                <div className="wrapper" id={stripe.uniqueId} key={stripe.uniqueId}>
+                <div id={stripe.uniqueId} key={stripe.uniqueId} className={'wrapper is-' + (stripe.isAi ? 'bot':'user')}>
                     <div className="chat">
                         <div className="profile">
                             <img src = {stripe.isAi ? bot : props.userAvatar} alt={stripe.isAi ? 'bot' : 'user'} />
@@ -56,7 +56,7 @@ export default function ChatContainer (props) {
         })
     }
     return (
-        <div id="chat_container">
+        <div id="chat_container" className="chat-container">
             {!HAS_STRIPES && renderEmptyChat()}
             {HAS_STRIPES && renderChat(stripes)}
         </div>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import * as utils from './core/utils';
 
+import Header from './components/Header';
 import Prompt from './components/Prompt';
 import ChatContainer from './components/ChatContainer';
 
@@ -20,9 +21,9 @@ function App() {
     useEffect(() => {
 
         // Set one initial stripe (welcome message from Drolo GPT)
-        const initialStripe = {isAi: true, value: "Hola, soy Drolo GPT. ¿Qué quieres preguntar?", uniqueId: utils.generateUniqueId()};
+        // const initialStripe = {isAi: true, value: "Hola, soy Drolo GPT. ¿Qué quieres preguntar?", uniqueId: utils.generateUniqueId()};
         // Set the stripes
-        setStripes([initialStripe]);
+        // setStripes([initialStripe]);
 
         // Set the loading
         setLoading(false);
@@ -41,9 +42,20 @@ function App() {
     // React Effect for loading state change // FAKE
     useEffect(() => {
         if (loading) {
+
+            // Remove the last stripe (the one with the loader), if any
+            if (stripes.length > 0) {
+
+            // For each stripe check if isAi is true and the value is " ". If so, remove it
+            const nonLoadingStripes = stripes.filter(stripe => !(stripe.isAi && stripe.value === " "));            
+
+            // Add a new stripe
+            const newStripe = {isAi: true, value: " ", uniqueId: utils.generateUniqueId()};
+            setStripes([...nonLoadingStripes, newStripe]);
             setLoading (false);
         }
-    }, [loading])
+        }
+    }, [loading]);
 
     // React Effect for data state change
     useEffect(() => {
@@ -75,8 +87,23 @@ function App() {
         }
     }, [data]);
 
+    // React Effect for load interval state change
+    useEffect(() => {
+        if (loadInterval) {
+            // get last stripe
+            const lastStripe = stripes[stripes.length - 1];
+            const uniqueId = lastStripe.uniqueId;
+            // get the message div
+            const messageDiv = document.getElementById(uniqueId)
+            utils.loader(messageDiv, loadInterval);
+        }
+    }, [loadInterval]);
+
     // Funciones para el chat
-    const handleDataForServerPost = async (e) => {
+    const handleDeleteStripes = () => {
+        setStripes([]);
+    }
+    const handleSendPrompt = async (e) => {
         
         // Prevent page from reloading
         e.preventDefault()
@@ -136,6 +163,12 @@ function App() {
     return (
         <div id="drologpt_app" className="drologpt-app-container">
             
+            {/* Header de Drolo GPT */}
+            <Header
+                handleSendPrompt={handleSendPrompt}
+                handleDeleteStripes={handleDeleteStripes}
+            />
+
             {/* Chat container de Drolo GPT */}
             <ChatContainer
                 prompt={prompt}
@@ -156,7 +189,7 @@ function App() {
                 setPrompt={setPrompt}
                 userAvatar={userAvatar}
 
-                handleDataForServerPost={handleDataForServerPost}
+                handleSendPrompt={handleSendPrompt}
             />
         </div>
     );
