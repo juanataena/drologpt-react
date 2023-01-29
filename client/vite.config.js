@@ -8,9 +8,6 @@ export default defineConfig({
         "/api/v1": "http://localhost:5000/",
         "/api/ask": "http://localhost:5000/",
     },
-    hmr: {
-        port: 443,
-    }
     
   },
   plugins: [react()],
