@@ -19,6 +19,16 @@ body {
     height: 100vh;
     background: @background-color;
 
+    // Add a background image in the middle of the page
+    background-image: url(../assets/background.png);
+    background-repeat: no-repeat;
+    background-size: contain!important;
+    background-position: center;
+    background-size: 350px 350px!important;
+
+    // Add effect to the background image
+    background-blend-mode: lighten;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,6 +140,7 @@ body {
         padding: 15px;
 
         &.is-user {
+            background: @user-background-color;
             .message {
                 b {
                     color: rgb(170, 213, 184) !important;

@@ -8,18 +8,6 @@ export default function ChatContainer (props) {
     let stripes = props.stripes;
     let HAS_STRIPES = stripes.length > 0;
 
-    // Scroll to bottom
-    useEffect(() => {
-        const chatContainer = document.getElementById("chat-container");
-
-        if (!chatContainer) {
-            return;
-        }
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }, [stripes]);
-
-
-
     const renderEmptyChat = () => {
         return (
             <div className="wrapper ai is-hidden">

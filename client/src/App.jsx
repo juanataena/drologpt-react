@@ -13,7 +13,8 @@ import '../public/css/drologpt.css'
 
 function App() {
     const [placeholder, setPlaceholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
-    const [prompt, setPrompt] = useState("¿Cuánto sangra?");
+    // const [prompt, setPrompt] = useState("¿Cuánto sangra?");
+    const [prompt, setPrompt] = useState("hola");
     const [data, setData] = useState();
     const [stripes, setStripes] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -51,12 +52,7 @@ function App() {
                 const newStripes = [...nonLoadingStripes, newStripe];
                 setStripes(newStripes);            
             }
-        } else {
-            // debugger;
-            // setLoadInterval(null);
         }
-
-
     }, [loading, prompt]);
 
     // React Effect for STRIPES state change
@@ -87,18 +83,6 @@ function App() {
         }
     }, [stripes]);
 
-    // useEffect(() => {
-    //     if (loadInterval === null) {
-    //       const id = setInterval(() => {
-    //         console.log('Interval tick');
-    //       }, 1000); // 1000ms delay
-    //       setLoadInterval   (id);
-    //     } else {
-    //       clearInterval(loadInterval);
-    //       setLoadInterval   (null);
-    //     }
-    //   }, [loadInterval]);
-    
     // React Effect for DATA state change
     useEffect(() => {
 

@@ -93,6 +93,12 @@ body {
   width: 100vw;
   height: 100vh;
   background: #343541;
+  background-image: url(../assets/background.png);
+  background-repeat: no-repeat;
+  background-size: contain!important;
+  background-position: center;
+  background-size: 350px 350px!important;
+  background-blend-mode: lighten;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,11 +184,14 @@ body {
   width: 100%;
   padding: 15px;
 }
+.chat-container .wrapper.is-user {
+  background: #40414f69;
+}
 .chat-container .wrapper.is-user .message b {
   color: #aad5b8 !important;
 }
 .chat-container .wrapper.is-bot {
-  background: #40414F;
+  background: #40414f69;
 }
 .chat-container .wrapper.is-bot .message b {
   color: #e37575 !important;
