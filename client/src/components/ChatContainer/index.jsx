@@ -1,5 +1,4 @@
-import bot from '../../../assets/bot.svg'
-import user from '../../../assets/user.svg'
+import bot from '../../../assets/icon-macarrones.png'
 import { useEffect, useState } from "react";
 import * as utils from '../../core/utils';
 
@@ -37,34 +36,14 @@ export default function ChatContainer (props) {
         )
     }
 
-    const renderDroloGPTChat = () => {
-        return (
-            <div className="wrapper ai">
-            <div className="chat">
-                <div className="profile">
-                    Empty
-                </div>
-                <div className="message">
-                    DroloGPT
-                </div>
-            </div>
-        </div>    
-        )
-    }
-
-    const renderChat = (stripes) => {
-
-
-        // Add the DroloGPT chat stripe
-        // stripes.push({isAi: true, value: "", uniqueId: utils.generateUniqueId()})
-                  
+    const renderChat = (stripes) => {                          
         return stripes.map((stripe, index) => {
             // debugger;
             return (
                 <div className="wrapper" id={stripe.uniqueId} key={stripe.uniqueId}>
                     <div className="chat">
                         <div className="profile">
-                            <img src = {stripe.isAi ? bot : user} alt={stripe.isAi ? 'bot' : 'user'} />
+                            <img src = {stripe.isAi ? bot : props.userAvatar} alt={stripe.isAi ? 'bot' : 'user'} />
                         </div>
                         <div className="message">
                             <b>{stripe.isAi ? 'DroloGPT' : 'user'}: </b>

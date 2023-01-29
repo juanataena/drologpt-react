@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dicebear/collection": "^5.2.0",
+    "@dicebear/core": "^5.2.0",
     "axios": "^0.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

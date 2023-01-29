@@ -1,3 +1,8 @@
+
+import { createAvatar } from '@dicebear/core';
+import * as avatarCollections from '@dicebear/collection';
+
+
 // Intervals for loading and typing text
 export function loader(element, loadInterval) {
 
@@ -60,19 +65,18 @@ export function generateUniqueId() {
 
     return `id-${timestamp}-${hexadecimalString}`;
 }
-/**
- *  Chat stripe
- * @param {*} isAi 
- * @param {*} value 
- * @param {*} uniqueId 
- * @returns 
- */
-export function chatStripe(isAi, value, uniqueId) {
-    debugger;
-    return (
-        `
 
-    `
-    )
+export async function getRandomAvatarAsPNG () {
+    const options = {
+        seed: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+        borderRadius: 10,
+    };
+    // Pick one randon library from avatarCollections
+    const randomCollection = Object.values(avatarCollections)[Math.floor(Math.random() * Object.values(avatarCollections).length)];
+    
+    const avatar = createAvatar(randomCollection, options);
+    const png = await avatar.png({ 
+        options
+    });
+    return png.toDataUri();
 }
-

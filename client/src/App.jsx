@@ -7,14 +7,38 @@ import Prompt from './components/Prompt';
 import ChatContainer from './components/ChatContainer';
 
 function App() {
-    const [placeholder, setPlaceholder] = useState("Hola. Soy DroloGPT. Pregúntame.");
+    const [placeholder, setPlaceholder] = useState("Qué quieres preguntar?");
     const [prompt, setPrompt] = useState("Cuánto sangra?");
     const [data, setData] = useState();
     const [stripes, setStripes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [loadInterval, setLoadInterval] = useState(); 
+    const [userAvatar, setUserAvatar] = useState();
     
 
+    // Setup first time
+    useEffect(() => {
+
+        // Set one initial stripe (welcome message from Drolo GPT)
+        const initialStripe = {isAi: true, value: "Hola, soy Drolo GPT. ¿Qué quieres preguntar?", uniqueId: utils.generateUniqueId()};
+        // Set the stripes
+        setStripes([initialStripe]);
+
+        // Set the loading
+        setLoading(false);
+
+        // Set the load interval
+        setLoadInterval();
+
+        // Set the user avatar
+        // Taken from dicebear.com
+        utils.getRandomAvatarAsPNG().then (png => {
+            
+        setUserAvatar(png);
+        });
+    }, []);
+
+    // React Effect for loading state change // FAKE
     useEffect(() => {
         if (loading) {
             setLoading (false);
@@ -57,26 +81,27 @@ function App() {
         // Prevent page from reloading
         e.preventDefault()
         
+        // No prompt, no post
         if (!prompt) {
             return;
         }
-
+        
         // Log the prompt
         console.log("Prompt Before: ", prompt);
-
+        const uniqueId = utils.generateUniqueId();
+        const newStripe = {isAi: false, value: prompt, uniqueId: uniqueId};
+    
+        // Clear prompt
+        setPrompt('');
+        setData(null);
+        setStripes([...stripes, newStripe]);
+        setLoading(true);
         
         // // Post data to server
         // axios
         // .post(urlWithProxyPost, {prompt})
         // .then((res) => parseResponse(res))
         // .catch((err) => parseErrorResponse(err))
-
-        // Clear prompt
-        setPrompt("");
-        const uniqueId = utils.generateUniqueId();
-        const newStripe = {isAi: false, value: prompt, uniqueId: uniqueId};
-        setStripes([...stripes, newStripe]);
-        setLoading(true);
     }
     const parseResponse = (res) => {
         debugger;
@@ -118,15 +143,19 @@ function App() {
                 stripes={stripes}
                 loading={loading}
                 loadInterval={loadInterval}
+                userAvatar={userAvatar}
             />
 
             {/* Prompt de Drolo GPT */}
             <Prompt
                 prompt={prompt}
+                stripes = {stripes}
                 placeholder={placeholder}
                 data={data}
 
                 setPrompt={setPrompt}
+                userAvatar={userAvatar}
+
                 handleDataForServerPost={handleDataForServerPost}
             />
         </div>

@@ -7,23 +7,35 @@ export default function Prompt (props) {
 
         // Add ENTER key listener
         document.addEventListener('keydown', handleKeyDown);
-
+        document.querySelector(".chat-prompt textarea").focus();
         // Remove ENTER key listener
         // return () => {
         //     document.removeEventListener('keydown', handleKeyDown);
         // }
     }, []);
 
+    // Focus each time stripes change
+    useEffect(() => {
+        document.querySelector(".chat-prompt textarea").focus();
+    }, [props.stripes]);
+
     const handleKeyDown = (e) => {
         
+        // e.preventDefault();
+
+        // Get the button
+        var chatPromptButton = document.querySelector(".chat-prompt button");
+
         // Add ENTER key listener
-        if (e.key === 'Enter') {
-            props.handleDataForServerPost(e);
+        if (!e.shiftKey && e.key === 'Enter') {
+            // Click the button
+            chatPromptButton.click();
+            e.preventDefault();
         }
 
         // Add CTRL + ENTER key listener
         if (e.ctrlKey && e.key === 'Enter') {
-            props.handleDataForServerPost(e);
+            chatPromptButton.click();
         }
 
     }
