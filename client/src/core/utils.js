@@ -4,52 +4,28 @@ import * as avatarCollections from '@dicebear/collection';
 
 
 // Intervals for loading and typing text
-export function loaderdd(element, loadInterval) {
 
-    // Clear any existing intervals
-    clearInterval(loadInterval);
-
-    // Remove any existing loading indicators
-    var loadingIndicators = document.querySelectorAll('.loading-indicator');
-    loadingIndicators.forEach(function (loadingIndicator) {
-        // Remove the loading indicator
-        loadingIndicator.remove();
-    });
-
-    // Create a loading indicator below the element
-    // var loadingIndicator = document.createElement('span');
-    // loadingIndicator.className = 'loading-indicator';
-    // element.appendChild(loadingIndicator);
-    
-    element.textContent = ''
-
-    loadInterval = setInterval(() => {
-        // Update the text content of the loading indicator
-        element.textContent += '.';
-
-        // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
-            element.textContent = '';
-        }
-    }, 300);
-}
 export function loader(uniqueId, loadInterval) {
 
     // get the message div
     const element = document.getElementById(uniqueId)
 
     if (!element) {
+        console.log ("No element found with ID: ", uniqueId)
         return;
     }
-    element.textContent = ''
+    console. log ("Found element with ID: ", uniqueId)
+    // debugger;
+    const loader = element.querySelector('.chat-stripe-loader');
+    loader.textContent = ''
 
     loadInterval = setInterval(() => {
         // Update the text content of the loading indicator
-        element.textContent += '.';
+        loader.textContent += '.';
 
         // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
-            element.textContent = '';
+        if (loader.textContent === '....') {
+            loader.textContent = '';
         }
     }, 300);
 }
