@@ -7,6 +7,8 @@ import Header from 'components/Header';
 import Prompt from 'components/Prompt';
 import ChatContainer from 'components/ChatContainer';
 
+import * as api from 'core/api';
+
 import 'bulma/css/bulma.min.css';
 import '../css/drologpt.css'
 
@@ -171,11 +173,25 @@ function DroloGPT(props) {
         if (prompt === "¿Cuánto sangra?") {
             utils.sendFakeRequest(setData, setLoading);
         } else {
-            // Post data to server
-            axios
-            .post(urlWithProxyPost, {prompt})
-            .then((res) => parseResponse(res))
-            .catch((err) => parseErrorResponse(err))
+        api.promptOpenAI(prompt).then( (response) => {
+            utils.log('1. OpenAI Prompted', 'MAIN_END', response);
+            setData(JSON.parse(response))
+        }).catch(() => {
+            utils.showError();
+            const chatContainer = document.querySelector('#chat_container')
+            const uniqueId = utils.generateUniqueId()
+            chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
+            const messageDiv = document.getElementById(uniqueId)
+            clearInterval(this.loadInterval)
+            messageDiv.innerHTML = "Something went wrong"
+            
+        });
+
+            // // Post data to server
+            // axios
+            // .post(urlWithProxyPost, {prompt})
+            // .then((res) => parseResponse(res))
+            // .catch((err) => parseErrorResponse(err))
         }
         
     }
@@ -200,13 +216,7 @@ function DroloGPT(props) {
         
     }
     const parseErrorResponse = (err) => {
-        const chatContainer = document.querySelector('#chat_container')
-        const uniqueId = utils.generateUniqueId()
-        chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
-        const messageDiv = document.getElementById(uniqueId)
-        clearInterval(this.loadInterval)
-        messageDiv.innerHTML = "Something went wrong"
-        console.log(err)
+
     }
 
     return (
