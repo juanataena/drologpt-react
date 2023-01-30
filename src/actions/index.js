@@ -39,3 +39,12 @@ export async function promptOpenAI(req, res) {
 
     resolvers.promptOpenAIResponse(req, res, openAIResponse);
 }
+
+export function getCommitInfo(req, res) {
+
+    logger.info('Getting commit info...');
+    const commitInfo = systemUtils.getCommitInfoFromSystem();
+    logger.info('Commit info retrieved OK: %s', commitInfo);
+    resolvers.getCommitInfoResponse(req, res, commitInfo);
+
+}

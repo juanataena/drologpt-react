@@ -23,12 +23,6 @@ function DroloGPT(props) {
     const [loading, setLoading] = useState(false);
     const [loadInterval, setLoadInterval] = useState(); 
     const [userAvatar, setUserAvatar] = useState();
-    
-
-    // urls for the proxy
-    // const urlWithProxy = "/api/v1";
-    const urlWithProxyPost = "/prompt-openai";
-
 
     // Setup first time
     useEffect(() => {
@@ -38,9 +32,17 @@ function DroloGPT(props) {
 
         // Set the user avatar
         utils.getRandomAvatarAsPNG().then (png => {
-            
             setUserAvatar(png);
         });
+        
+        // Get prompt from the server
+        const stramboticHelloPrompt = "Say hello in a strambotic way";
+        api.promptOpenAI(stramboticHelloPrompt).then( (response) => {
+            console.log("Prompt: %o", JSON.parse(response));
+            const drologptStripe = {isAi: true, value: JSON.parse(response).bot, uniqueId: utils.generateUniqueId()};
+            setStripes([...stripes, drologptStripe]);
+            // debugger;
+        }).catch(utils.showError);
 
     }, []);
 

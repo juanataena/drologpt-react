@@ -47,7 +47,7 @@ export async function prompt(prompt, maxTokens=100, temperature=0.9, topP=1, fre
     // Log the result
     const firstResult = completion.data.choices[0].text.trim();
 
-    console.log("later " + completion);
+    console.log("response: %o ", firstResult);
     return {bot: firstResult};
 }
     

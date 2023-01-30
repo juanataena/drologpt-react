@@ -25,7 +25,7 @@ const App = (props) => {
     // qconst cookies = useMemo(() => props.cookies, [props.cookies]);
     const [machineName, setMachineName] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+    const [commitInfo, setCommitInfo] = useState(null);
 
     // First time setup
     useEffect(() => {
@@ -41,12 +41,8 @@ const App = (props) => {
         // Read the machine name
         api.getMachineName().then( saveMachineName ).catch(utils.showError);  
 
-        // api.promptOpenAI('Say hello in a strambotic way').then( (response) => {
-        //     utils.log('1. OpenAI Prompted', 'MAIN_END', response);
-        // }).catch(utils.showError);
-
         // Read the last commit
-        // api.getCommitInfo().then( commitInfo => setCommitInfo(commitInfo) ).catch(utils.showError);  
+        api.getCommitInfo().then( commitInfo => setCommitInfo(commitInfo) ).catch(utils.showError);  
 
         // TODO fix esto
         // Remove dependency warning
@@ -83,7 +79,7 @@ const App = (props) => {
             toggleAuth: toggleAuth,
         }}> 
             <ErrorBoundary key="error-boundary">
-               <DroloGPT  machineName={machineName}/>
+               <DroloGPT  machineName={machineName} commitInfo={commitInfo} />
             </ErrorBoundary>
         </AuthContext.Provider>
     );

@@ -49,18 +49,28 @@ export default function Header (props) {
             </div>
         );
     }
-
+    const renderCommitInfo = () => {
+        return (
+            <div className="commit-info">
+                <b>Commit: </b>:&nbsp;&nbsp;&nbsp;<span className="has-text-info">{props.commit}</span>
+            </div>
+        );
+    }
     
     // Render
     return (
-        <div className="drologpt-header">
-            {renderMachineName()}
-            {renderIntervalInfo()}
-            {renderLoadingBar()}
-            {renderPromptBar()}
-            {renderActionButtonBar()}
-        </div>
-        
+        <>
+            <div className="drologpt-commit">
+                {renderCommitInfo()}
+            </div>
+            <div className="drologpt-header">
+                {renderMachineName()}
+                {renderIntervalInfo()}
+                {renderLoadingBar()}
+                {renderPromptBar()}
+                {renderActionButtonBar()}
+            </div>
+        </>
     );
 }
     
