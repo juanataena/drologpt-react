@@ -41,9 +41,9 @@ const App = (props) => {
         // Read the machine name
         api.getMachineName().then( saveMachineName ).catch(utils.showError);  
 
-        api.promptOpenAI('Say hello in a strambotic way').then( (response) => {
-            utils.log('1. OpenAI Prompted', 'MAIN_END', response);
-        }).catch(utils.showError);
+        // api.promptOpenAI('Say hello in a strambotic way').then( (response) => {
+        //     utils.log('1. OpenAI Prompted', 'MAIN_END', response);
+        // }).catch(utils.showError);
 
         // Read the last commit
         // api.getCommitInfo().then( commitInfo => setCommitInfo(commitInfo) ).catch(utils.showError);  
