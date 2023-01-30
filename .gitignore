@@ -36,3 +36,4 @@ doc
 data/app-drolo-gpt.sqlite
 client/public/img/digraph/dependencygraph-client.svg
 client/public/img/digraph/dependencygraph-server.svg
+client/public/img/digraph/dependencygraph-server.svg
