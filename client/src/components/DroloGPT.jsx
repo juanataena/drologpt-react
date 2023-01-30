@@ -59,7 +59,7 @@ function DroloGPT(props) {
                 setStripes(newStripes);            
             }
         }
-    }, [loading, prompt]);
+    }, [loading]);
 
     // React Effect for STRIPES state change
     useEffect(() => {
