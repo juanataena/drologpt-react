@@ -24,7 +24,7 @@ export function getMachineName(req, res) {
 
 }
 
-export function promptOpenAI(req, res) {
+export async function promptOpenAI(req, res) {
 
     logger.info('Prompting OpenAI...');
     const prompt = req.body.prompt;
@@ -35,7 +35,7 @@ export function promptOpenAI(req, res) {
     const presencePenalty = req.body.presencePenalty;
     const stop = req.body.stop;
 
-    const openAIResponse = openAIUtils.prompt(prompt, maxTokens, temperature, topP, frequencyPenalty, presencePenalty, stop);
+    const openAIResponse = await openAIUtils.prompt(prompt, maxTokens, temperature, topP, frequencyPenalty, presencePenalty, stop);
 
     resolvers.promptOpenAIResponse(req, res, openAIResponse);
 }

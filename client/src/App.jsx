@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'core/errorBoundary';
 import * as api from 'core/api';
 import * as utils from 'core/utils';
 import { withCookies } from 'react-cookie';
+import DroloGPT from 'components/DroloGPT';
 
 export const AuthContext = createContext({
     isAuthenticated: false,
@@ -35,12 +36,12 @@ const App = (props) => {
         // Log init app
         utils.log('0. App Initialized...', 'MAIN_END', new Date().toISOString());
         utils.log('1. Asking for machine name...', 'MAIN_START', new Date().toISOString());
-        utils.log('2. Asking for last commit...', 'MAIN_START', new Date().toISOString());
+        // utils.log('2. Asking for last commit...', 'MAIN_START', new Date().toISOString());
 
         // Read the machine name
         api.getMachineName().then( saveMachineName ).catch(utils.showError);  
 
-        api.promptOpenAI('Hello, how are you?').then( (response) => {
+        api.promptOpenAI('Say hello in a strambotic way').then( (response) => {
             utils.log('1. OpenAI Prompted', 'MAIN_END', response);
         }).catch(utils.showError);
 
@@ -82,7 +83,7 @@ const App = (props) => {
             toggleAuth: toggleAuth,
         }}> 
             <ErrorBoundary key="error-boundary">
-               Machine Name: {machineName}
+               <DroloGPT  machineName={machineName}/>
             </ErrorBoundary>
         </AuthContext.Provider>
     );

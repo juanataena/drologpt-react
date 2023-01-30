@@ -1,5 +1,4 @@
 import React from "react";
-import GlobalNotification from 'components/layout/notifications/global/index.js';
 
 export class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -16,9 +15,7 @@ export class ErrorBoundary extends React.Component {
       const {errorInfo} = this.state;
       if (errorInfo) {
         console.log('error', errorInfo);
-        return (
-            <GlobalNotification title="ehh rrroorrrr" description={errorInfo}/>
-        );
+        return <>Error: {errorInfo}</>;
       } else {
         return <>{this.props.children}</>;
       }

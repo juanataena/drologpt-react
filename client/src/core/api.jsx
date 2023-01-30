@@ -24,6 +24,5 @@ export async function promptOpenAI(prompt, maxTokens, temperature, topP, frequen
       body: JSON.stringify({prompt, maxTokens, temperature, topP, frequencyPenalty, presencePenalty, stop}),
     });
     const body = await response.text();
-    ;
     return body;
 }
