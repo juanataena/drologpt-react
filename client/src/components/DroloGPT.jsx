@@ -192,7 +192,7 @@ function DroloGPT(props) {
         }
         
     }
-    const handleSendPrompt = async (e) => {
+    const handleSendPrompt = (e) => {
         
         // Prevent page from reloading
         if (e) e.preventDefault();
@@ -215,7 +215,7 @@ function DroloGPT(props) {
         
         
     }
-    const handleSendSangraPrompt = async (e) => {
+    const handleSendSangraPrompt = (e) => {
 
         // Prevent page from reloading
         if (e) e.preventDefault();

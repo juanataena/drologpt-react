@@ -6,76 +6,62 @@ import Fade from '@mui/material/Fade';
 
 export default function Prompt (props) {
 
-    const [model, setModel] = useState('text-davinci-002');
-    const [prompt, setPrompt] = useState('Enter your text here');
-    const [completions, setCompletions] = useState(1);
-  
     // // Handle first time
-    // const handleKeyDown = (e) => {
+    const handleKeyDown = (e) => {
         
-    //     // e.preventDefault();
+        // e.preventDefault();
 
-    //     // Get the button
-    //     var chatPromptButton = document.querySelector(".chat-prompt button");
-
-    //     // Add ENTER key listener
-    //     if (!e.shiftKey && e.key === 'Enter') {
-    //         debugger;
+        // Add ENTER key listener
+        if (!e.shiftKey && e.key === 'Enter') {
+            // debugger;
             
-    //         // Prevent default
-    //         e.preventDefault();
+            // Prevent default
+            e.preventDefault();
 
-    //         // Check if the prompt is empty
-    //         if (prompt === "") {
-    //             // Set the prompt
-    //             setPrompt(" ");
-    //         }
+            // Check if the prompt is empty
+            if (props.prompt === "") {
+                return;
+            }
 
-    //         // Check if the prompt is not empty
-    //         if (prompt !== "") {
-    //             // Set the prompt
-    //             handleSendPrompt();
-    //         }
+            // Check if the prompt is not empty
+            if (props.prompt !== "") {
+                // Set the prompt
+                props.handleSendPrompt();
+            }
             
             
-    //     }
+        }
 
-    //     // Cursor UP
-    //     if (e.key === 'ArrowUp') {
-    //         // Get the last stripe
-    //         const lastStripe = props.stripes[props.stripes.length - 1];
-    //         // Check if it is AI
-    //         if (lastStripe && !lastStripe.isAi) {
-    //             // Set the prompt
-    //             props.setPrompt(lastStripe.value);
-    //         }
-    //     }
+        // Cursor UP
+        if (e.key === 'ArrowUp') {
+            // Get the last stripe
+            const lastStripe = props.stripes[props.stripes.length - 1];
+            // Check if it is AI
+            if (lastStripe && !lastStripe.isAi) {
+                // Set the prompt
+                props.setPrompt(lastStripe.value);
+            }
+        }
 
-    //     // Cursor DOWN
-    //     if (e.key === 'ArrowDown') {
-    //         // Set the prompt
-    //         props.setPrompt('');
-    //     }
+        // Cursor DOWN
+        if (e.key === 'ArrowDown') {
+            // Set the prompt
+            props.setPrompt('');
+        }
 
-    // }
-    // useEffect(() => {
-
-    //     // Add ENTER key listener
-    //     document.addEventListener('keydown', handleKeyDown);
-    //     const promptTexArea = document.querySelector(".chat-prompt textarea");
-    //     promptTexArea.focus();
-    //     promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
-    //     // Remove ENTER key listener
-    //     // return () => {
-    //     //     document.removeEventListener('keydown', handleKeyDown);
-    //     // }
-    // }, []);
+    }
+    useEffect(() => {
     
-
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      // call OpenAI API with the current settings
-    };
+        const promptTexArea = document.querySelector(".chat-prompt textarea");
+        promptTexArea.focus();
+        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
+    
+        // Remove ENTER key listener
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+     }, []);
+    
     // Focus each time stripes change
     useEffect(() => {
         const promptTexArea = document.querySelector(".chat-prompt textarea");
@@ -88,7 +74,6 @@ export default function Prompt (props) {
     useEffect(() => {
         console.log('prompt changed: ' + props.prompt);
     }, [props.prompt]);
-
 
 
     /** 
@@ -107,15 +92,6 @@ export default function Prompt (props) {
         props.setPrompt(prompt);        
     }
 
-    const handleDragEnter = (e) => {
-        // e.preventDefault();
-        debugger
-        // Click the button
-        const button = document.querySelector(".chat-prompt button");
-        button.click();
-
-    }
-
     /**
      * Render prompt
      * @returns {JSX}
@@ -132,7 +108,9 @@ export default function Prompt (props) {
                 <textarea name="prompt" rows="1" cols="1"
                     placeholder={props.placeholder}
                     value={props.prompt}
-                    onChange={handlePromptChange}>                   
+                    onChange={handlePromptChange}
+                    onKeyDown={handleKeyDown}
+                    >                   
                 </textarea>
                 <button onClick={props.handleSendPrompt}>
                     <img src="../../assets/send.svg" alt="send" />
@@ -149,31 +127,6 @@ export default function Prompt (props) {
             </div>
         );
     }    
-    const renderConfig = () => {
-        return (
-            <div className="commit-info">
-                <b>Config: </b>:&nbsp;&nbsp;&nbsp;<span className="has-text-info">saaa</span>
-                <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="model">Model:</label>
-        <select id="model" value={model} onChange={(e) => setModel(e.target.value)}>
-          <option value="text-davinci-002">Davinci v2</option>
-          <option value="text-curie-001">Curie</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor="prompt">Prompt:</label>
-        <input id="prompt" type="text" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="completions">Completions:</label>
-        <input id="completions" type="number" value={completions} onChange={(e) => setCompletions(e.target.value)} />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-            </div>
-        );
-    }
     // Render
     return (
         <>
@@ -181,7 +134,6 @@ export default function Prompt (props) {
             <div className="drologpt-commit">
                 {renderCommitInfo()}
             </div>
-            {/* {renderConfig()} */}
         </>
         
     );
