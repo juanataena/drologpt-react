@@ -17,26 +17,41 @@ export default function Header (props) {
     const renderActionButtonBar = () => {
         return (
         <div className="action-button-bar">
-            <Tooltip title="Delete">
+            <Tooltip title="Clear Chat">
                 <Fab color="warning" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
                     <CleaningServicesIcon />
                 </Fab>
             </Tooltip>
-            <Fab color="info" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
-                <SaveIcon />
-            </Fab>
-            <Fab color="info" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
-                <FileUploadIcon />
-            </Fab>
-            <Fab color="info" size="small" aria-label="" onClick={props.handleDeleteStripes}>
-                <TabUnselectedIcon />
-            </Fab>
-            <Fab color="info" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
-                <BrowserUpdatedIcon />
-            </Fab>
-            <Fab color="grey" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
-                <SettingsIcon />
-            </Fab>
+            <Tooltip title="Save as HTML">
+                <Fab color="info" size="small" aria-label="Save as HTML" onClick={props.handleSaveAsHTML}>
+                    <BrowserUpdatedIcon />
+                </Fab>
+            </Tooltip>
+            <Tooltip title="Save as Png">
+                <Fab color="info" size="small" aria-label="Save as Png" onClick={props.handleSaveAsPng}>
+                    <BrowserUpdatedIcon />
+                </Fab>
+            </Tooltip>
+            <Tooltip title="Save as Json">
+                <Fab color="info" size="small" aria-label="Save as Json" onClick={props.handleSaveAsJson}>
+                    <BrowserUpdatedIcon />
+                </Fab>
+            </Tooltip>
+            <Tooltip title="Import Json">
+                <Fab color="info" size="small" aria-label="import Json" onClick={props.handleImportJSON}>
+                    <TabUnselectedIcon />
+                </Fab>
+            </Tooltip>
+            <Tooltip title="Delete">
+                <Fab color="info" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
+                    <FileUploadIcon />
+                </Fab>
+            </Tooltip>
+            <Tooltip title="Delete">
+                <Fab color="grey" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
+                    <SettingsIcon />
+                </Fab>
+            </Tooltip>
        </div>
 
         );
@@ -75,7 +90,7 @@ export default function Header (props) {
     const renderCommitInfo = () => {
         return (
             <div className="commit-info">
-                <b>Commit: </b>:&nbsp;&nbsp;&nbsp;<span className="has-text-info">{props.commit}</span>
+                <b>Commit: </b>:&nbsp;&nbsp;&nbsp;<span className="has-text-info">{props.commitInfo}</span>
             </div>
         );
     }

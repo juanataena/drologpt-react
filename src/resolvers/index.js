@@ -12,14 +12,14 @@ export function getMachineNameResponse(req, res, machineName) {
         res.send('errormarchineName');
     }
 }
-export function takeProfitSnapshotResponse(res, data) {
-    if (data /* ----> & body.result === 200 ??? <---- */) {
+export function getCommitInfoResponse(req, res, commitInfo) {
+    if (commitInfo /* ----> & body.result === 200 ??? <---- */) {
         // ;
-        res.send({data, status: 200});
+        res.send(commitInfo);
     } else {
-        res.send("error taking the snapshot profit");
-    }}
-
+        res.send('errorcommitInfo');
+    }
+}
 export function promptOpenAIResponse(req, res, openAIResponse) {
     if (openAIResponse /* ----> & body.result === 200 ??? <---- */) {
         // ;

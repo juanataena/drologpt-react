@@ -6,6 +6,7 @@ import * as utils from 'core/utils';
 import Header from 'components/Header';
 import Prompt from 'components/Prompt';
 import ChatContainer from 'components/ChatContainer';
+import html2canvas from 'html2canvas';
 
 import * as api from 'core/api';
 
@@ -24,7 +25,7 @@ function DroloGPT(props) {
     const [loadInterval, setLoadInterval] = useState(); 
     const [userAvatar, setUserAvatar] = useState();
 
-    // Setup first time
+    // Setup FIRST TIME
     useEffect(() => {
 
         // Set one initial stripe (welcome message from Drolo GPT)
@@ -60,7 +61,7 @@ function DroloGPT(props) {
         }
     }, [prompt]);
 
-    // React Effect for loading state change // FAKE
+    // React Effect for LOADING state change // FAKE
     useEffect(() => {
         console.log("Loading: ", loading);
         if (loading) {
@@ -168,7 +169,7 @@ function DroloGPT(props) {
         }
     }, [data]);
 
-    // Funciones para el chat
+    // HANDLER FUNCTIONS
     const handleDeleteStripes = () => {
 
         // Clear prompt
@@ -222,7 +223,7 @@ function DroloGPT(props) {
         setPrompt('¿Cuánto sangra?');
     }
 
-
+    // HELPER FUNCTIONS
     const parseResponse = (res) => {
         // debugger;
         setData(res.data);
@@ -247,12 +248,96 @@ function DroloGPT(props) {
 
     }
 
+
+    // ACTION BUTTON FUNCTIONS
+    const handleSaveAsHTML = () => {
+
+        console.log("Saving as HTML...");
+        const chatContainer = document.querySelector('#chat_container')
+        const html = chatContainer.innerHTML
+        const blob = new Blob([html], {type: 'text/html'})
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.download = 'chat.html'
+        console.log("DONE");
+
+
+    }
+    const handleSaveAsPng = () => {
+
+        console.log("Saving as PNG...");
+        const chatContainer = document.querySelector('#chat_container')
+        html2canvas(chatContainer).then(canvas => {
+
+            const imageAsCanvas = canvas.toDataURL("image/png")
+            const blob = utils.dataURItoBlob(imageAsCanvas)
+            const url = URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.download = 'chat.png'
+
+            console. log("DONE");
+        });
+        
+    }
+    const handleSaveAsJson = () => {
+
+        console.log("Saving as JSON...");
+        const chatContainer = document.querySelector('#chat_container')
+        const json = JSON.stringify(stripes)
+        const blob = new Blob([json], {type: 'application/json'})
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.download = 'chat.json'
+
+    }
+    const handleImportJSON = () => {
+
+        console.log("Importing JSON...");
+        
+        // Ask for a file
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.json';
+        fileInput.click();
+
+        // When the file is selected
+        fileInput.onchange = () => {
+
+            // Get the file
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            // When the file is read
+            reader.onload = () => {
+
+                // Get the content
+                const content = reader.result;
+
+                // Parse the content
+                const parsedContent = JSON.parse(content);
+
+                // Set the content
+                setStripes(parsedContent);
+            }
+
+            // Read the file
+            reader.readAsText(file);
+        }
+
+        // console.log("DONE");
+
+
+    }
+
+
+    // RENDER
     return (
         <div id="drologpt_app" className="drologpt-app-container">
             
             {/* Header de Drolo GPT */}
             <Header
                 machineName={props.machineName}
+                commitInfo={props.commitInfo}
                 prompt={prompt}
                 data={data}
                 stripes={stripes}
@@ -261,6 +346,12 @@ function DroloGPT(props) {
                 userAvatar={userAvatar}
                 handleSendPrompt={handleSendPrompt}
                 handleDeleteStripes={handleDeleteStripes}
+
+                handleSaveAsHTML={handleSaveAsHTML}
+                handleSaveAsPng={handleSaveAsPng}
+                handleSaveAsJson={handleSaveAsJson}
+                handleImportJSON={handleImportJSON}
+                
             />
 
             {/* Chat container de Drolo GPT */}

@@ -20,6 +20,7 @@
     "bulma-helpers": "^0.4.2",
     "classnames": "^2.3.1",
     "colorize-console-log": "^0.1.6",
+    "html2canvas": "^1.4.1",
     "net": "^1.0.2",
     "react": "^18.1.0",
     "react-bulma-components": "^4.1.0",
