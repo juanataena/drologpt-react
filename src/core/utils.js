@@ -28,3 +28,7 @@ export function filterByFields(array, fields) {
     }
     return filteredArray;
 }
+
+export function isOneLineText(text) {
+    return !/\r|\n/.test(text);
+}

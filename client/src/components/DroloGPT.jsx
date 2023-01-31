@@ -16,7 +16,7 @@ import '../css/drologpt.css'
 function DroloGPT(props) {
 
     const [placeholder, setPlaceholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
-    const [prompt, setPrompt] = useState("¿Cuánto sangra?");
+    const [prompt, setPrompt] = useState("");
     // const [prompt, setPrompt] = useState("hola");
     const [data, setData] = useState();
     const [stripes, setStripes] = useState([]);
@@ -46,7 +46,21 @@ function DroloGPT(props) {
 
     }, []);
 
-    // React Effect for loading & prompt state change // FAKE
+    // React Effect for PROMPT state change
+    useEffect(() => {
+        console.log("Prompt: ", prompt);
+        if (prompt) {
+
+                
+            // Check if we have the comodin prompt
+            if (prompt === "¿Cuánto sangra?") {
+                handleSendPrompt();
+            } else {
+            }
+        }
+    }, [prompt]);
+
+    // React Effect for loading state change // FAKE
     useEffect(() => {
         console.log("Loading: ", loading);
         if (loading) {
@@ -61,6 +75,32 @@ function DroloGPT(props) {
                 const newStripe = {isAi: true, value: " ", uniqueId: utils.generateUniqueId()};
                 const newStripes = [...nonLoadingStripes, newStripe];
                 setStripes(newStripes);            
+            }
+
+            debugger;   
+            // Check if we have the comodin prompt
+            if (prompt === "¿Cuánto sangra?") {
+                handleSendPrompt();
+            } else {
+            api.promptOpenAI(prompt).then( (response) => {
+                utils.log('1. OpenAI Prompted', 'MAIN_END', response);
+                setData(JSON.parse(response))
+            }).catch(() => {
+                utils.showError();
+                const chatContainer = document.querySelector('#chat_container')
+                const uniqueId = utils.generateUniqueId()
+                chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
+                const messageDiv = document.getElementById(uniqueId)
+                clearInterval(loadInterval)
+                messageDiv.innerHTML = "Something went wrong"
+                
+            });
+
+                // // Post data to server
+                // axios
+                // .post(urlWithProxyPost, {prompt})
+                // .then((res) => parseResponse(res))
+                // .catch((err) => parseErrorResponse(err))
             }
         }
     }, [loading]);
@@ -151,8 +191,8 @@ function DroloGPT(props) {
     const handleSendPrompt = async (e) => {
         
         // Prevent page from reloading
-        e.preventDefault()
-        
+        if (e) e.preventDefault();
+    
         // No prompt, no post
         if (!prompt) {
             return;
@@ -171,32 +211,18 @@ function DroloGPT(props) {
   
         // Stop any other previous requests
 
-        // Check if we have the comodin prompt
-        if (prompt === "¿Cuánto sangra?") {
-            utils.sendFakeRequest(setData, setLoading);
-        } else {
-        api.promptOpenAI(prompt).then( (response) => {
-            utils.log('1. OpenAI Prompted', 'MAIN_END', response);
-            setData(JSON.parse(response))
-        }).catch(() => {
-            utils.showError();
-            const chatContainer = document.querySelector('#chat_container')
-            const uniqueId = utils.generateUniqueId()
-            chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
-            const messageDiv = document.getElementById(uniqueId)
-            clearInterval(this.loadInterval)
-            messageDiv.innerHTML = "Something went wrong"
-            
-        });
-
-            // // Post data to server
-            // axios
-            // .post(urlWithProxyPost, {prompt})
-            // .then((res) => parseResponse(res))
-            // .catch((err) => parseErrorResponse(err))
-        }
+        
         
     }
+    const handleSendSangraPrompt = async (e) => {
+
+        // Prevent page from reloading
+        if (e) e.preventDefault();
+        
+        setPrompt('¿Cuánto sangra?');
+    }
+
+
     const parseResponse = (res) => {
         // debugger;
         setData(res.data);
@@ -258,9 +284,11 @@ function DroloGPT(props) {
                 userAvatar={userAvatar}
 
                 handleSendPrompt={handleSendPrompt}
+                handleSendSangraPrompt={handleSendSangraPrompt}
             />
         </div>
     );
 }
 
 export default DroloGPT;
+

@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import Fab from '@mui/material/Fab';
-import DeleteIcon from '@mui/icons-material/DeleteSweep';
+import Tooltip from '@mui/material/Tooltip';
 
+import TabUnselectedIcon from '@mui/icons-material/TabUnselected';
+import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import SettingsIcon from '@mui/icons-material/Settings';
+import SaveIcon from '@mui/icons-material/Save';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 export default function Header (props) {
 
 
@@ -11,8 +17,25 @@ export default function Header (props) {
     const renderActionButtonBar = () => {
         return (
         <div className="action-button-bar">
-            <Fab color="warning" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
-                <DeleteIcon />
+            <Tooltip title="Delete">
+                <Fab color="warning" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
+                    <CleaningServicesIcon />
+                </Fab>
+            </Tooltip>
+            <Fab color="info" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
+                <SaveIcon />
+            </Fab>
+            <Fab color="info" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
+                <FileUploadIcon />
+            </Fab>
+            <Fab color="info" size="small" aria-label="" onClick={props.handleDeleteStripes}>
+                <TabUnselectedIcon />
+            </Fab>
+            <Fab color="info" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
+                <BrowserUpdatedIcon />
+            </Fab>
+            <Fab color="grey" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
+                <SettingsIcon />
             </Fab>
        </div>
 
@@ -60,15 +83,15 @@ export default function Header (props) {
     // Render
     return (
         <>
-            <div className="drologpt-commit">
-                {renderCommitInfo()}
-            </div>
             <div className="drologpt-header">
                 {renderMachineName()}
                 {renderIntervalInfo()}
                 {renderLoadingBar()}
                 {renderPromptBar()}
                 {renderActionButtonBar()}
+            </div>
+            <div className="drologpt-commit">
+                {renderCommitInfo()}
             </div>
         </>
     );

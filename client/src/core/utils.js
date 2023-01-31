@@ -92,7 +92,7 @@ export async function getRandomAvatarAsPNG () {
 
 
 export function scrollToBottom () {
-    const messages = document.querySelector('.chat-container');
+    const messages = document.querySelector('.chat-stripes');
     messages.scrollTop = messages.scrollHeight;
 }
 

@@ -21,8 +21,7 @@ export default function ChatContainer (props) {
         </div>    
         )
     }
-
-    const renderChat = (stripes) => {                 
+    const renderStripes = (stripes) => {
         return stripes.map((stripe, index) => {
             // debugger;
             return (
@@ -42,10 +41,26 @@ export default function ChatContainer (props) {
             )
         })
     }
+    const renderChat = (stripes) => {
+
+        // Render
+
+        return (
+            <div className="chat-stripes">
+                {renderStripes(stripes)}                 
+            </div>
+        )
+
+    }
+
+
+
+
+
     return (
         <div id="chat_container" className="chat-container">
-            {!HAS_STRIPES && renderEmptyChat()}
-            {HAS_STRIPES && renderChat(stripes)}
-        </div>
+                {!HAS_STRIPES && renderEmptyChat()}
+                {HAS_STRIPES && renderChat(stripes)}
+            </div>
     );
 }

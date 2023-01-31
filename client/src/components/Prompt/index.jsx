@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-
+import droloGPTButton from 'assets/favicon.png';
+import sangraButton from 'assets/sangra.png';
 export default function Prompt (props) {
 
     // Handle first time
@@ -85,6 +86,9 @@ export default function Prompt (props) {
         return (
         <div className={'chat-prompt'}>
            <form>
+           <button onClick={props.handleSendSangraPrompt}>
+                <img src={sangraButton} alt="Cuánto Sangra?" />
+            </button>
                 <textarea name="prompt" rows="1" cols="1"
                     placeholder={props.placeholder}
                     value={props.prompt}

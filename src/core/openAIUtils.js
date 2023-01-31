@@ -1,6 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai';
 import dotenv from 'dotenv';
 import log4js from 'log4js';
+import * as utils from './utils';
 
 // Logging configuration
 var logger = log4js.getLogger();
@@ -18,7 +19,7 @@ log4js.configure({
 // OPENAI API Configuration
 dotenv.config({path:'./.env'})
 
-export async function prompt(prompt, maxTokens=100, temperature=0.9, topP=1, frequencyPenalty=0, presencePenalty=0, stop=" "){
+export async function prompt(prompt, maxTokens=100, temperature=0.9, topP=1, frequencyPenalty=0, presencePenalty=0, stop=""){
 
     // OPENAI API Configuration
     dotenv.config({path:'./.env'})
@@ -45,9 +46,15 @@ export async function prompt(prompt, maxTokens=100, temperature=0.9, topP=1, fre
     });
 
     // Log the result
-    const firstResult = completion.data.choices[0].text.trim();
+    const firstResult = completion.data.choices[0].text;
 
-    console.log("response: %o ", firstResult);
-    return {bot: firstResult};
+    console.log("response for %o: %o ", prompt, firstResult);
+
+    // Trim the result if it is only one line
+    if (utils.isOneLineText(firstResult)) {
+        return {bot: firstResult};
+    } else {
+        return {bot: firstResult.trim()};
+    }
 }
     

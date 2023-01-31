@@ -36,6 +36,15 @@ body {
 }
 
 // 2. HEADER CSS
+
+.drologpt-commit {
+    background: @header-background-color;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background: transparent!important;
+}
 .drologpt-header {
     
     width: 100%;
@@ -107,37 +116,97 @@ body {
             }
         }
     }
+    // Floating, with vertical buttons on the right side of the screen 
+    .action-button-bar {
+        // border: 2px solid green;
+        position: absolute;
+        place-content: center;
+        right: 0;
+        margin: 2%;
+        opacity: 1.0;
+        transition : opacity 0.5s;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        place-self: flex-start;
+
+
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease-in-out;
+            opacity: .5;
+            &:hover {
+                opacity: 1;
+                // background: @header-background-color-hover;
+            }
+        }
+    }
 }
 // 2. Chat CSS
 .chat-container {
-    flex: 1;
+
+    // border: 2px solid green; 
+    justify-content: center!important;
+
+    .chat-stripes {
+        place-content: flex-start;
+        flex-flow: wrap;
+        display: flex;
+        position: absolute;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        margin-left: -0vh;
+        
+        
+        bottom: 10vh;
+        //position: relative;
+        overflow-y: scroll!important;
+        // The max height of the chat container
+        max-height: 80vh;
+        padding-right: 15px;
+        
+        .cool-scrollbar-2;
+        
+    }
+
+
     width: 100%;
     height: 100%;
-    overflow-y: scroll!important;
+
+
 
     display: flex;
     flex-direction: column;
     flex-flow: wrap;
-    place-content: flex-end;
+    place-content: flex-start;
 
     gap: 10px;
 
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    // -ms-overflow-style: none;
+    // scrollbar-width: none;
 
     padding-bottom: 20px;
     scroll-behavior: smooth;
 
     /* hides scrollbar */
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    // &::-webkit-scrollbar {
+    //     display: none;
+    // }
 
 
     // 2.1 Chat Message CSS
     .wrapper {
         width: 100%;
         padding: 15px;
+        // margin: 25px 25px 0px 25px;
+        margin: 25px 0 0 0;
 
         &.is-user {
             background: @user-background-color;
@@ -198,6 +267,11 @@ body {
         }
 
         .message {
+
+            b {
+                margin-right: 10px;
+            }
+
             flex: 1;
 
             color: #dcdcdc;
@@ -218,13 +292,13 @@ body {
             */
             white-space: pre-wrap;
 
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            // -ms-overflow-style: none;
+            // scrollbar-width: none;
 
-            /* hides scrollbar */
-            &::-webkit-scrollbar {
-                display: none;
-            }
+            // /* hides scrollbar */
+            // &::-webkit-scrollbar {
+            //     display: none;
+            // }
 
             .chat-stripe-loader {
                 display: inline;
