@@ -57,8 +57,8 @@
 <g id="node2" class="node">
 <title>child_process</title>
 <g id="a_node2"><a xlink:title="child_process">
-<path fill="#ffffcc" stroke="grey" d="M574,-96C574,-96 512,-96 512,-96 509,-96 506,-93 506,-90 506,-90 506,-84 506,-84 506,-81 509,-78 512,-78 512,-78 574,-78 574,-78 577,-78 580,-81 580,-84 580,-84 580,-90 580,-90 580,-93 577,-96 574,-96"/>
-<text text-anchor="middle" x="543" y="-84.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="grey">child_process</text>
+<path fill="#ffffcc" stroke="grey" d="M574,-88C574,-88 512,-88 512,-88 509,-88 506,-85 506,-82 506,-82 506,-76 506,-76 506,-73 509,-70 512,-70 512,-70 574,-70 574,-70 577,-70 580,-73 580,-76 580,-76 580,-82 580,-82 580,-85 577,-88 574,-88"/>
+<text text-anchor="middle" x="543" y="-76.8" font-family="Helvetica,sans-Serif" font-size="9.00" fill="grey">child_process</text>
 </a>
 </g>
 </g>
@@ -108,31 +108,31 @@
 <g id="node7" class="node">
 <title>src/core/openAIUtils.js</title>
 <g id="a_node7"><a xlink:href="src/core/openAIUtils.js" xlink:title="openAIUtils.js">
-<path fill="#ffffcc" stroke="black" d="M340,-146C340,-146 279,-146 279,-146 276,-146 273,-143 273,-140 273,-140 273,-134 273,-134 273,-131 276,-128 279,-128 279,-128 340,-128 340,-128 343,-128 346,-131 346,-134 346,-134 346,-140 346,-140 346,-143 343,-146 340,-146"/>
-<text text-anchor="start" x="281" y="-134.8" font-family="Helvetica,sans-Serif" font-size="9.00">openAIUtils.js</text>
+<path fill="#ffffcc" stroke="black" d="M340,-206C340,-206 279,-206 279,-206 276,-206 273,-203 273,-200 273,-200 273,-194 273,-194 273,-191 276,-188 279,-188 279,-188 340,-188 340,-188 343,-188 346,-191 346,-194 346,-194 346,-200 346,-200 346,-203 343,-206 340,-206"/>
+<text text-anchor="start" x="281" y="-194.8" font-family="Helvetica,sans-Serif" font-size="9.00">openAIUtils.js</text>
 </a>
 </g>
 </g>
 <!-- src/actions/index.js&#45;&gt;src/core/openAIUtils.js -->
 <g id="edge2" class="edge">
 <title>src/actions/index.js&#45;&gt;src/core/openAIUtils.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M249.23,-238.56C252.22,-236.86 254.93,-234.71 257,-232 278.7,-203.61 242.83,-180.03 265,-152 265.41,-151.48 265.84,-150.98 266.28,-150.5"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="267.2,-152.46 270.55,-147.05 264.56,-149.19 267.2,-152.46"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M249.26,-235.67C251.91,-234.52 254.53,-233.29 257,-232 268.19,-226.16 279.89,-218.36 289.3,-211.61"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="290.27,-213.51 293.87,-208.27 287.79,-210.12 290.27,-213.51"/>
 </g>
 <!-- src/core/systemUtils.js -->
 <g id="node8" class="node">
 <title>src/core/systemUtils.js</title>
 <g id="a_node8"><a xlink:href="src/core/systemUtils.js" xlink:title="systemUtils.js">
-<path fill="#ffffcc" stroke="black" d="M339.5,-176C339.5,-176 279.5,-176 279.5,-176 276.5,-176 273.5,-173 273.5,-170 273.5,-170 273.5,-164 273.5,-164 273.5,-161 276.5,-158 279.5,-158 279.5,-158 339.5,-158 339.5,-158 342.5,-158 345.5,-161 345.5,-164 345.5,-164 345.5,-170 345.5,-170 345.5,-173 342.5,-176 339.5,-176"/>
-<text text-anchor="start" x="281.5" y="-164.8" font-family="Helvetica,sans-Serif" font-size="9.00">systemUtils.js</text>
+<path fill="#ffffcc" stroke="black" d="M339.5,-146C339.5,-146 279.5,-146 279.5,-146 276.5,-146 273.5,-143 273.5,-140 273.5,-140 273.5,-134 273.5,-134 273.5,-131 276.5,-128 279.5,-128 279.5,-128 339.5,-128 339.5,-128 342.5,-128 345.5,-131 345.5,-134 345.5,-134 345.5,-140 345.5,-140 345.5,-143 342.5,-146 339.5,-146"/>
+<text text-anchor="start" x="281.5" y="-134.8" font-family="Helvetica,sans-Serif" font-size="9.00">systemUtils.js</text>
 </a>
 </g>
 </g>
 <!-- src/actions/index.js&#45;&gt;src/core/systemUtils.js -->
 <g id="edge3" class="edge">
 <title>src/actions/index.js&#45;&gt;src/core/systemUtils.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M249.41,-238.25C252.3,-236.6 254.93,-234.55 257,-232 271.19,-214.53 250.52,-199.23 265,-182 265.42,-181.5 265.87,-181.01 266.32,-180.54"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="267.23,-182.49 270.68,-177.15 264.65,-179.18 267.23,-182.49"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M224.67,-235.64C228.47,-217.05 239.47,-175.28 265,-152 265.31,-151.72 265.63,-151.44 265.95,-151.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="267.02,-152.98 270.82,-147.88 264.67,-149.5 267.02,-152.98"/>
 </g>
 <!-- src/resolvers/index.js -->
 <g id="node9" class="node">
@@ -149,32 +149,38 @@
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M229.19,-254.47C236.65,-265.33 250.07,-283.17 265,-295 268.99,-298.17 273.52,-301.06 278.1,-303.63"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="276.81,-305.33 283.1,-306.25 278.76,-301.61 276.81,-305.33"/>
 </g>
-<!-- src/core/systemUtils.js&#45;&gt;child_process -->
-<g id="edge12" class="edge">
-<title>src/core/systemUtils.js&#45;&gt;child_process</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M340.22,-157.54C342.4,-155.96 344.38,-154.13 346,-152 373.62,-115.59 324.7,-80.2 359,-50 405.36,-9.17 439.96,-28.84 498,-50 510.19,-54.44 521.35,-63.92 529.37,-72.16"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="527.76,-73.51 533.38,-76.49 530.84,-70.66 527.76,-73.51"/>
-</g>
-<!-- src/core/systemUtils.js&#45;&gt;fs -->
-<g id="edge13" class="edge">
-<title>src/core/systemUtils.js&#45;&gt;fs</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M340.27,-157.58C342.45,-156 344.41,-154.15 346,-152 379.24,-107.11 323.33,-69.98 359,-27 365.7,-18.92 375.85,-14.37 385.94,-11.84"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="386.29,-13.91 391.74,-10.63 385.44,-9.8 386.29,-13.91"/>
-</g>
 <!-- src/core/utils.js -->
-<g id="node14" class="node">
+<g id="node13" class="node">
 <title>src/core/utils.js</title>
-<g id="a_node14"><a xlink:href="src/core/utils.js" xlink:title="utils.js">
-<path fill="#ffffcc" stroke="black" d="M441.5,-206C441.5,-206 399.5,-206 399.5,-206 396.5,-206 393.5,-203 393.5,-200 393.5,-200 393.5,-194 393.5,-194 393.5,-191 396.5,-188 399.5,-188 399.5,-188 441.5,-188 441.5,-188 444.5,-188 447.5,-191 447.5,-194 447.5,-194 447.5,-200 447.5,-200 447.5,-203 444.5,-206 441.5,-206"/>
-<text text-anchor="start" x="407.5" y="-194.8" font-family="Helvetica,sans-Serif" font-size="9.00">utils.js</text>
+<g id="a_node13"><a xlink:href="src/core/utils.js" xlink:title="utils.js">
+<path fill="#ffffcc" stroke="black" d="M441.5,-191C441.5,-191 399.5,-191 399.5,-191 396.5,-191 393.5,-188 393.5,-185 393.5,-185 393.5,-179 393.5,-179 393.5,-176 396.5,-173 399.5,-173 399.5,-173 441.5,-173 441.5,-173 444.5,-173 447.5,-176 447.5,-179 447.5,-179 447.5,-185 447.5,-185 447.5,-188 444.5,-191 441.5,-191"/>
+<text text-anchor="start" x="407.5" y="-179.8" font-family="Helvetica,sans-Serif" font-size="9.00">utils.js</text>
 </a>
 </g>
 </g>
+<!-- src/core/openAIUtils.js&#45;&gt;src/core/utils.js -->
+<g id="edge8" class="edge">
+<title>src/core/openAIUtils.js&#45;&gt;src/core/utils.js</title>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M346.49,-192.05C358.65,-190.37 372.2,-188.51 384.29,-186.85"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="384.55,-188.93 390.21,-186.03 383.98,-184.77 384.55,-188.93"/>
+</g>
+<!-- src/core/systemUtils.js&#45;&gt;child_process -->
+<g id="edge13" class="edge">
+<title>src/core/systemUtils.js&#45;&gt;child_process</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M339.77,-127.68C342.11,-126.07 344.24,-124.19 346,-122 366.32,-96.61 334.05,-70.85 359,-50 406.41,-10.39 438.83,-32.25 498,-50 508.2,-53.06 518.21,-59.33 526.11,-65.25"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="524.5,-66.66 530.51,-68.73 527.1,-63.36 524.5,-66.66"/>
+</g>
+<!-- src/core/systemUtils.js&#45;&gt;fs -->
+<g id="edge14" class="edge">
+<title>src/core/systemUtils.js&#45;&gt;fs</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M340.2,-127.52C342.39,-125.95 344.37,-124.12 346,-122 371.91,-88.16 331.26,-59.35 359,-27 365.77,-19.1 375.85,-14.59 385.84,-12.03"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="386.14,-14.11 391.57,-10.81 385.26,-10 386.14,-14.11"/>
+</g>
 <!-- src/core/systemUtils.js&#45;&gt;src/core/utils.js -->
-<g id="edge11" class="edge">
+<g id="edge12" class="edge">
 <title>src/core/systemUtils.js&#45;&gt;src/core/utils.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M344.99,-176.49C357.66,-179.98 372,-183.93 384.7,-187.42"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="383.92,-189.39 390.27,-188.95 385.04,-185.34 383.92,-189.39"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M333.35,-146.43C349.34,-153.03 370.88,-161.93 388.43,-169.17"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="387.53,-171.08 393.88,-171.42 389.14,-167.19 387.53,-171.08"/>
 </g>
 <!-- src/resolvers/reactPostRender.js -->
 <g id="node15" class="node">
@@ -186,7 +192,7 @@
 </g>
 </g>
 <!-- src/resolvers/index.js&#45;&gt;src/resolvers/reactPostRender.js -->
-<g id="edge14" class="edge">
+<g id="edge15" class="edge">
 <title>src/resolvers/index.js&#45;&gt;src/resolvers/reactPostRender.js</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M336.89,-317C345.1,-317 354.48,-317 363.91,-317"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="363.9,-319.1 369.9,-317 363.9,-314.9 363.9,-319.1"/>
@@ -233,35 +239,35 @@
 <!-- src/core/freqtradeCommandUtils.js&#45;&gt;child_process -->
 <g id="edge7" class="edge">
 <title>src/core/freqtradeCommandUtils.js&#45;&gt;child_process</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M444.17,-127.6C463.52,-119.56 491.49,-107.96 512.57,-99.21"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="513.3,-101.18 518.04,-96.94 511.69,-97.3 513.3,-101.18"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" stroke-opacity="0.200000" d="M441.13,-127.55C461.44,-117.78 493.27,-102.46 515.73,-91.64"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-opacity="0.200000" points="516.52,-93.59 521.02,-89.1 514.7,-89.81 516.52,-93.59"/>
 </g>
 <!-- src/core/sqlite3Utils.js -->
-<g id="node13" class="node">
+<g id="node14" class="node">
 <title>src/core/sqlite3Utils.js</title>
-<g id="a_node13"><a xlink:href="src/core/sqlite3Utils.js" xlink:title="sqlite3Utils.js">
-<path fill="#ffffcc" stroke="black" d="M339,-206C339,-206 280,-206 280,-206 277,-206 274,-203 274,-200 274,-200 274,-194 274,-194 274,-191 277,-188 280,-188 280,-188 339,-188 339,-188 342,-188 345,-191 345,-194 345,-194 345,-200 345,-200 345,-203 342,-206 339,-206"/>
-<text text-anchor="start" x="282" y="-194.8" font-family="Helvetica,sans-Serif" font-size="9.00">sqlite3Utils.js</text>
+<g id="a_node14"><a xlink:href="src/core/sqlite3Utils.js" xlink:title="sqlite3Utils.js">
+<path fill="#ffffcc" stroke="black" d="M339,-176C339,-176 280,-176 280,-176 277,-176 274,-173 274,-170 274,-170 274,-164 274,-164 274,-161 277,-158 280,-158 280,-158 339,-158 339,-158 342,-158 345,-161 345,-164 345,-164 345,-170 345,-170 345,-173 342,-176 339,-176"/>
+<text text-anchor="start" x="282" y="-164.8" font-family="Helvetica,sans-Serif" font-size="9.00">sqlite3Utils.js</text>
 </a>
 </g>
 </g>
 <!-- src/core/sqlite3Utils.js&#45;&gt;./scrappingUtils -->
-<g id="edge9" class="edge">
+<g id="edge10" class="edge">
 <title>src/core/sqlite3Utils.js&#45;&gt;./scrappingUtils</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M340.2,-187.52C342.39,-185.95 344.37,-184.12 346,-182 371.91,-148.16 332.24,-120.16 359,-87 363.1,-81.92 368.48,-78.01 374.35,-75"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="375.12,-76.96 379.79,-72.64 373.45,-73.1 375.12,-76.96"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M339.72,-157.64C342.07,-156.04 344.22,-154.18 346,-152 364.62,-129.17 339.8,-109.35 359,-87 363.21,-82.1 368.59,-78.3 374.41,-75.34"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="375.11,-77.33 379.77,-73.01 373.43,-73.47 375.11,-77.33"/>
 </g>
 <!-- src/core/sqlite3Utils.js&#45;&gt;src/core/freqtradeCommandUtils.js -->
-<g id="edge8" class="edge">
+<g id="edge9" class="edge">
 <title>src/core/sqlite3Utils.js&#45;&gt;src/core/freqtradeCommandUtils.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M334.03,-187.65C338.07,-185.87 342.19,-183.96 346,-182 364.08,-172.71 383.67,-160.61 398.07,-151.3"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="399.09,-153.14 402.96,-148.1 396.79,-149.62 399.09,-153.14"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M344.99,-157.51C355.03,-154.75 366.12,-151.69 376.6,-148.81"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="377.09,-150.85 382.32,-147.23 375.98,-146.8 377.09,-150.85"/>
 </g>
 <!-- src/core/sqlite3Utils.js&#45;&gt;src/core/utils.js -->
-<g id="edge10" class="edge">
+<g id="edge11" class="edge">
 <title>src/core/sqlite3Utils.js&#45;&gt;src/core/utils.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M345.29,-197C357.82,-197 371.96,-197 384.51,-197"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="384.3,-199.1 390.3,-197 384.3,-194.9 384.3,-199.1"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M345.29,-171.79C357.82,-173.51 371.96,-175.46 384.51,-177.19"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="384.1,-179.25 390.33,-177.99 384.67,-175.09 384.1,-179.25"/>
 </g>
 <!-- src/routes/index.js -->
 <g id="node16" class="node">
@@ -273,7 +279,7 @@
 </g>
 </g>
 <!-- src/routes/index.js&#45;&gt;src/actions/index.js -->
-<g id="edge15" class="edge">
+<g id="edge16" class="edge">
 <title>src/routes/index.js&#45;&gt;src/actions/index.js</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M170.83,-245C175.64,-245 180.72,-245 185.74,-245"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="185.6,-247.1 191.6,-245 185.6,-242.9 185.6,-247.1"/>
@@ -288,19 +294,19 @@
 </g>
 </g>
 <!-- src/server.js&#45;&gt;src/core/openAIUtils.js -->
-<g id="edge16" class="edge">
+<g id="edge17" class="edge">
 <title>src/server.js&#45;&gt;src/core/openAIUtils.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M85.23,-210.38C129.82,-195.73 220.51,-165.92 271.52,-149.15"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="272.04,-151.19 277.08,-147.33 270.72,-147.2 272.04,-151.19"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M85.23,-216.69C127.69,-212.94 211.95,-205.51 263.95,-200.93"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="263.83,-203.05 269.62,-200.43 263.46,-198.86 263.83,-203.05"/>
 </g>
 <!-- src/server.js&#45;&gt;src/core/utils.js -->
-<g id="edge17" class="edge">
+<g id="edge18" class="edge">
 <title>src/server.js&#45;&gt;src/core/utils.js</title>
-<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M85.22,-219.9C135.83,-221.31 250.42,-222.83 346,-212 358.7,-210.56 372.47,-208.02 384.62,-205.43"/>
-<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="384.78,-207.55 390.19,-204.21 383.88,-203.45 384.78,-207.55"/>
+<path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M85.35,-219.57C146.52,-220.7 296.72,-222.29 346,-212 362.42,-208.57 379.85,-201.62 393.61,-195.27"/>
+<polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="394.41,-197.21 398.93,-192.73 392.61,-193.42 394.41,-197.21"/>
 </g>
 <!-- src/server.js&#45;&gt;src/routes/index.js -->
-<g id="edge18" class="edge">
+<g id="edge19" class="edge">
 <title>src/server.js&#45;&gt;src/routes/index.js</title>
 <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" d="M85.42,-227.23C92.49,-229.43 100.25,-231.84 107.7,-234.16"/>
 <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000" points="107.01,-236.15 113.36,-235.93 108.26,-232.14 107.01,-236.15"/>

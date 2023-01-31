@@ -1,5 +1,6 @@
 
 import bot from 'assets/favicon.png';
+import html2canvas from 'html2canvas';
 
 export default function ChatContainer (props) {
 
@@ -43,10 +44,15 @@ export default function ChatContainer (props) {
     }
     const renderChat = (stripes) => {
 
-        // Render
-
+        const style = {
+            backgroundColor: "#343541",
+            color: "white",
+            fontFamily: "arial",
+            fontSize: "16px"
+            
+        }
         return (
-            <div className="chat-stripes">
+            <div className="chat-stripes" style={style}>
                 {renderStripes(stripes)}                 
             </div>
         )
@@ -57,8 +63,10 @@ export default function ChatContainer (props) {
 
 
 
+        // Render
+        
     return (
-        <div id="chat_container" className="chat-container">
+        <div id="chat_container" className="chat-container" >
                 {!HAS_STRIPES && renderEmptyChat()}
                 {HAS_STRIPES && renderChat(stripes)}
             </div>

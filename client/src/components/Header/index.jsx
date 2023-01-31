@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Fab from '@mui/material/Fab';
 import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
 
 import TabUnselectedIcon from '@mui/icons-material/TabUnselected';
 import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
@@ -15,46 +16,40 @@ export default function Header (props) {
      * @returns {JSX}
      * */
     const renderActionButtonBar = () => {
-        return (
+        return (<>
         <div className="action-button-bar">
-            <Tooltip title="Clear Chat">
+            <Tooltip className="icon-bar" title="Clear Chat" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                 <Fab color="warning" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
                     <CleaningServicesIcon />
                 </Fab>
             </Tooltip>
-            <Tooltip title="Save as HTML">
+            <Tooltip className="icon-bar" title="Save as HTML" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                 <Fab color="info" size="small" aria-label="Save as HTML" onClick={props.handleSaveAsHTML}>
                     <BrowserUpdatedIcon />
                 </Fab>
             </Tooltip>
-            <Tooltip title="Save as Png">
+            <Tooltip className="icon-bar" title="Save as Png" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                 <Fab color="info" size="small" aria-label="Save as Png" onClick={props.handleSaveAsPng}>
-                    <BrowserUpdatedIcon />
-                </Fab>
-            </Tooltip>
-            <Tooltip title="Save as Json">
-                <Fab color="info" size="small" aria-label="Save as Json" onClick={props.handleSaveAsJson}>
-                    <BrowserUpdatedIcon />
-                </Fab>
-            </Tooltip>
-            <Tooltip title="Import Json">
-                <Fab color="info" size="small" aria-label="import Json" onClick={props.handleImportJSON}>
                     <TabUnselectedIcon />
                 </Fab>
             </Tooltip>
-            <Tooltip title="Delete">
-                <Fab color="info" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
-                    <FileUploadIcon />
+            <Tooltip className="icon-bar" title="Save as Json" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+                <Fab color="info" size="small" aria-label="Save as Json" onClick={props.handleSaveAsJson}>
+                    <SaveIcon />
                 </Fab>
             </Tooltip>
-            <Tooltip title="Delete">
+            <Tooltip className="icon-bar" title="Import Json" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+                <Fab color="info" size="small" aria-label="import Json" onClick={props.handleImportJSON}>
+                <FileUploadIcon />
+                </Fab>
+            </Tooltip>
+            <Tooltip className="icon-bar" title="Delete" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                 <Fab color="grey" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
                     <SettingsIcon />
                 </Fab>
             </Tooltip>
        </div>
-
-        );
+        </>);
     }
     const renderLoadingBar = () => {
         const IS_LOADING = props.loading;

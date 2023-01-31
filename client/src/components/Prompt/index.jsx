@@ -1,22 +1,81 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import droloGPTButton from 'assets/favicon.png';
-import sangraButton from 'assets/sangra.png';
+import sangraButton from 'assets/bloody.png';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
+
 export default function Prompt (props) {
 
-    // Handle first time
-    useEffect(() => {
+    const [model, setModel] = useState('text-davinci-002');
+    const [prompt, setPrompt] = useState('Enter your text here');
+    const [completions, setCompletions] = useState(1);
+  
+    // // Handle first time
+    // const handleKeyDown = (e) => {
+        
+    //     // e.preventDefault();
 
-        // Add ENTER key listener
-        document.addEventListener('keydown', handleKeyDown);
-        const promptTexArea = document.querySelector(".chat-prompt textarea");
-        promptTexArea.focus();
-        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
-        // Remove ENTER key listener
-        // return () => {
-        //     document.removeEventListener('keydown', handleKeyDown);
-        // }
-    }, []);
+    //     // Get the button
+    //     var chatPromptButton = document.querySelector(".chat-prompt button");
 
+    //     // Add ENTER key listener
+    //     if (!e.shiftKey && e.key === 'Enter') {
+    //         debugger;
+            
+    //         // Prevent default
+    //         e.preventDefault();
+
+    //         // Check if the prompt is empty
+    //         if (prompt === "") {
+    //             // Set the prompt
+    //             setPrompt(" ");
+    //         }
+
+    //         // Check if the prompt is not empty
+    //         if (prompt !== "") {
+    //             // Set the prompt
+    //             handleSendPrompt();
+    //         }
+            
+            
+    //     }
+
+    //     // Cursor UP
+    //     if (e.key === 'ArrowUp') {
+    //         // Get the last stripe
+    //         const lastStripe = props.stripes[props.stripes.length - 1];
+    //         // Check if it is AI
+    //         if (lastStripe && !lastStripe.isAi) {
+    //             // Set the prompt
+    //             props.setPrompt(lastStripe.value);
+    //         }
+    //     }
+
+    //     // Cursor DOWN
+    //     if (e.key === 'ArrowDown') {
+    //         // Set the prompt
+    //         props.setPrompt('');
+    //     }
+
+    // }
+    // useEffect(() => {
+
+    //     // Add ENTER key listener
+    //     document.addEventListener('keydown', handleKeyDown);
+    //     const promptTexArea = document.querySelector(".chat-prompt textarea");
+    //     promptTexArea.focus();
+    //     promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
+    //     // Remove ENTER key listener
+    //     // return () => {
+    //     //     document.removeEventListener('keydown', handleKeyDown);
+    //     // }
+    // }, []);
+    
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // call OpenAI API with the current settings
+    };
     // Focus each time stripes change
     useEffect(() => {
         const promptTexArea = document.querySelector(".chat-prompt textarea");
@@ -24,43 +83,13 @@ export default function Prompt (props) {
         promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
     }, [props.stripes]);
 
-    const handleKeyDown = (e) => {
-        
-        // e.preventDefault();
 
-        // Get the button
-        var chatPromptButton = document.querySelector(".chat-prompt button");
+    // Focus each time stripes change
+    useEffect(() => {
+        console.log('prompt changed: ' + props.prompt);
+    }, [props.prompt]);
 
-        // Add ENTER key listener
-        if (!e.shiftKey && e.key === 'Enter') {
-            // Click the button
-            chatPromptButton.click();
-            e.preventDefault();
-        }
 
-        // Add CTRL + ENTER key listener
-        if (e.ctrlKey && e.key === 'Enter') {
-            chatPromptButton.click();
-        }
-
-        // Cursor UP
-        if (e.key === 'ArrowUp') {
-            // Get the last stripe
-            const lastStripe = props.stripes[props.stripes.length - 2];
-            // Check if it is AI
-            if (lastStripe && !lastStripe.isAi) {
-                // Set the prompt
-                props.setPrompt(lastStripe.value);
-            }
-        }
-
-        // Cursor DOWN
-        if (e.key === 'ArrowDown') {
-            // Set the prompt
-            props.setPrompt('');
-        }
-
-    }
 
     /** 
      * Handle prompt change
@@ -78,17 +107,28 @@ export default function Prompt (props) {
         props.setPrompt(prompt);        
     }
 
+    const handleDragEnter = (e) => {
+        // e.preventDefault();
+        debugger
+        // Click the button
+        const button = document.querySelector(".chat-prompt button");
+        button.click();
+
+    }
+
     /**
      * Render prompt
      * @returns {JSX}
      * */
     const renderPrompt = () => {
         return (
-        <div className={'chat-prompt'}>
+        <div className={'chat-prompt'} onDragEnter={() => this.handleDragEnter()}>
            <form>
-           <button onClick={props.handleSendSangraPrompt}>
-                <img src={sangraButton} alt="Cuánto Sangra?" />
-            </button>
+           <Tooltip title="¿Cuánto sangra?" placement='top' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+            <button onClick={props.handleSendSangraPrompt}>
+                    <img src={sangraButton} alt="¿Cuánto sangra?" />
+                </button>
+            </Tooltip>
                 <textarea name="prompt" rows="1" cols="1"
                     placeholder={props.placeholder}
                     value={props.prompt}
@@ -102,11 +142,46 @@ export default function Prompt (props) {
 
         );
     }
-
+    const renderCommitInfo = () => {
+        return (
+            <div className="commit-info">
+                <b>Commit: </b>:&nbsp;&nbsp;&nbsp;<span className="has-text-info">{props.commitInfo}</span>
+            </div>
+        );
+    }    
+    const renderConfig = () => {
+        return (
+            <div className="commit-info">
+                <b>Config: </b>:&nbsp;&nbsp;&nbsp;<span className="has-text-info">saaa</span>
+                <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="model">Model:</label>
+        <select id="model" value={model} onChange={(e) => setModel(e.target.value)}>
+          <option value="text-davinci-002">Davinci v2</option>
+          <option value="text-curie-001">Curie</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="prompt">Prompt:</label>
+        <input id="prompt" type="text" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="completions">Completions:</label>
+        <input id="completions" type="number" value={completions} onChange={(e) => setCompletions(e.target.value)} />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+            </div>
+        );
+    }
     // Render
     return (
         <>
             {renderPrompt()}
+            <div className="drologpt-commit">
+                {renderCommitInfo()}
+            </div>
+            {/* {renderConfig()} */}
         </>
         
     );

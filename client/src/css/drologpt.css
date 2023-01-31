@@ -401,11 +401,6 @@ body {
   width: 100vw;
   height: 100vh;
   background: #343541;
-  background-image: url(../assets/background.png);
-  background-repeat: no-repeat;
-  background-size: contain!important;
-  background-position: center;
-  background-size: 350px 350px!important;
   background-blend-mode: lighten;
   display: flex;
   flex-direction: column;
@@ -418,6 +413,15 @@ body {
   align-items: flex-end;
   justify-content: flex-end;
   background: transparent!important;
+  position: relative;
+  top: 15px;
+  opacity: 0.2;
+  transition: opacity 0.5s;
+  cursor: default;
+  font-size: 14px;
+}
+.drologpt-commit:hover {
+  opacity: 1;
 }
 .drologpt-header {
   width: 100%;
@@ -502,8 +506,33 @@ body {
 .drologpt-header .action-button-bar button:hover {
   opacity: 1;
 }
+.MuiTooltip-tooltip {
+  font-size: 20px!important;
+  font-weight: bold!important;
+  position: relative;
+  top: 3px;
+  background-color: transparent!important;
+}
+.MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft {
+  color: #0288d1 !important;
+}
+.MuiTooltip-tooltip .icon-bar {
+  border: 2px solid red!important;
+  font-size: 20px!important;
+  font-weight: bold!important;
+  color: #0288d1 !important;
+  position: relative;
+  top: 3px;
+  background-color: transparent!important;
+}
 .chat-container {
   justify-content: center!important;
+  background-image: url(../assets/background.png);
+  background-repeat: no-repeat;
+  background-size: contain!important;
+  background-position: center;
+  background-size: 350px 350px!important;
+  background-color: #343541 !important;
   width: 100%;
   height: 100%;
   display: flex;
@@ -525,7 +554,7 @@ body {
   margin: 0 auto;
   margin-left: 0vh;
   bottom: 10vh;
-  overflow-y: scroll!important;
+  overflow-y: auto!important;
   max-height: 80vh;
   padding-right: 15px;
 }

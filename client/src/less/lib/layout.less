@@ -19,13 +19,6 @@ body {
     height: 100vh;
     background: @background-color;
 
-    // Add a background image in the middle of the page
-    background-image: url(../assets/background.png);
-    background-repeat: no-repeat;
-    background-size: contain!important;
-    background-position: center;
-    background-size: 350px 350px!important;
-
     // Add effect to the background image
     background-blend-mode: lighten;
 
@@ -44,6 +37,15 @@ body {
     align-items: flex-end;
     justify-content: flex-end;
     background: transparent!important;
+    position: relative;
+    top: 15px;
+    opacity: 0.2;
+    transition : opacity 0.5s;
+    cursor: default;
+    font-size: 14px;
+    &:hover {
+        opacity: 1;
+    }
 }
 .drologpt-header {
     
@@ -148,11 +150,43 @@ body {
         }
     }
 }
+.MuiTooltip-tooltip {
+    // border: 2px solid red!important;
+    font-size: 20px!important;
+    font-weight: bold!important;
+    position: relative;
+    top: 3px;
+    // background-color: #11111111!important;
+    background-color: transparent!important;
+
+    &.MuiTooltip-tooltipPlacementLeft {
+        color: #0288d1 !important;
+    }
+
+    .icon-bar {
+        border: 2px solid red!important;
+        font-size: 20px!important;
+        font-weight: bold!important;
+        color: #0288d1 !important;
+        position: relative;
+        top: 3px;
+        // background-color: #11111111!important;
+        background-color: transparent!important;
+    }
+}
 // 2. Chat CSS
 .chat-container {
 
     // border: 2px solid green; 
     justify-content: center!important;
+
+        // Add a background image in the middle of the page
+        background-image: url(../assets/background.png);
+        background-repeat: no-repeat;
+        background-size: contain!important;
+        background-position: center;
+        background-size: 350px 350px!important;
+        background-color: @background-color!important;
 
     .chat-stripes {
         place-content: flex-start;
@@ -163,11 +197,10 @@ body {
         max-width: 1280px;
         margin: 0 auto;
         margin-left: -0vh;
-        
-        
+    
         bottom: 10vh;
         //position: relative;
-        overflow-y: scroll!important;
+        overflow-y: auto!important;
         // The max height of the chat container
         max-height: 80vh;
         padding-right: 15px;

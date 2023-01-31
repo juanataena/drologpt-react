@@ -16,6 +16,7 @@ import '../css/drologpt.css'
 
 function DroloGPT(props) {
 
+    
     const [placeholder, setPlaceholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
     const [prompt, setPrompt] = useState("");
     // const [prompt, setPrompt] = useState("hola");
@@ -25,11 +26,9 @@ function DroloGPT(props) {
     const [loadInterval, setLoadInterval] = useState(); 
     const [userAvatar, setUserAvatar] = useState();
 
+    
     // Setup FIRST TIME
     useEffect(() => {
-
-        // Set one initial stripe (welcome message from Drolo GPT)
-        // setStripes([{isAi: true, value: "Hola, soy Drolo GPT. ¿Qué quieres preguntar?", uniqueId: utils.generateUniqueId()}]);
 
         // Set the user avatar
         utils.getRandomAvatarAsPNG().then (png => {
@@ -78,24 +77,23 @@ function DroloGPT(props) {
                 setStripes(newStripes);            
             }
 
-            debugger;   
             // Check if we have the comodin prompt
             if (prompt === "¿Cuánto sangra?") {
-                handleSendPrompt();
+                utils.sendFakeRequest(setData, setLoading);
             } else {
-            api.promptOpenAI(prompt).then( (response) => {
-                utils.log('1. OpenAI Prompted', 'MAIN_END', response);
-                setData(JSON.parse(response))
-            }).catch(() => {
-                utils.showError();
-                const chatContainer = document.querySelector('#chat_container')
-                const uniqueId = utils.generateUniqueId()
-                chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
-                const messageDiv = document.getElementById(uniqueId)
-                clearInterval(loadInterval)
-                messageDiv.innerHTML = "Something went wrong"
-                
-            });
+                api.promptOpenAI(prompt).then( (response) => {
+                    utils.log('1. OpenAI Prompted', 'MAIN_END', response);
+                    setData(JSON.parse(response))
+                }).catch(() => {
+                    utils.showError();
+                    const chatContainer = document.querySelector('#chat_container')
+                    const uniqueId = utils.generateUniqueId()
+                    chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
+                    const messageDiv = document.getElementById(uniqueId)
+                    clearInterval(loadInterval)
+                    messageDiv.innerHTML = "Something went wrong"
+                    
+                });
 
                 // // Post data to server
                 // axios
@@ -103,6 +101,11 @@ function DroloGPT(props) {
                 // .then((res) => parseResponse(res))
                 // .catch((err) => parseErrorResponse(err))
             }
+
+            // Clear prompt
+            setPrompt('');
+            setData(null);
+
         }
     }, [loading]);
 
@@ -204,9 +207,6 @@ function DroloGPT(props) {
         const uniqueId = utils.generateUniqueId();
         const newStripe = {isAi: false, value: prompt, uniqueId: uniqueId};
     
-        // Clear prompt
-        setPrompt('');
-        setData(null);
         setStripes([...stripes, newStripe]);
         setLoading(true);
   
@@ -253,12 +253,19 @@ function DroloGPT(props) {
     const handleSaveAsHTML = () => {
 
         console.log("Saving as HTML...");
-        const chatContainer = document.querySelector('#chat_container')
+        const chatContainer = document.querySelector('.chat-stripes')
         const html = chatContainer.innerHTML
         const blob = new Blob([html], {type: 'text/html'})
         const url = URL.createObjectURL(blob)
+
         const a = document.createElement('a')
-        a.download = 'chat.html'
+        const filenameWithDate = `chat_${new Date().toISOString().split('.')[0].replaceAll('T', ' at ')}.html`
+        a.download = filenameWithDate
+
+        a.href = url
+        a.click()
+        URL.revokeObjectURL(url)
+        
         console.log("DONE");
 
 
@@ -266,28 +273,41 @@ function DroloGPT(props) {
     const handleSaveAsPng = () => {
 
         console.log("Saving as PNG...");
-        const chatContainer = document.querySelector('#chat_container')
+        const chatContainer = document.querySelector('.chat-stripes')
+
+        
         html2canvas(chatContainer).then(canvas => {
 
             const imageAsCanvas = canvas.toDataURL("image/png")
-            const blob = utils.dataURItoBlob(imageAsCanvas)
-            const url = URL.createObjectURL(blob)
-            const a = document.createElement('a')
-            a.download = 'chat.png'
+            const imgData = canvas.toDataURL('image/png')
 
-            console. log("DONE");
+            const a = document.createElement('a')
+            const filenameWithDate = `chat_${new Date().toISOString().split('.')[0].replaceAll('T', ' at ')}.png`
+            a.download = filenameWithDate
+
+            a.href = imgData
+            a.click()
+            URL.revokeObjectURL(imgData)
+
+            
+            
         });
         
     }
     const handleSaveAsJson = () => {
 
         console.log("Saving as JSON...");
-        const chatContainer = document.querySelector('#chat_container')
         const json = JSON.stringify(stripes)
         const blob = new Blob([json], {type: 'application/json'})
         const url = URL.createObjectURL(blob)
         const a = document.createElement('a')
-        a.download = 'chat.json'
+        const filenameWithDate = `chat_${new Date().toISOString().split('.')[0].replaceAll('T', ' at ')}.json`
+        a.download = filenameWithDate
+
+        a.href = url
+        a.click()
+        URL.revokeObjectURL(url)
+
 
     }
     const handleImportJSON = () => {
@@ -327,9 +347,7 @@ function DroloGPT(props) {
         // console.log("DONE");
 
 
-    }
-
-
+    }    
     // RENDER
     return (
         <div id="drologpt_app" className="drologpt-app-container">
@@ -373,7 +391,8 @@ function DroloGPT(props) {
                 loadInterval={loadInterval}
                 setPrompt={setPrompt}
                 userAvatar={userAvatar}
-
+                commitInfo={props.commitInfo}
+       
                 handleSendPrompt={handleSendPrompt}
                 handleSendSangraPrompt={handleSendSangraPrompt}
             />
