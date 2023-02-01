@@ -397,6 +397,25 @@
 body {
   background: #343541;
 }
+body .MuiTooltip-tooltip {
+  font-size: 20px!important;
+  font-weight: bold!important;
+  position: relative;
+  top: 3px;
+  background-color: transparent!important;
+}
+body .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft {
+  color: #0288d1 !important;
+}
+body .MuiTooltip-tooltip .icon-bar {
+  border: 2px solid red!important;
+  font-size: 20px!important;
+  font-weight: bold!important;
+  color: #0288d1 !important;
+  position: relative;
+  top: 3px;
+  background-color: transparent!important;
+}
 .drologpt-app-container {
   width: 100vw;
   height: 100vh;
@@ -405,22 +424,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-.drologpt-commit {
-  background: #cccccc;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  background: transparent!important;
-  position: absolute;
-  bottom: 10px;
-  opacity: 0.2;
-  transition: opacity 0.5s;
-  cursor: default;
-  font-size: 14px;
-}
-.drologpt-commit:hover {
-  opacity: 1;
 }
 .drologpt-header {
   width: 100%;
@@ -504,25 +507,6 @@ body {
 }
 .drologpt-header .action-button-bar button:hover {
   opacity: 1;
-}
-.MuiTooltip-tooltip {
-  font-size: 20px!important;
-  font-weight: bold!important;
-  position: relative;
-  top: 3px;
-  background-color: transparent!important;
-}
-.MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft {
-  color: #0288d1 !important;
-}
-.MuiTooltip-tooltip .icon-bar {
-  border: 2px solid red!important;
-  font-size: 20px!important;
-  font-weight: bold!important;
-  color: #0288d1 !important;
-  position: relative;
-  top: 3px;
-  background-color: transparent!important;
 }
 .chat-container {
   justify-content: center!important;
@@ -650,7 +634,7 @@ body {
 }
 .chat-prompt {
   width: 100%;
-  top: -45px;
+  top: -40px;
   position: relative;
 }
 .chat-prompt form {
@@ -688,7 +672,7 @@ body.light-theme {
   color: #1a2732 !important;
 }
 body.light-theme .chat-prompt form {
-  background: #f8f9fa !important;
+  background: #dbdddf69 !important;
   color: #1a2732 !important;
 }
 body.light-theme .chat-container .wrapper.is-user {
@@ -696,7 +680,7 @@ body.light-theme .chat-container .wrapper.is-user {
   color: #1a2732 !important;
 }
 body.light-theme .chat-container .wrapper.is-bot {
-  background: #e9ecef69 !important;
+  background: #dbdddf69 !important;
   color: #1a2732 !important;
 }
 body.light-theme .chat-container .wrapper .message {
@@ -705,4 +689,36 @@ body.light-theme .chat-container .wrapper .message {
 body.light-theme .drologpt-header {
   background: #f8f9fa !important;
   color: #1a2732 !important;
+}
+.drologpt-commit {
+  background: #cccccc;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: transparent!important;
+  position: absolute;
+  bottom: 10px;
+  opacity: 0.2;
+  transition: opacity 0.5s;
+  cursor: default;
+  font-size: 14px;
+}
+.drologpt-commit:hover {
+  opacity: 1;
+}
+.drologpt-export {
+  background: pink!important;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: transparent!important;
+  position: absolute;
+  bottom: 10px;
+  opacity: 0.2;
+  transition: opacity 0.5s;
+  cursor: default;
+  font-size: 14px;
+}
+.drologpt-export:hover {
+  opacity: 1;
 }

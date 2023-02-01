@@ -11,6 +11,31 @@
 
 body {
     background: @background-color;
+
+    .MuiTooltip-tooltip {
+        // border: 2px solid red!important;
+        font-size: 20px!important;
+        font-weight: bold!important;
+        position: relative;
+        top: 3px;
+        // background-color: #11111111!important;
+        background-color: transparent!important;
+    
+        &.MuiTooltip-tooltipPlacementLeft {
+            color: #0288d1 !important;
+        }
+    
+        .icon-bar {
+            border: 2px solid red!important;
+            font-size: 20px!important;
+            font-weight: bold!important;
+            color: #0288d1 !important;
+            position: relative;
+            top: 3px;
+            // background-color: #11111111!important;
+            background-color: transparent!important;
+        }
+    }
 }
 
 // 1. APP CSS
@@ -29,24 +54,6 @@ body {
 }
 
 // 2. HEADER CSS
-
-.drologpt-commit {
-    background: @header-background-color;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    background: transparent!important;
-    position: absolute;
-    bottom: 10px;
-    opacity: 0.2;
-    transition : opacity 0.5s;
-    cursor: default;
-    font-size: 14px;
-    &:hover {
-        opacity: 1;
-    }
-}
 .drologpt-header {
     
     width: 100%;
@@ -150,31 +157,7 @@ body {
         }
     }
 }
-.MuiTooltip-tooltip {
-    // border: 2px solid red!important;
-    font-size: 20px!important;
-    font-weight: bold!important;
-    position: relative;
-    top: 3px;
-    // background-color: #11111111!important;
-    background-color: transparent!important;
-
-    &.MuiTooltip-tooltipPlacementLeft {
-        color: #0288d1 !important;
-    }
-
-    .icon-bar {
-        border: 2px solid red!important;
-        font-size: 20px!important;
-        font-weight: bold!important;
-        color: #0288d1 !important;
-        position: relative;
-        top: 3px;
-        // background-color: #11111111!important;
-        background-color: transparent!important;
-    }
-}
-// 2. Chat CSS
+// 3. Chat CSS
 .chat-container {
 
     // border: 2px solid green; 
@@ -342,10 +325,10 @@ body {
 
     }
 }
-// 3. Prompt CSS
+// 4. Prompt CSS
 .chat-prompt {
     width: 100%;
-    top: -45px;
+    top: -40px;
     position: relative;
 
     form {
@@ -388,7 +371,7 @@ body {
         }
     }
 }
-// 4. Theme (only light theme)
+// 5. Theme (only light theme)
 body.light-theme {
     // border: 2px solid red!important;
     background: @background-color-light!important;
@@ -399,7 +382,7 @@ body.light-theme {
 
     .chat-prompt {
         form {
-            background: @background-color-light!important;
+            background: @ia-background-color-light!important;
             color: @text-color-light!important;
             }
     }
@@ -425,4 +408,41 @@ body.light-theme {
         color: @text-color-light!important;
     }
    
+}
+// 6. Commit CSS
+.drologpt-commit {
+    background: @header-background-color;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background: transparent!important;
+    position: absolute;
+    bottom: 10px;
+    opacity: 0.2;
+    transition : opacity 0.5s;
+    cursor: default;
+    font-size: 14px;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+// 7. To export the chatbot to a file and as PNG
+.drologpt-export {
+    background: pink!important;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background: transparent!important;
+    position: absolute;
+    bottom: 10px;
+    opacity: 0.2;
+    transition : opacity 0.5s;
+    cursor: default;
+    font-size: 14px;
+    &:hover {
+        opacity: 1;
+    }
 }

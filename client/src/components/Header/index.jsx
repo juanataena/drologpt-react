@@ -23,7 +23,7 @@ export default function Header (props) {
         <div className="action-button-bar">
             <Tooltip className="icon-bar" title={props.theme === 'dark' ? "oscuridad" : "luz"} placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                 <Fab color="warning" size="small" aria-label="Change Theme" onClick={props.handleChangeTheme}>
-                    {props.theme === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+                    {props.theme === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
                 </Fab>
             </Tooltip>
             <Tooltip className="icon-bar" title="Clear Chat" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
