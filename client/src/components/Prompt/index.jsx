@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import droloGPTButton from 'assets/favicon.png';
+import React, { useEffect } from 'react';
 import sangraButton from 'assets/bloody.png';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
@@ -18,6 +17,7 @@ export default function Prompt (props) {
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
      }, []);
     // Focus each time PROMPT change
     useEffect(() => {

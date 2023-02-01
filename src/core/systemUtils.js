@@ -1,10 +1,4 @@
-// Logger
-var log4js = require("log4js");
-var logger = log4js.getLogger();
-logger.level = "debug";
-
 import { exec } from "child_process";
-import * as fs from "fs";
 import * as utils from './utils';
 
 export const restartBot = (who) => {

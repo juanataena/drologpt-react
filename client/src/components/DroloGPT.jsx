@@ -37,10 +37,12 @@ function DroloGPT(props) {
         api.promptOpenAI(stramboticHelloPrompt).then( (response) => {
             console.log("Prompt: %o", JSON.parse(response));
             const drologptStripe = {isAi: true, value: JSON.parse(response).bot, uniqueId: utils.generateUniqueId()};
+            
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             setStripes([...stripes, drologptStripe]);
-            // debugger;
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }).catch(utils.showError);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     // React Effect for PROMPT state change
     useEffect(() => {
@@ -54,6 +56,7 @@ function DroloGPT(props) {
             } else {
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [prompt]);
     // React Effect for LOADING state change // FAKE
     useEffect(() => {
@@ -102,6 +105,7 @@ function DroloGPT(props) {
             setData(null);
 
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading]);
     // React Effect for STRIPES state change
     useEffect(() => {
@@ -125,6 +129,7 @@ function DroloGPT(props) {
             utils.scrollToBottom();
 
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [stripes]);
     // React Effect for DATA state change
     useEffect(() => {
@@ -156,6 +161,7 @@ function DroloGPT(props) {
             }
     
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
 
     // React Effect for LOADINTERVAL state change
@@ -248,7 +254,6 @@ function DroloGPT(props) {
         
         html2canvas(chatContainer).then(canvas => {
 
-            const imageAsCanvas = canvas.toDataURL("image/png")
             const imgData = canvas.toDataURL('image/png')
 
             const a = document.createElement('a')
@@ -258,11 +263,7 @@ function DroloGPT(props) {
             a.href = imgData
             a.click()
             URL.revokeObjectURL(imgData)
-
-            
-            
-        });
-        
+        });        
     }
     const handleSaveAsJson = () => {
 
