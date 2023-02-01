@@ -12,7 +12,9 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 export default function Header (props) {
 
 
+    // Renderers
     /**
+     * Render action button bar
      * @returns {JSX}
      * */
     const renderActionButtonBar = () => {
@@ -60,7 +62,6 @@ export default function Header (props) {
             </div>
         );
     }
-
     const renderPromptBar = () => {
         return (
             <div className="prompt-bar">

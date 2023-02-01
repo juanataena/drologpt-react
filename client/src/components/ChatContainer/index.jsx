@@ -1,13 +1,9 @@
 
 import bot from 'assets/favicon.png';
-import html2canvas from 'html2canvas';
 
 export default function ChatContainer (props) {
 
-    // Render
-    let stripes = props.stripes;
-    let HAS_STRIPES = stripes.length > 0;
-
+    // Renderers
     const renderEmptyChat = () => {
         return (
             <div className="wrapper ai is-hidden">
@@ -34,7 +30,6 @@ export default function ChatContainer (props) {
                         </div>
                         <div className="message">
                             <b>{stripe.isAi ? 'DroloGPT' : 'user'}: </b>
-                            {stripe.value}
                             {stripe.isAi && <div className="chat-stripe-loader"></div>}
                         </div>
                     </div>
@@ -59,16 +54,14 @@ export default function ChatContainer (props) {
 
     }
 
+    // Render        
+    let stripes = props.stripes;
+    let HAS_STRIPES = stripes.length > 0;
 
-
-
-
-        // Render
-        
     return (
         <div id="chat_container" className="chat-container" >
-                {!HAS_STRIPES && renderEmptyChat()}
-                {HAS_STRIPES && renderChat(stripes)}
-            </div>
+            {!HAS_STRIPES && renderEmptyChat()}
+            {HAS_STRIPES && renderChat(stripes)}
+        </div>
     );
 }

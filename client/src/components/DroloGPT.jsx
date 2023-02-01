@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 import * as utils from 'core/utils';
@@ -16,17 +15,15 @@ import '../css/drologpt.css'
 
 function DroloGPT(props) {
 
-    
-    const [placeholder, setPlaceholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
+    // State
+    const [placeholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
     const [prompt, setPrompt] = useState("");
-    // const [prompt, setPrompt] = useState("hola");
     const [data, setData] = useState();
     const [stripes, setStripes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [loadInterval, setLoadInterval] = useState(); 
     const [userAvatar, setUserAvatar] = useState();
 
-    
     // Setup FIRST TIME
     useEffect(() => {
 
@@ -45,7 +42,6 @@ function DroloGPT(props) {
         }).catch(utils.showError);
 
     }, []);
-
     // React Effect for PROMPT state change
     useEffect(() => {
         console.log("Prompt: ", prompt);
@@ -59,7 +55,6 @@ function DroloGPT(props) {
             }
         }
     }, [prompt]);
-
     // React Effect for LOADING state change // FAKE
     useEffect(() => {
         console.log("Loading: ", loading);
@@ -108,7 +103,6 @@ function DroloGPT(props) {
 
         }
     }, [loading]);
-
     // React Effect for STRIPES state change
     useEffect(() => {
         console.log("Stripes: %o", stripes);
@@ -122,7 +116,9 @@ function DroloGPT(props) {
                     console.log("cargando");
                     utils.loader(lastStripe.uniqueId, loadInterval, setLoadInterval);
                 } else {
-                    console.log("no cargando");
+                    console.log("no cargando. Escribiendo...");
+                    utils.typeText(lastStripe, loadInterval, setLoadInterval);
+
                     // if (loadInterval) {
                     //     clearInterval(loadInterval);
                     //     setLoadInterval(null);
@@ -136,7 +132,6 @@ function DroloGPT(props) {
 
         }
     }, [stripes]);
-
     // React Effect for DATA state change
     useEffect(() => {
 
@@ -164,9 +159,7 @@ function DroloGPT(props) {
                 if (loadInterval) {
                     clearInterval(loadInterval);
                     setLoadInterval(null);
-
                 }
-
             }
     
         }
@@ -222,32 +215,6 @@ function DroloGPT(props) {
         
         setPrompt('¿Cuánto sangra?');
     }
-
-    // HELPER FUNCTIONS
-    const parseResponse = (res) => {
-        // debugger;
-        setData(res.data);
-        // clearInterval(this.loadInterval)
-        // messageDiv.innerHTML = " "
-
-        // if (response.ok) {
-        //     const data = await response.json();
-        //     const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
-
-        //     typeText(messageDiv, parsedData)
-        // } else {
-        //     const err = await response.text()
-
-        //     messageDiv.innerHTML = "Something went wrong"
-        //     console.log(err)
-        // }
-
-        
-    }
-    const parseErrorResponse = (err) => {
-
-    }
-
 
     // ACTION BUTTON FUNCTIONS
     const handleSaveAsHTML = () => {
@@ -362,14 +329,14 @@ function DroloGPT(props) {
                 loading={loading}
                 loadInterval={loadInterval}
                 userAvatar={userAvatar}
+
+                // Handlers
                 handleSendPrompt={handleSendPrompt}
                 handleDeleteStripes={handleDeleteStripes}
-
                 handleSaveAsHTML={handleSaveAsHTML}
                 handleSaveAsPng={handleSaveAsPng}
                 handleSaveAsJson={handleSaveAsJson}
                 handleImportJSON={handleImportJSON}
-                
             />
 
             {/* Chat container de Drolo GPT */}
@@ -385,14 +352,14 @@ function DroloGPT(props) {
             {/* Prompt de Drolo GPT */}
             <Prompt
                 prompt={prompt}
+                userAvatar={userAvatar}
+                commitInfo={props.commitInfo}
                 stripes = {stripes}
                 placeholder={placeholder}
                 data={data}
                 loadInterval={loadInterval}
-                setPrompt={setPrompt}
-                userAvatar={userAvatar}
-                commitInfo={props.commitInfo}
-       
+                
+                setPrompt={setPrompt}       
                 handleSendPrompt={handleSendPrompt}
                 handleSendSangraPrompt={handleSendSangraPrompt}
             />

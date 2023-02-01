@@ -6,7 +6,53 @@ import Fade from '@mui/material/Fade';
 
 export default function Prompt (props) {
 
-    // // Handle first time
+    // EFECTS
+    // Add ENTER key listener (first time)
+    useEffect(() => {
+    
+        const promptTexArea = document.querySelector(".chat-prompt textarea");
+        promptTexArea.focus();
+        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
+    
+        // Remove ENTER key listener
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+     }, []);
+    // Focus each time PROMPT change
+    useEffect(() => {
+        const promptTexArea = document.querySelector(".chat-prompt textarea");
+        promptTexArea.focus();
+        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
+    }, [props.stripes]);
+    // Focus each time STRIPES change
+    useEffect(() => {
+        console.log('prompt changed: ' + props.prompt);
+    }, [props.prompt]);
+
+
+    // HANDLERS
+    /** 
+     * Handle prompt change
+     * @param {Event} e
+     * @returns {void}
+     * */
+    const handlePromptChange = (e) => {
+
+        // Prevent default
+        e.preventDefault();
+        // debugger
+
+        // Set the prompt
+        const prompt = e.target.value;
+        props.setPrompt(prompt);        
+    }
+
+    /**
+     *  Handle keydown event
+     * @param {*} e 
+     * @returns 
+     */
     const handleKeyDown = (e) => {
         
         // e.preventDefault();
@@ -50,48 +96,8 @@ export default function Prompt (props) {
         }
 
     }
-    useEffect(() => {
-    
-        const promptTexArea = document.querySelector(".chat-prompt textarea");
-        promptTexArea.focus();
-        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
-    
-        // Remove ENTER key listener
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-        }
-     }, []);
-    
-    // Focus each time stripes change
-    useEffect(() => {
-        const promptTexArea = document.querySelector(".chat-prompt textarea");
-        promptTexArea.focus();
-        promptTexArea.selectionStart = promptTexArea.selectionEnd = promptTexArea.value.length;
-    }, [props.stripes]);
 
-
-    // Focus each time stripes change
-    useEffect(() => {
-        console.log('prompt changed: ' + props.prompt);
-    }, [props.prompt]);
-
-
-    /** 
-     * Handle prompt change
-     * @param {Event} e
-     * @returns {void}
-     * */
-    const handlePromptChange = (e) => {
-
-        // Prevent default
-        e.preventDefault();
-        // debugger
-
-        // Set the prompt
-        const prompt = e.target.value;
-        props.setPrompt(prompt);        
-    }
-
+    // RENDERS
     /**
      * Render prompt
      * @returns {JSX}
@@ -120,6 +126,10 @@ export default function Prompt (props) {
 
         );
     }
+    /**
+     * Render commit info
+     * @returns {JSX}
+     */
     const renderCommitInfo = () => {
         return (
             <div className="commit-info">

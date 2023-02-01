@@ -7,6 +7,34 @@ import user from 'assets/user.svg';
 import bot from 'assets/favicon.png';
 // Intervals for loading and typing text
 
+/**
+ * Type text effect
+ * @param {HTMLElement} element 
+ * @param {String} text 
+ */
+export function typeText(stripe, loadInterval, setLoadInterval) {
+    let index = 0
+    // get the message div
+    const element = document.getElementById(stripe.uniqueId)
+    const loader = element.querySelector('.chat-stripe-loader');
+    loader.textContent = ''
+
+
+    if (!element) {
+        console.log ("No element found with ID: ", stripe.uniqueId)
+        return;
+    }
+    const text = stripe.value;
+    loadInterval = setInterval(() => {
+        if (index < text.length) {
+            loader.innerHTML += text.charAt(index)
+            index++
+        } else {
+            clearInterval(loadInterval)
+        }
+    }, 20)
+    setLoadInterval(loadInterval);
+}
 export function loader(uniqueId, loadInterval, setLoadInterval) {
 
     // get the message div
@@ -42,7 +70,7 @@ export function loaderStop (loadInterval) {
  * @param {HTMLElement} element 
  * @param {String} text 
  */
-export function typeText(element, text) {
+export function typeTextOld(element, text) {
     let index = 0
 
     let interval = setInterval(() => {
