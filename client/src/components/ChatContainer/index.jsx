@@ -42,8 +42,8 @@ export default function ChatContainer (props) {
     const renderChat = (stripes) => {
 
         const style = {
-            backgroundColor: "#343541",
-            color: "white",
+            // backgroundColor: "#343541",
+            // color: "white",
             fontFamily: "arial",
             fontSize: "16px"
             

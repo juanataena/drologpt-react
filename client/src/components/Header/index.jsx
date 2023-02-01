@@ -8,6 +8,8 @@ import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SaveIcon from '@mui/icons-material/Save';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 export default function Header (props) {
 
 
@@ -19,6 +21,11 @@ export default function Header (props) {
     const renderActionButtonBar = () => {
         return (<>
         <div className="action-button-bar">
+            <Tooltip className="icon-bar" title={props.theme === 'dark' ? "oscuridad" : "luz"} placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+                <Fab color="warning" size="small" aria-label="Change Theme" onClick={props.handleChangeTheme}>
+                    {props.theme === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+                </Fab>
+            </Tooltip>
             <Tooltip className="icon-bar" title="Clear Chat" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                 <Fab color="warning" size="small" aria-label="Clear Chat" onClick={props.handleDeleteStripes}>
                     <CleaningServicesIcon />
@@ -89,11 +96,19 @@ export default function Header (props) {
             </div>
         );
     }
-    
+    const renderTheme = () => {
+        return (
+            <div className="theme">
+                <b>Theme: </b>:&nbsp;&nbsp;&nbsp;<span className="has-text-info">{props.theme}</span>
+            </div>
+        );
+    }
+
     // Render
     return (
         <>
             <div className="drologpt-header">
+                {renderTheme()}
                 {renderMachineName()}
                 {renderIntervalInfo()}
                 {renderLoadingBar()}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 import * as utils from 'core/utils';
 
@@ -6,6 +6,8 @@ import Header from 'components/Header';
 import Prompt from 'components/Prompt';
 import ChatContainer from 'components/ChatContainer';
 import html2canvas from 'html2canvas';
+
+import { withCookies } from 'react-cookie';
 
 import * as api from 'core/api';
 
@@ -15,6 +17,8 @@ import '../css/drologpt.css'
 
 function DroloGPT(props) {
 
+    const cookies = useMemo(() => props.cookies, [props.cookies]);
+    
     // State
     const [placeholder] = useState("Hola, soy Drolo GPT. Qué quieres preguntar?");
     const [prompt, setPrompt] = useState("");
@@ -23,7 +27,17 @@ function DroloGPT(props) {
     const [loading, setLoading] = useState(false);
     const [loadInterval, setLoadInterval] = useState(); 
     const [userAvatar, setUserAvatar] = useState();
+    const [theme, _setTheme] = useState(cookies.get('theme') || 'light');
 
+    // State Cookie Functions
+    const setTheme = (theme) => {
+
+        // Set the theme in the cookies
+        const { cookies } = props;
+        cookies.set('theme', theme, { path: '/' });
+
+        _setTheme(theme);
+    }
     // Setup FIRST TIME
     useEffect(() => {
 
@@ -31,7 +45,7 @@ function DroloGPT(props) {
         utils.getRandomAvatarAsPNG().then (png => {
             setUserAvatar(png);
         });
-        
+    
         // Get prompt from the server
         const stramboticHelloPrompt = "Say hello in a strambotic way";
         api.promptOpenAI(stramboticHelloPrompt).then( (response) => {
@@ -41,7 +55,9 @@ function DroloGPT(props) {
             // eslint-disable-next-line react-hooks/exhaustive-deps
             setStripes([...stripes, drologptStripe]);
             // eslint-disable-next-line react-hooks/exhaustive-deps
+        
         }).catch(utils.showError);
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     // React Effect for PROMPT state change
@@ -163,7 +179,15 @@ function DroloGPT(props) {
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
-
+    // React Effect for THEME state change
+    useEffect(() => {
+        console.log("Theme: ", theme);
+        if (theme === "light") {
+            document.body.classList.add("light-theme");
+        } else {
+            document.body.classList.remove("light-theme");
+        }
+    }, [theme]);
     // React Effect for LOADINTERVAL state change
     useEffect(() => {
         console.log("LoadInterval: ", loadInterval);
@@ -223,6 +247,13 @@ function DroloGPT(props) {
         if (e) e.preventDefault();
         
         setPrompt('¿Cuánto sangra?');
+    }
+    const handleChangeTheme = () => {
+        if (theme === "light") {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
     }
 
     // ACTION BUTTON FUNCTIONS
@@ -325,6 +356,7 @@ function DroloGPT(props) {
             
             {/* Header de Drolo GPT */}
             <Header
+                theme={theme}
                 machineName={props.machineName}
                 commitInfo={props.commitInfo}
                 prompt={prompt}
@@ -333,6 +365,9 @@ function DroloGPT(props) {
                 loading={loading}
                 loadInterval={loadInterval}
                 userAvatar={userAvatar}
+
+                // Actions
+                handleChangeTheme={handleChangeTheme}
 
                 // Handlers
                 handleSendPrompt={handleSendPrompt}
@@ -371,5 +406,4 @@ function DroloGPT(props) {
     );
 }
 
-export default DroloGPT;
-
+export default withCookies(DroloGPT);

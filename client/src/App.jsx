@@ -3,6 +3,7 @@ import { createContext, useState, useEffect, /*useCallback, useMemo*/ } from 're
 import { ErrorBoundary } from 'core/errorBoundary';
 import * as api from 'core/api';
 import * as utils from 'core/utils';
+import { CookiesProvider } from 'react-cookie';
 import { withCookies } from 'react-cookie';
 import DroloGPT from 'components/DroloGPT';
 
@@ -73,15 +74,17 @@ const App = (props) => {
 
     // 3. Renders
     return (
-        <AuthContext.Provider value={{
-            isAuthenticated: isAuthenticated,
-            setIsAuthenticated: setIsAuthenticated,
-            toggleAuth: toggleAuth,
-        }}> 
-            <ErrorBoundary key="error-boundary">
-               <DroloGPT  machineName={machineName} commitInfo={commitInfo} />
-            </ErrorBoundary>
-        </AuthContext.Provider>
+        <CookiesProvider>
+            <AuthContext.Provider value={{
+                isAuthenticated: isAuthenticated,
+                setIsAuthenticated: setIsAuthenticated,
+                toggleAuth: toggleAuth,
+            }}> 
+                <ErrorBoundary key="error-boundary">
+                <DroloGPT  machineName={machineName} commitInfo={commitInfo} />
+                </ErrorBoundary>
+            </AuthContext.Provider>
+        </CookiesProvider>
     );
 }
 

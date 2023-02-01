@@ -400,7 +400,6 @@ body {
 .drologpt-app-container {
   width: 100vw;
   height: 100vh;
-  background: #343541;
   background-blend-mode: lighten;
   display: flex;
   flex-direction: column;
@@ -413,8 +412,8 @@ body {
   align-items: flex-end;
   justify-content: flex-end;
   background: transparent!important;
-  position: relative;
-  top: 15px;
+  position: absolute;
+  bottom: 10px;
   opacity: 0.2;
   transition: opacity 0.5s;
   cursor: default;
@@ -532,7 +531,6 @@ body {
   background-size: contain!important;
   background-position: center;
   background-size: 350px 350px!important;
-  background-color: #343541 !important;
   width: 100%;
   height: 100%;
   display: flex;
@@ -553,7 +551,7 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   margin-left: 0vh;
-  bottom: 10vh;
+  bottom: 15vh;
   overflow-y: auto!important;
   max-height: 80vh;
   padding-right: 15px;
@@ -652,6 +650,8 @@ body {
 }
 .chat-prompt {
   width: 100%;
+  top: -45px;
+  position: relative;
 }
 .chat-prompt form {
   width: 100%;
@@ -682,4 +682,27 @@ body {
 .chat-prompt form img {
   width: 30px;
   height: 30px;
+}
+body.light-theme {
+  background: #f8f9fa !important;
+  color: #1a2732 !important;
+}
+body.light-theme .chat-prompt form {
+  background: #f8f9fa !important;
+  color: #1a2732 !important;
+}
+body.light-theme .chat-container .wrapper.is-user {
+  background: #e9ecef69 !important;
+  color: #1a2732 !important;
+}
+body.light-theme .chat-container .wrapper.is-bot {
+  background: #e9ecef69 !important;
+  color: #1a2732 !important;
+}
+body.light-theme .chat-container .wrapper .message {
+  color: #1a2732 !important;
+}
+body.light-theme .drologpt-header {
+  background: #f8f9fa !important;
+  color: #1a2732 !important;
 }
