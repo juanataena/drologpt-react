@@ -21,6 +21,7 @@ export default function ChatContainer (props) {
     const renderStripes = (stripes) => {
         return stripes.map((stripe, index) => {
             // debugger;
+            const isLastStripe = index === stripes.length - 1;
             return (
                 <div id={stripe.uniqueId} key={stripe.uniqueId} className={'wrapper is-' + (stripe.isAi ? 'bot':'user')}>
                     <div className="chat">
@@ -30,7 +31,8 @@ export default function ChatContainer (props) {
                         </div>
                         <div className="message">
                             <b>{stripe.isAi ? 'DroloGPT' : 'user'}: </b>
-                            {stripe.isAi && <div className="chat-stripe-loader"></div>}
+                            {isLastStripe ? '' : stripe.value}
+                            {isLastStripe && stripe.isAi && <div className="chat-stripe-loader"></div>}
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ export function typeText(stripe, loadInterval, setLoadInterval) {
             loader.innerHTML += text.charAt(index)
             index++
         } else {
-            clearInterval(loadInterval)
+            setLoadInterval(null);
         }
     }, 20)
     setLoadInterval(loadInterval);
@@ -45,7 +45,6 @@ export function loader(uniqueId, loadInterval, setLoadInterval) {
         return;
     }
     // console.log ("Found element with ID: ", uniqueId)
-    // debugger;
     const loader = element.querySelector('.chat-stripe-loader');
     loader.textContent = ''
 
@@ -59,28 +58,6 @@ export function loader(uniqueId, loadInterval, setLoadInterval) {
         }
     }, 300);
     setLoadInterval(loadInterval);
-}
-
-export function loaderStop (loadInterval) {
-    clearInterval(loadInterval);
-}
-
-/**
- * Type text effect
- * @param {HTMLElement} element 
- * @param {String} text 
- */
-export function typeTextOld(element, text) {
-    let index = 0
-
-    let interval = setInterval(() => {
-        if (index < text.length) {
-            element.innerHTML += text.charAt(index)
-            index++
-        } else {
-            clearInterval(interval)
-        }
-    }, 20)
 }
 /**
  * 

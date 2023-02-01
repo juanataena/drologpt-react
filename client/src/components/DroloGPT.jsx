@@ -85,7 +85,7 @@ function DroloGPT(props) {
                     const uniqueId = utils.generateUniqueId()
                     chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
                     const messageDiv = document.getElementById(uniqueId)
-                    clearInterval(loadInterval)
+                    setLoadInterval(null);
                     messageDiv.innerHTML = "Something went wrong"
                     
                 });
@@ -118,12 +118,6 @@ function DroloGPT(props) {
                 } else {
                     console.log("no cargando. Escribiendo...");
                     utils.typeText(lastStripe, loadInterval, setLoadInterval);
-
-                    // if (loadInterval) {
-                    //     clearInterval(loadInterval);
-                    //     setLoadInterval(null);
-
-                    // }
                 }
             } 
 
@@ -157,13 +151,23 @@ function DroloGPT(props) {
                 setLoading(false);
 
                 if (loadInterval) {
-                    clearInterval(loadInterval);
                     setLoadInterval(null);
                 }
             }
     
         }
     }, [data]);
+
+    // React Effect for LOADINTERVAL state change
+    useEffect(() => {
+        console.log("LoadInterval: ", loadInterval);
+
+        // If there is no load interval, clear it
+        if (!loadInterval) {
+            clearInterval(loadInterval);
+        }
+    }, [loadInterval]);
+
 
     // HANDLER FUNCTIONS
     const handleDeleteStripes = () => {
@@ -180,7 +184,6 @@ function DroloGPT(props) {
 
         // Clear interval
         if (loadInterval) {
-            clearInterval(loadInterval);
             setLoadInterval(null);
         }
         
