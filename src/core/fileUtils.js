@@ -1,6 +1,5 @@
 import fs from 'fs';
 import Handlebars from 'handlebars';
-import Quote from 'inspirational-quotes';
 import codemirror from 'codemirror-node';
 import {toJson} from 'really-relaxed-json';
 
@@ -27,7 +26,7 @@ export const getHtmlContentFor = (who, bestBTCKeysArray, configAsString, date) =
   var template = Handlebars.compile(htmlContent);
 
   // Get Quote of the day
-  const footerQuote = Quote.getQuote();
+  const footerQuote = "Sangra";
   const quote = {  
     "text":"sangra la napia por la pestaña",
     "author":"Ufarly"
