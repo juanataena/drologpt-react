@@ -13,8 +13,10 @@ import Fade from '@mui/material/Fade';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-
-
+import InfoIcon from '@mui/icons-material/Info';
+import PreviewIcon from '@mui/icons-material/Preview';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -86,9 +88,42 @@ export default function Settings (props) {
 
     const renderInterface = () => {
         return (
-            <div>
-                <h1 className="settings-header">Interface</h1>
-            </div>
+            <>
+                <div>
+                    <h1 className="settings-header">Interface</h1>
+                </div>
+                <div className="settings-section">
+                    <div className="settings-section-header">
+                        <h2 className="settings-section-header-text">Theme</h2>
+                    </div>
+                    <div className="settings-section-content">
+                        <div className="settings-section-content-item">
+                            <div className="settings-section-content-item-text">
+                                <p>Dark</p>
+                            </div>
+                            <div className="settings-section-content-item-switch">
+                                <label className="switch">
+                                    <input type="checkbox" />
+                                    <span className="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div className="settings-section-content-item">
+                            <div className="settings-section-content-item-text">
+                                <p>Light</p>
+                            </div>
+                            <div className="settings-section-content-item-switch">
+                                <label className="switch">
+                                    <input type="checkbox" />
+                                    <span className="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </>
         );
     }
 
@@ -134,9 +169,6 @@ export default function Settings (props) {
             </div>
         );
     }
-
-
-
     const renderSettingsWindow = () => {
         return (
             <Fade in={props.openSettings}>
@@ -151,10 +183,11 @@ export default function Settings (props) {
                             aria-label="Vertical tabs example"
                             sx={{ borderRight: 1, borderColor: 'divider' }}
                         >
-                            <Tab label="General" />
-                            <Tab label="OpenAI API" />
-                            <Tab label="Interface" />
-                            <Tab label="About" />
+                            
+                            <Tab icon={<SettingsApplicationsIcon className="header-icon"/>} label="General" />
+                            <Tab icon={<PsychologyIcon className="header-icon"/>} label="OpenAI API" />
+                            <Tab icon={<PreviewIcon className="header-icon"/>} label="Interface" />
+                            <Tab icon={<InfoIcon className="header-icon"/>} label="About" />
                         </Tabs>
                         <div className="tab-panels">
                         <TabPanel className="tab-panel" value={value} index={0}>

@@ -730,6 +730,15 @@ body.light-theme .drologpt-header {
   height: 100%;
   width: 40%;
 }
+.settings-box .tabs-scroller .MuiButtonBase-root {
+  display: flex;
+  flex-direction: row;
+}
+.settings-box .tabs-scroller .MuiButtonBase-root svg {
+  position: relative;
+  top: 3px;
+  left: -10px;
+}
 .settings-box .tab-panels {
   display: inline-flex;
   height: 100%;
