@@ -1,3 +1,10 @@
+import * as React from 'react';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 import Fab from '@mui/material/Fab';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
@@ -10,8 +17,18 @@ import SaveIcon from '@mui/icons-material/Save';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+
+import SettingsComponent from '../Settings';
+
 export default function Header (props) {
 
+
+
+      
+      const [openSettings, setOpenSettings] = React.useState(false);
+      const handleOpenSettings = () => setOpenSettings(true);
+      const handleCloseSettings = () => setOpenSettings(false);
+    
 
     // Renderers
     /**
@@ -51,8 +68,8 @@ export default function Header (props) {
                 <FileUploadIcon />
                 </Fab>
             </Tooltip>
-            <Tooltip className="icon-bar" title="Delete" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
-                <Fab color="grey" size="small" aria-label="delete" onClick={props.handleDeleteStripes}>
+            <Tooltip className="icon-bar" title="Settings" placement='left' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+                <Fab color="grey" size="small" aria-label="Settings" onClick={handleOpenSettings}>
                     <SettingsIcon />
                 </Fab>
             </Tooltip>
@@ -103,7 +120,6 @@ export default function Header (props) {
             </div>
         );
     }
-
     // Render
     return (
         <>
@@ -118,6 +134,16 @@ export default function Header (props) {
             <div className="drologpt-commit">
                 {renderCommitInfo()}
             </div>
+            <div className="drologpt-settings">
+                <SettingsComponent
+                    openSettings={openSettings}
+                    handleCloseSettings={handleCloseSettings}
+                    handleTheme={props.theme}
+                    setTheme={props.setTheme}
+                    
+                />
+            </div>
+
         </>
     );
 }

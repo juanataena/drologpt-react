@@ -24,12 +24,17 @@ export function typeText(stripe, loadInterval, setLoadInterval) {
         console.log ("No element found with ID: ", stripe.uniqueId)
         return;
     }
-    const text = stripe.value;
+    const text = stripe.value != '' ? stripe.value : '...';
     loadInterval = setInterval(() => {
         if (index < text.length) {
             loader.innerHTML += text.charAt(index)
-            index++
+            index++;
+
+            // Scroll to bottom
+            scrollToBottom();
+
         } else {
+            clearInterval(loadInterval);
             setLoadInterval(null);
         }
     }, 20)
@@ -101,23 +106,18 @@ export function scrollToBottom () {
     messages.scrollTop = messages.scrollHeight;
 }
 
-export function sendFakeRequest (setData, setLoading) {
+export function sendFakeRequest (setData, setLoading, setLoadInterval) {
+
         // Fake response
         setTimeout(() => {
-
-            const fakeData = {
-                bot: "Sangra mucho"
-                // bot:"\n\nThe word \"eo\" is not a word in English. It is a root word in Esperanto, an international language created in the late 19th century. In Esperanto, \"eo\" means \"of or belonging to.\""
-            }
-
-            
+ 
             // Set the data
-            setData(fakeData);
+            setData({bot: "Sangra mucho"});
             setLoading(false);
-}, 2000);}
 
+        }, 1500);
 
-
+}
 
 /////////////
 

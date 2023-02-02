@@ -29,15 +29,6 @@ function DroloGPT(props) {
     const [userAvatar, setUserAvatar] = useState();
     const [theme, _setTheme] = useState(cookies.get('theme') || 'light');
 
-    // State Cookie Functions
-    const setTheme = (theme) => {
-
-        // Set the theme in the cookies
-        const { cookies } = props;
-        cookies.set('theme', theme, { path: '/' });
-
-        _setTheme(theme);
-    }
     // Setup FIRST TIME
     useEffect(() => {
 
@@ -47,29 +38,19 @@ function DroloGPT(props) {
         });
     
         // Get prompt from the server
-        const stramboticHelloPrompt = "Say hello in a strambotic way";
-        api.promptOpenAI(stramboticHelloPrompt).then( (response) => {
-            console.log("Prompt: %o", JSON.parse(response));
-            const drologptStripe = {isAi: true, value: JSON.parse(response).bot, uniqueId: utils.generateUniqueId()};
-            
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-            setStripes([...stripes, drologptStripe]);
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-        
-        }).catch(utils.showError);
-        
+        promptDroloGPT("Say hello in a strambotic way");
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     // React Effect for PROMPT state change
     useEffect(() => {
         console.log("Prompt: ", prompt);
-        if (prompt) {
-
-                
+        if (prompt) {    
             // Check if we have the comodin prompt
             if (prompt === "¿Cuánto sangra?") {
                 handleSendPrompt();
             } else {
+                // Nothing to do
             }
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,7 +61,7 @@ function DroloGPT(props) {
         if (loading) {
 
             // Remove the last stripe (the one with the loader), if any
-            if (stripes.length > 0) {
+            if (stripes.length >= 0) {
 
                 // For each stripe check if isAi is true and the value is " ". If so, remove it
                 const nonLoadingStripes = stripes.filter(stripe => !(stripe.isAi && stripe.value === " "));
@@ -88,13 +69,17 @@ function DroloGPT(props) {
                 // Add a new stripe loading stripe
                 const newStripe = {isAi: true, value: " ", uniqueId: utils.generateUniqueId()};
                 const newStripes = [...nonLoadingStripes, newStripe];
-                setStripes(newStripes);            
+                setStripes(newStripes);         
+                setPrompt("");
+                // debugger;   
             }
 
             // Check if we have the comodin prompt
             if (prompt === "¿Cuánto sangra?") {
-                utils.sendFakeRequest(setData, setLoading);
+                utils.sendFakeRequest(setData, setLoading, setLoadInterval);
             } else {
+
+                
                 api.promptOpenAI(prompt).then( (response) => {
                     utils.log('1. OpenAI Prompted', 'MAIN_END', response);
                     setData(JSON.parse(response))
@@ -104,6 +89,8 @@ function DroloGPT(props) {
                     const uniqueId = utils.generateUniqueId()
                     chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
                     const messageDiv = document.getElementById(uniqueId)
+                    console.log('a');
+                    clearInterval(loadInterval);
                     setLoadInterval(null);
                     messageDiv.innerHTML = "Something went wrong"
                     
@@ -172,6 +159,7 @@ function DroloGPT(props) {
                 setLoading(false);
 
                 if (loadInterval) {
+                    clearInterval(loadInterval);
                     setLoadInterval(null);
                 }
             }
@@ -199,6 +187,23 @@ function DroloGPT(props) {
     }, [loadInterval]);
 
 
+    // CORE FUNCTIONS
+    // State Cookie Functions
+    const setTheme = (theme) => {
+
+        // Set the theme in the cookies
+        const { cookies } = props;
+        cookies.set('theme', theme, { path: '/' });
+
+        _setTheme(theme);
+    }
+    const promptDroloGPT = (prompt) => {
+        // Set the prompt in the state
+        setPrompt(prompt);
+        // Set loading to true
+        setLoading(true);
+    }
+    
     // HANDLER FUNCTIONS
     const handleDeleteStripes = () => {
 
@@ -214,6 +219,7 @@ function DroloGPT(props) {
 
         // Clear interval
         if (loadInterval) {
+            clearInterval(loadInterval);
             setLoadInterval(null);
         }
         
@@ -256,6 +262,22 @@ function DroloGPT(props) {
         }
     }
 
+    const generatePromptAndSend = (prompt) => {
+
+        // If there is no prompt, no post
+        if (!prompt) {
+            return;
+        }
+
+        // Log the prompt
+        console.log("Prompt Before: ", prompt);
+        const uniqueId = utils.generateUniqueId();
+        const newStripe = {isAi: false, value: prompt, uniqueId: uniqueId};
+        
+        setStripes([...stripes, newStripe]);
+        setLoading(true);
+    }
+
     // ACTION BUTTON FUNCTIONS
     const handleSaveAsHTML = () => {
 
@@ -282,7 +304,19 @@ function DroloGPT(props) {
         console.log("Saving as PNG...");
         const chatContainer = document.querySelector('.chat-stripes')
 
-        
+        // Add a style object class to the container to prepare it for the screenshot
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .drologpt-export {
+                background-color: pink!important;
+                padding: 1rem;
+                border-radius: 1rem;
+                box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+            }
+        `;
+        chatContainer.appendChild(style);
+
+
         html2canvas(chatContainer).then(canvas => {
 
             const imgData = canvas.toDataURL('image/png')
@@ -290,10 +324,22 @@ function DroloGPT(props) {
             const a = document.createElement('a')
             const filenameWithDate = `chat_${new Date().toISOString().split('.')[0].replaceAll('T', ' at ')}.png`
             a.download = filenameWithDate
-
             a.href = imgData
-            a.click()
-            URL.revokeObjectURL(imgData)
+            
+            // click with callback 
+            a. click(function() {
+
+                URL.revokeObjectURL(imgData)
+            
+                const prompt = "File saved.";
+                generatePromptAndSend(prompt);
+
+                // Remove the style object class
+                chatContainer.removeChild(style);
+    
+            });
+            
+            
         });        
     }
     const handleSaveAsJson = () => {
