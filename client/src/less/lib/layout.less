@@ -182,17 +182,18 @@ body {
 // 3. Chat CSS
 .chat-container {
 
-    // border: 2px solid green; 
-    justify-content: center !important;
+    .chat-background {
+        border: 2px solid green; 
+        justify-content: center !important;
 
-    // Add a background image in the middle of the page
-    background-image: url(../assets/background.png);
-    background-repeat: no-repeat;
-    background-size: contain !important;
-    background-position: center;
-    background-size: 350px 350px !important;
-    // background-color: @background-color!important;
-
+        // Add a background image in the middle of the page
+        background-image: url(../assets/background.png);
+        background-repeat: no-repeat;
+        background-size: contain !important;
+        background-position: center;
+        background-size: 350px 350px !important;
+        // background-color: @background-color!important;
+    }
     .chat-stripes {
         place-content: flex-start;
         flex-flow: wrap;
@@ -490,7 +491,7 @@ body.light-theme {
         .MuiButtonBase-root {
             display: flex;
             flex-direction: row;
-            place-self: self-end;
+            // place-self: self-end;
 
             svg {
                 // border: 2px solid;
@@ -596,4 +597,16 @@ body.light-theme {
 
         }
     }
+}
+
+// 10. Bot Selector CSS
+.bot-selector-container {
+    // border: 2px solid red!important;
+    padding: 20px;
+
+    select {
+        position: relative;
+        top: -3px;
+    }
+
 }

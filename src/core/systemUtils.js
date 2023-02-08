@@ -1,31 +1,7 @@
 import { exec } from "child_process";
 import * as utils from './utils';
-
-export const restartBot = (who) => {
-
-  // Execute system command
-  const cmd = process.env.COMMANDS_TO_EXECUTE
-  exec(cmd, (err, stdout, stderr) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log(stdout);
-  });
-}
-export const printResultsFile = (who) => {
-
-  // Execute system command
-  const cmd = "pygmentize -g " + 'results.html';
-  exec(cmd, (err, stdout, stderr) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log(stdout);
-  });
-}
-
+import  * as fileUtils from './fileUtils';
+// App
 export const getMachineNameFromSystem = () => {
 
     // Execute system command synchronously
@@ -44,11 +20,19 @@ export const getCommitInfoFromSystem = () => {
     const commitInfo = execSync(cmd); 
     return commitInfo;
 }
-export const getNodesTreeFromFile = () => {
 
-    // 1. Get nodes json from local file
-    const nodes = utils.getNodesJson();
+// Bots
+export const getBotsFromSystem = () => {
+    
+        // Get all the bots from the folder data/models
+        const bots = fileUtils.getFilesFromFolder(__dirname+'/../data/models');
 
-    return nodes;
-}
+        // Read each file and convert it to JSON
+        const botsArray = [];
+        bots.forEach(bot => {
+            const botJson = fileUtils.readFile(__dirname+'/../data/models/'+bot);
+            botsArray.push(botJson);
+        });
+        return botsArray;
+    }
 

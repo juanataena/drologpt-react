@@ -1,23 +1,12 @@
 import React, { useEffect } from 'react';
-import sangraButton from 'assets/bloody.png';
-import Tooltip from '@mui/material/Tooltip';
-import Fade from '@mui/material/Fade';
-
 
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 import OpenAIParameters from 'components/OpenAIParameters';
 import Conversations from 'components/Conversations';
+import BotsSelector from 'components/BotsSelector';
 
 export default function Drawer (props) {
 
@@ -52,11 +41,22 @@ export default function Drawer (props) {
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
       >
-        {anchor === 'left' ? <Conversations {...props} /> : <OpenAIParameters  {...props} />}
+        {anchor === 'left' ? renderConversations() : renderOpenAIParameters()}
 
     </Box>
     );
+    function renderConversations(){
+        return <Conversations {...props} />
+    }
+    function renderOpenAIParameters(){
+        return (<>
+            <BotsSelector {...props} />
+            <OpenAIParameters  {...props} />
 
+        </>
+        
+        )
+    }
     // RENDERS
     /**
      * Render prompt

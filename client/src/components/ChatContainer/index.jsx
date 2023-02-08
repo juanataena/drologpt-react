@@ -62,6 +62,7 @@ export default function ChatContainer (props) {
 
     return (
         <div id="chat_container" className="chat-container" >
+            <div className="chat-background"></div>
             {!HAS_STRIPES && renderEmptyChat()}
             {HAS_STRIPES && renderChat(stripes)}
         </div>

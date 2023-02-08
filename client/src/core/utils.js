@@ -3,8 +3,6 @@ import { ConsoleGray, ConsoleGrayDS, ConsoleGrayJS, ConsoleGrayJSDS, ConsoleOran
 import { createAvatar } from '@dicebear/core';
 import * as avatarCollections from '@dicebear/collection';
 
-import user from 'assets/user.svg';
-import bot from 'assets/favicon.png';
 // Intervals for loading and typing text
 
 /**
@@ -263,27 +261,6 @@ export function showError(err) {
       return new Date().toISOString().split('.')[0];
   }
   
-  
-  
-export function chatStripe(isAi, value, uniqueId) {
-    
-    return (
-        `
-        <div class="wrapper ${isAi && 'ai'}">
-            <div class="chat">
-                <div class="profile">
-                    <img 
-                      src=${isAi ? bot : user} 
-                      alt="${isAi ? 'bot' : 'user'}" 
-                    />
-                </div>
-                <div class="message" id=${uniqueId}>${value}</div>
-            </div>
-        </div>
-    `
-    )
-}
-
 export function dataURItoBlob (dataUril) {
 
     var byteString = atob(dataUril.split(',')[1]);

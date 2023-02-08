@@ -41,6 +41,10 @@ function DroloGPT(props) {
     const [presence_penalty, _setPresence_penalty] = useState(cookies.get("dgpt_presence_penalty") || 0);
     const [max_tokens, _setMax_tokens] = useState(cookies.get("dgpt_max_tokens") || 100);
 
+    // Bots
+    const [bots, setBots] = useState([]);
+    const [activeBot, _setActiveBot] = useState(null);
+
     // Setup FIRST TIME
     useEffect(() => {
 
@@ -50,8 +54,47 @@ function DroloGPT(props) {
         });
     
         // Get prompt from the server
-        promptDroloGPT("Say hello in a strambotic way");
+        // promptDroloGPT("Say hello in a strambotic way");
 
+
+        // Get the bots from the server
+        api.getBots().then( bots => {
+
+            // Const bots as JSON
+            let botsAsJson = [];
+            // See if bots are JSON
+            if (typeof bots === "string") {
+                botsAsJson = JSON.parse(bots);
+
+                // Parse each element in the array
+                botsAsJson = botsAsJson.map(bot => {
+                    return JSON.parse(bot);
+                });
+                
+            }
+
+            // Set the bots and the active bot (or the one in cookies or the first one, if any)
+            // debugger;
+            if (botsAsJson) {
+                setBots(botsAsJson);
+
+                // Set the active bot, if any. Look first into the cookies
+                const activeBotId = cookies.get("dgpt_active_bot");
+
+                // If we have a bot id in the cookies, look for it in the bots array
+                if (activeBotId) {
+                    const activeBot = botsAsJson.find(bot => bot.id === activeBotId);
+                    if (activeBot) {
+                        setActiveBot(activeBot);
+                    }
+                } else {
+                    // If we don't have a bot id in the cookies, set the first one
+                    if (botsAsJson.length > 0) {
+                        setActiveBot(botsAsJson[0]);
+                    }
+                }
+            }
+        } ).catch(utils.showError);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     // React Effect for PROMPT state change
@@ -99,7 +142,7 @@ function DroloGPT(props) {
                     utils.showError();
                     const chatContainer = document.querySelector('#chat_container')
                     const uniqueId = utils.generateUniqueId()
-                    chatContainer.innerHTML += utils.chatStripe(true, " ", uniqueId)
+                    chatContainer.innerHTML += "Something went wrong"
                     const messageDiv = document.getElementById(uniqueId)
                     console.log('a');
                     clearInterval(loadInterval);
@@ -198,6 +241,27 @@ function DroloGPT(props) {
         }
     }, [loadInterval]);
 
+    // React Effect for bots state change
+    useEffect(() => {
+        console.log("Bots: ", bots);
+
+        if (bots.length > 0) {
+            // If there's no active bot, set the default one
+            if (!activeBot) {
+                setActiveBot(bots[0]);
+            }
+        }
+    }, [bots]);
+
+    // React Effect for activeBot state change
+    useEffect(() => {
+        console.log("ActiveBot: ", activeBot);
+
+        if (activeBot) {
+            // Set the bot name in the cookies
+            // cookies.set("dgpt_bot", activeBot.name);
+        }
+    }, [activeBot]);
 
     // CORE FUNCTIONS
     // State Cookie Functions
@@ -255,6 +319,10 @@ function DroloGPT(props) {
     const setMax_tokens = (value) => {
         _setMax_tokens(value);
         cookies.set("dgpt_max_tokens", value);
+    }
+    const setActiveBot = (bot) => {
+        _setActiveBot(bot);
+        cookies.set("dgpt_active_bot", bot.id);
     }
     
     const promptDroloGPT = (prompt) => {
@@ -336,7 +404,13 @@ function DroloGPT(props) {
         setStripes([...stripes, newStripe]);
         setLoading(true);
     }
+    const handleBotChange = (e) => {
 
+        e.preventDefault();
+        const botId = e.target.value;
+        const bot = bots.find(bot => bot.id === botId);
+        setActiveBot(bot);
+    }
     // ACTION BUTTON FUNCTIONS
     const handleSaveAsHTML = () => {
 
@@ -528,6 +602,7 @@ function DroloGPT(props) {
             />
 
             <Drawer
+                // App
                 theme={theme}
                 showHeader={showHeader}
                 machineName={props.machineName}
@@ -541,6 +616,12 @@ function DroloGPT(props) {
                 setTheme={setTheme}
                 setDebugHeader={setDebugHeader}
 
+                // OpenAI
+
+                // Bots
+                activeBot={activeBot}
+                bots={bots}
+
                 // Actions
                 handleChangeTheme={handleChangeTheme}
 
@@ -551,6 +632,7 @@ function DroloGPT(props) {
                 handleSaveAsPng={handleSaveAsPng}
                 handleSaveAsJson={handleSaveAsJson}
                 handleImportJSON={handleImportJSON}
+                handleBotChange={handleBotChange}
             />
 
         </div>

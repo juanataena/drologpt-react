@@ -1,17 +1,12 @@
 import React, { useEffect } from 'react';
-import sangraButton from 'assets/bloody.png';
 import logo from 'assets/favicon.png';
-import Tooltip from '@mui/material/Tooltip';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Switch from '@mui/material/Switch';
 import Fade from '@mui/material/Fade';
 
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import InfoIcon from '@mui/icons-material/Info';
@@ -139,7 +134,7 @@ export default function Settings (props) {
 
                 {/* <!-- sangra button --> */}
                 <div className="sangra-button">
-                    <img src = {sangraButton} alt="sangra button" />
+                    <img src="img/assets/bloody.png" alt="sangra button" />
 
                 </div>
 

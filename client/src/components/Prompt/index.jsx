@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import sangraButton from 'assets/bloody.png';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 
@@ -108,7 +107,7 @@ export default function Prompt (props) {
            <form>
            <Tooltip title="¿Cuánto sangra?" placement='top' TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
             <button onClick={props.handleSendSangraPrompt}>
-                    <img src={sangraButton} alt="¿Cuánto sangra?" />
+                    <img src="img/assets/bloody.png" alt="¿Cuánto sangra?" />
                 </button>
             </Tooltip>
                 <textarea name="prompt" rows="1" cols="1"

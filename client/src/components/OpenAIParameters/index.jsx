@@ -94,7 +94,7 @@ export default function OpenAIParameters (props) {
 
 
     return (
-        <div id="chat_container" className="chat-container" >
+        <div id="chat_container" className="openai-parameters-container" >
             {renderOpenAIParameters()}
         </div>
     );

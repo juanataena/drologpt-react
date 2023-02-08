@@ -3,18 +3,13 @@ import * as _C from '../constants';
 import * as resolvers from '../resolvers';
 import * as systemUtils from '../core/systemUtils';
 import * as openAIUtils from '../core/openAIUtils';
-// import * as utils from '../core/utils';
-// import * as freqtradeCommandUtils from '../core/freqtradeCommandUtils';
-// import * as fileUtils from '../core/fileUtils';
-// import * as sqlite3Utils from '../core/sqlite3Utils';
 
-// import * as chartDataUtils from '../core/chartDataUtils';
-// Logger
 // Logger
 var log4js = require("log4js");
 var logger = log4js.getLogger();
 logger.level = "info";
 
+// App
 export function getMachineName(req, res) {
 
     logger.info('Getting machine name...');
@@ -23,7 +18,16 @@ export function getMachineName(req, res) {
     resolvers.getMachineNameResponse(req, res, machineName);
 
 }
+export function getCommitInfo(req, res) {
 
+    logger.info('Getting commit info...');
+    const commitInfo = systemUtils.getCommitInfoFromSystem();
+    logger.info('Commit info retrieved OK: %s', commitInfo);
+    resolvers.getCommitInfoResponse(req, res, commitInfo);
+
+}
+
+// OpenAI
 export async function promptOpenAI(req, res) {
 
     logger.info('Prompting OpenAI...');
@@ -40,11 +44,49 @@ export async function promptOpenAI(req, res) {
     resolvers.promptOpenAIResponse(req, res, openAIResponse);
 }
 
-export function getCommitInfo(req, res) {
+// Bots
+export function getBots(req, res) {
 
-    logger.info('Getting commit info...');
-    const commitInfo = systemUtils.getCommitInfoFromSystem();
-    logger.info('Commit info retrieved OK: %s', commitInfo);
-    resolvers.getCommitInfoResponse(req, res, commitInfo);
+    logger.info('Getting bots...');
+    const bots = systemUtils.getBotsFromSystem();
+    logger.info('Bots retrieved OK. Bots: %s', bots);
+    resolvers.getBotsResponse(req, res, bots);
 
 }
+export function getBot(req, res) {
+
+    logger.info('Getting bot...');
+    const bot = req.body.bot;
+    const botInfo = systemUtils.getBotFromSystem(bot);
+    logger.info('Bot retrieved OK. Bot: %s', botInfo);
+    resolvers.getBotResponse(req, res, botInfo);
+
+}
+export function createBot(req, res) {
+
+    logger.info('Creating bot...');
+    const bot = req.body.bot;
+    const botInfo = systemUtils.createBotFromSystem(bot);
+    logger.info('Bot created OK. Bot: %s', botInfo);
+    resolvers.createBotResponse(req, res, botInfo);
+
+}
+export function updateBot(req, res) {
+
+    logger.info('Updating bot...');
+    const bot = req.body.bot;
+    const botInfo = systemUtils.updateBotFromSystem(bot);
+    logger.info('Bot updated OK. Bot: %s', botInfo);
+    resolvers.updateBotResponse(req, res, botInfo);
+
+}
+export function deleteBot(req, res) {
+
+    logger.info('Deleting bot...');
+    const bot = req.body.bot;
+    const botInfo = systemUtils.deleteBotFromSystem(bot);
+    logger.info('Bot deleted OK. Bot: %s', botInfo);
+    resolvers.deleteBotResponse(req, res, botInfo);
+
+}
+

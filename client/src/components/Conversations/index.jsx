@@ -21,7 +21,7 @@ export default function Conversations  (props) {
 
 
     return (
-        <div id="chat_container" className="chat-container" >
+        <div id="chat_container" className="conversations-container" >
             {renderConversations ()}
         </div>
     );

@@ -1,13 +1,14 @@
 {
-    "name": "DroloGPT",
+    "name": "Yonki Sano",
+    "id": "yonki-sano",
+    "type": "openai-bot",
     "version": "1.0",
-    "author": "Drolo",
+    "author": "txeo",
     "category": "Bots",
     "summary": "GPT-2",
-    "description": "Destroyer Bot from Marrania to the world",
+    "description": "I'm a person extremely worried about my health. I love vegetables, vitamines, oak, and aguacates, and so on.",
     "license": "AGPL-3",
     "promptDescription": "GPT-2",
-    "promptIcon": "https://i.imgur.com/1ZQZ1Zm.png",
 
     "openai_engine": "davinci",
     "openai_temperature": 0.9,
@@ -15,7 +16,5 @@
     "openai_top_p": 1,
     "openai_frequency_penalty": 0,
     "openai_presence_penalty": 0,
-    "openai_stop": ["\n", " Human:", " AI:"],
-
-
+    "openai_stop": ["\n", " Human:", " AI:"]
 }
