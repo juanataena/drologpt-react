@@ -5,8 +5,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: @font-family!important;
-    overflow: hidden!important;
+    font-family: @font-family !important;
+    overflow: hidden !important;
 }
 
 body {
@@ -14,26 +14,26 @@ body {
 
     .MuiTooltip-tooltip {
         // border: 2px solid red!important;
-        font-size: 20px!important;
-        font-weight: bold!important;
+        font-size: 20px !important;
+        font-weight: bold !important;
         position: relative;
         top: 3px;
         // background-color: #11111111!important;
-        background-color: transparent!important;
-    
-        &.MuiTooltip-tooltipPlacementLeft {
+        background-color: transparent !important;
+
+        &.MuiTooltip-tooltipPlacementLeft, &.MuiTooltip-tooltipPlacementRight, &.MuiTooltip-tooltipPlacementTop, &.MuiTooltip-tooltipPlacementBottom {
             color: #0288d1 !important;
         }
-    
+
         .icon-bar {
-            border: 2px solid red!important;
-            font-size: 20px!important;
-            font-weight: bold!important;
+            border: 2px solid red !important;
+            font-size: 20px !important;
+            font-weight: bold !important;
             color: #0288d1 !important;
             position: relative;
             top: 3px;
             // background-color: #11111111!important;
-            background-color: transparent!important;
+            background-color: transparent !important;
         }
     }
 }
@@ -55,7 +55,7 @@ body {
 
 // 2. HEADER CSS
 .drologpt-header {
-    
+
     width: 100%;
     height: 60px;
     // background: @header-background-color;
@@ -66,17 +66,18 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    
+
 
     /*position: absolute;
     right: 0;
     margin: 2%;
     opacity: .0;*/
-    transition : opacity 0.5s;
+    transition: opacity 0.5s;
 
     &:hover {
         opacity: 1;
     }
+
     .logo {
         width: 100px;
         height: 100%;
@@ -118,6 +119,7 @@ body {
             &:hover {
                 background: @header-background-color-hover;
             }
+
             img {
                 width: 100%;
                 height: 100%;
@@ -125,51 +127,71 @@ body {
             }
         }
     }
-    // Floating, with vertical buttons on the right side of the screen 
-    .action-button-bar {
-        // border: 2px solid green;
-        position: absolute;
-        place-content: center;
-        right: 0;
-        margin: 2%;
-        opacity: 1.0;
-        transition : opacity 0.5s;
-        height: 90vh;
-        display: flex;
-        flex-direction: column;
-        place-self: flex-start;
+}
+
+// Floating, with vertical buttons on the right side of the screen 
+.action-button-bar {
+    // border: 2px solid green;
+    width: 100%;
+    max-width: 1280px;
+    height: inherit;
+
+    position: relative;
+    place-content: flex-end;
+    place-content: top;
+    // right: 0;
+    top: 0px;
+    margin: 0 auto;
+    opacity: 1.0;
+    transition: opacity 0.5s;
+    display: flex;
+    flex-direction: row;
+    place-self: flex-start;
+    // width: auto;
+    // border: 2px solid red;
+    z-index: 0;
+    // width: 400px;
+
+    // Hide on the right partially and show only on hover
+    &:hover {
+        opacity: 1;
+        // background: @header-background-color-hover;
+    }
 
 
-        button {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 10px;
-            transition: all 0.3s ease-in-out;
-            opacity: .5;
-            &:hover {
-                opacity: 1;
-                // background: @header-background-color-hover;
-            }
+
+    button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 10px;
+        transition: all 0.3s ease-in-out;
+        opacity: .5;
+        place-self: self-start;
+
+        &:hover {
+            opacity: 1;
+            // background: @header-background-color-hover;
         }
     }
 }
+
 // 3. Chat CSS
 .chat-container {
 
     // border: 2px solid green; 
-    justify-content: center!important;
+    justify-content: center !important;
 
-        // Add a background image in the middle of the page
-        background-image: url(../assets/background.png);
-        background-repeat: no-repeat;
-        background-size: contain!important;
-        background-position: center;
-        background-size: 350px 350px!important;
-        // background-color: @background-color!important;
+    // Add a background image in the middle of the page
+    background-image: url(../assets/background.png);
+    background-repeat: no-repeat;
+    background-size: contain !important;
+    background-position: center;
+    background-size: 350px 350px !important;
+    // background-color: @background-color!important;
 
     .chat-stripes {
         place-content: flex-start;
@@ -180,16 +202,16 @@ body {
         max-width: 1280px;
         margin: 0 auto;
         margin-left: -0vh;
-    
+
         bottom: 15vh;
         //position: relative;
-        overflow-y: auto!important;
+        overflow-y: auto !important;
         // The max height of the chat container
         max-height: 80vh;
         padding-right: 15px;
-        
+
         .cool-scrollbar-2;
-        
+
     }
 
 
@@ -226,6 +248,7 @@ body {
 
         &.is-user {
             background: @user-background-color;
+
             .message {
                 b {
                     color: rgb(170, 213, 184) !important;
@@ -251,8 +274,10 @@ body {
             color: whitesmoke;
             opacity: .3;
             position: relative;
-            top: 5px;;
+            top: 5px;
+            ;
         }
+
         .profile {
             width: 36px;
             height: 36px;
@@ -325,6 +350,7 @@ body {
 
     }
 }
+
 // 4. Prompt CSS
 .chat-prompt {
     width: 100%;
@@ -371,44 +397,45 @@ body {
         }
     }
 }
+
 // 5. Theme (only light theme)
 body.light-theme {
     // border: 2px solid red!important;
-    background: @background-color-light!important;
-    color: @text-color-light!important;
-        
-    .chat-container {
-    }
+    background: @background-color-light !important;
+    color: @text-color-light !important;
+
+    .chat-container {}
 
     .chat-prompt {
         form {
-            background: @ia-background-color-light!important;
-            color: @text-color-light!important;
-            }
+            background: @ia-background-color-light !important;
+            color: @text-color-light !important;
+        }
     }
 
     .chat-container .wrapper {
         &.is-user {
-            background: @user-background-color-light!important;
-            color: @text-color-light!important;
-            }
+            background: @user-background-color-light !important;
+            color: @text-color-light !important;
+        }
 
         &.is-bot {
-            background: @ia-background-color-light!important;
-            color: @text-color-light!important;
-            }
-        
+            background: @ia-background-color-light !important;
+            color: @text-color-light !important;
+        }
+
         .message {
-            color: @text-color-light!important;
+            color: @text-color-light !important;
         }
     }
 
     .drologpt-header {
-        background: @background-color-light!important;
-        color: @text-color-light!important;
+        background: @background-color-light !important;
+        color: @text-color-light !important;
     }
-   
+
 }
+
 // 6. Commit CSS
 .drologpt-commit {
     background: @header-background-color;
@@ -416,13 +443,14 @@ body.light-theme {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    background: transparent!important;
+    background: transparent !important;
     position: absolute;
     bottom: 10px;
     opacity: 0.2;
-    transition : opacity 0.5s;
+    transition: opacity 0.5s;
     cursor: default;
     font-size: 14px;
+
     &:hover {
         opacity: 1;
     }
@@ -430,25 +458,28 @@ body.light-theme {
 
 // 7. To export the chatbot to a file and as PNG
 .drologpt-export {
-    background: pink!important;
+    background: pink !important;
 
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    background: transparent!important;
+    background: transparent !important;
     position: absolute;
     bottom: 10px;
     opacity: 0.2;
-    transition : opacity 0.5s;
+    transition: opacity 0.5s;
     cursor: default;
     font-size: 14px;
+
     &:hover {
         opacity: 1;
     }
 }
 
+// 8. Modal & Tabs CSS
 .settings-box {
     display: flex;
+
     // 8. Modal & Tabs CSS
     .tabs-scroller {
         // border: 2px solid red!important;
@@ -459,6 +490,8 @@ body.light-theme {
         .MuiButtonBase-root {
             display: flex;
             flex-direction: row;
+            place-self: self-end;
+
             svg {
                 // border: 2px solid;
                 position: relative;
@@ -473,7 +506,7 @@ body.light-theme {
         display: inline-flex;
         height: 100%;
         width: 60%;
-        padding: 0!important;
+        padding: 0 !important;
 
         .tab-panel {
             // border : 2px solid green!important;
@@ -481,8 +514,11 @@ body.light-theme {
 
             .MuiBox-root {
                 // border: 2px solid yellow!important;
-                padding: 0!important;
-                h1 {text-align: center!important;}
+                padding: 0 !important;
+
+                h1 {
+                    text-align: center !important;
+                }
             }
         }
     }
@@ -507,6 +543,57 @@ body.light-theme {
         margin-right: 10px;
         margin: 0 auto;
     }
-        
 
+    .settings-form-group {
+        text-align: center;
+        .settings-form-label {
+            margin: 0 10px 0 20px;
+        }
+
+        .settings-form-input {
+            // border: 2px solid red;
+            display: inline-flex;
+            padding: 0 0px;
+        }
+    }
+}
+
+// 9. Open AI Settings CSS
+.openai-settings {
+    // border: 2px solid red!important;
+    padding: 20px;
+    .settings-form-group {
+        .settings-form-label {
+            margin: 0 10px 0 20px;
+            
+            background-color: #dcdcdc;
+            text-align: center;
+            // padding: 10px;
+            width: 100%;
+            display: block;
+        }
+
+        .settings-form-input, .settings-form-select {
+            // border: 2px solid red;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 0px;
+            
+            border-bottom:rgb(170, 213, 184) 1px solid;
+            border-radius: 0px;
+            background: transparent;
+            color: black;
+            font-size: 18px;
+            width: 100%;
+            margin-bottom: 10px;
+
+            &:input {
+                // border: 2px solid red;
+                width: 100%;
+                padding: 0 0px;
+                border: 1px solid #dcdcdc;
+            }
+
+        }
+    }
 }

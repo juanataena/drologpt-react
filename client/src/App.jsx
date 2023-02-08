@@ -4,7 +4,6 @@ import { ErrorBoundary } from 'core/errorBoundary';
 import * as api from 'core/api';
 import * as utils from 'core/utils';
 import { CookiesProvider } from 'react-cookie';
-import { withCookies } from 'react-cookie';
 import DroloGPT from 'components/DroloGPT';
 
 export const AuthContext = createContext({
@@ -66,7 +65,6 @@ const App = (props) => {
         setMachineName(machineName);
 
     }
-
     const toggleAuth = () => {
         setIsAuthenticated(!isAuthenticated);
     }
@@ -88,4 +86,4 @@ const App = (props) => {
     );
 }
 
-export default withCookies(App);
+export default App;

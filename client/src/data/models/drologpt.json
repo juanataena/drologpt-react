@@ -1,0 +1,21 @@
+{
+    "name": "DroloGPT",
+    "version": "1.0",
+    "author": "Drolo",
+    "category": "Bots",
+    "summary": "GPT-2",
+    "description": "Destroyer Bot from Marrania to the world",
+    "license": "AGPL-3",
+    "promptDescription": "GPT-2",
+    "promptIcon": "https://i.imgur.com/1ZQZ1Zm.png",
+
+    "openai_engine": "davinci",
+    "openai_temperature": 0.9,
+    "openai_max_tokens": 100,
+    "openai_top_p": 1,
+    "openai_frequency_penalty": 0,
+    "openai_presence_penalty": 0,
+    "openai_stop": ["\n", " Human:", " AI:"],
+
+
+}

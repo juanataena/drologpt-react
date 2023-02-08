@@ -5,6 +5,7 @@ import * as utils from 'core/utils';
 import Header from 'components/Header';
 import Prompt from 'components/Prompt';
 import ChatContainer from 'components/ChatContainer';
+import Drawer from "./Drawer";
 import html2canvas from 'html2canvas';
 
 import { withCookies } from 'react-cookie';
@@ -27,7 +28,18 @@ function DroloGPT(props) {
     const [loading, setLoading] = useState(false);
     const [loadInterval, setLoadInterval] = useState(); 
     const [userAvatar, setUserAvatar] = useState();
-    const [theme, _setTheme] = useState(cookies.get('theme') || 'light');
+    const [theme, _setTheme] = useState(cookies.get('dgpt_theme') || 'light');
+    const [showHeader, _setDebugHeader] = useState(cookies.get('dgpt_showHeader') === "true"|| false);
+
+    // OpenAI Parameters
+    const [model, _setModel] = useState(cookies.get("dgpt_model") || "text-davinci-003");
+    const [n, _setN] = useState(cookies.get("dgpt_n") || 1);
+    const [stop, _setStop] = useState(cookies.get("dgpt_stop") || "");
+    const [temperature, _setTemperature] = useState(cookies.get("dgpt_temperature") || 0.9);
+    const [top_p, _setTop_p] = useState(cookies.get("dgpt_top_p") || 1);
+    const [frequency_penalty, _setFrequency_penalty] = useState(cookies.get("dgpt_frequency_penalty") || 0);
+    const [presence_penalty, _setPresence_penalty] = useState(cookies.get("dgpt_presence_penalty") || 0);
+    const [max_tokens, _setMax_tokens] = useState(cookies.get("dgpt_max_tokens") || 100);
 
     // Setup FIRST TIME
     useEffect(() => {
@@ -193,10 +205,58 @@ function DroloGPT(props) {
 
         // Set the theme in the cookies
         const { cookies } = props;
-        cookies.set('theme', theme, { path: '/' });
+        cookies.set('dgpt_theme', theme, { path: '/' });
 
         _setTheme(theme);
     }
+    const setDebugHeader = (showHeader) => {
+
+        // Set the showHeader in the cookies
+        const { cookies } = props;
+        cookies.set('dgpt_showHeader', showHeader, { path: '/' });
+        
+        _setDebugHeader(showHeader);
+    }
+    const setModel = (value) => {
+        _setModel(value);
+        cookies.set("dgpt_model", value);
+    }
+
+    const setN = (value) => {
+        _setN(value);
+        cookies.set("dgpt_n", value);
+    }
+
+    const setStop = (value) => {
+        _setStop(value);
+        cookies.set("dgpt_stop", value);
+    }
+
+    const setTemperature = (value) => {
+        _setTemperature(value);
+        cookies.set("dgpt_temperature", value);
+    }
+
+    const setTop_p = (value) => {
+        _setTop_p(value);
+        cookies.set("dgpt_top_p", value);
+    }
+
+    const setFrequency_penalty = (value) => {
+        _setFrequency_penalty(value);
+        cookies.set("dgpt_frequency_penalty", value);
+    }
+
+    const setPresence_penalty = (value) => {
+        _setPresence_penalty(value);
+        cookies.set("dgpt_presence_penalty", value);
+    }
+
+    const setMax_tokens = (value) => {
+        _setMax_tokens(value);
+        cookies.set("dgpt_max_tokens", value);
+    }
+    
     const promptDroloGPT = (prompt) => {
         // Set the prompt in the state
         setPrompt(prompt);
@@ -261,7 +321,6 @@ function DroloGPT(props) {
             setTheme("light");
         }
     }
-
     const generatePromptAndSend = (prompt) => {
 
         // If there is no prompt, no post
@@ -400,9 +459,9 @@ function DroloGPT(props) {
     return (
         <div id="drologpt_app" className="drologpt-app-container">
             
-            {/* Header de Drolo GPT */}
             <Header
                 theme={theme}
+                showHeader={showHeader}
                 machineName={props.machineName}
                 commitInfo={props.commitInfo}
                 prompt={prompt}
@@ -411,6 +470,8 @@ function DroloGPT(props) {
                 loading={loading}
                 loadInterval={loadInterval}
                 userAvatar={userAvatar}
+                setTheme={setTheme}
+                setDebugHeader={setDebugHeader}
 
                 // Actions
                 handleChangeTheme={handleChangeTheme}
@@ -447,7 +508,51 @@ function DroloGPT(props) {
                 setPrompt={setPrompt}       
                 handleSendPrompt={handleSendPrompt}
                 handleSendSangraPrompt={handleSendSangraPrompt}
+
+                model={model}
+                setModel={setModel}
+                n={n}
+                setN={setN}
+                temperature={temperature}
+                setTemperature={setTemperature}
+                top_p={top_p}
+                setTop_p={setTop_p}
+                presence_penalty={presence_penalty}
+                setPresence_penalty={setPresence_penalty}
+                frequency_penalty={frequency_penalty}
+                setFrequency_penalty={setFrequency_penalty}
+                stop={stop}
+                setStop={setStop}
+                max_tokens={max_tokens}
+                setMax_tokens={setMax_tokens}
             />
+
+            <Drawer
+                theme={theme}
+                showHeader={showHeader}
+                machineName={props.machineName}
+                commitInfo={props.commitInfo}
+                prompt={prompt}
+                data={data}
+                stripes={stripes}
+                loading={loading}
+                loadInterval={loadInterval}
+                userAvatar={userAvatar}
+                setTheme={setTheme}
+                setDebugHeader={setDebugHeader}
+
+                // Actions
+                handleChangeTheme={handleChangeTheme}
+
+                // Handlers
+                handleSendPrompt={handleSendPrompt}
+                handleDeleteStripes={handleDeleteStripes}
+                handleSaveAsHTML={handleSaveAsHTML}
+                handleSaveAsPng={handleSaveAsPng}
+                handleSaveAsJson={handleSaveAsJson}
+                handleImportJSON={handleImportJSON}
+            />
+
         </div>
     );
 }

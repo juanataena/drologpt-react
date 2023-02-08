@@ -392,29 +392,32 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Alegreya Sans", 'Source Sans Pro', sans-serif !important;
-  overflow: hidden!important;
+  overflow: hidden !important;
 }
 body {
   background: #343541;
 }
 body .MuiTooltip-tooltip {
-  font-size: 20px!important;
-  font-weight: bold!important;
+  font-size: 20px !important;
+  font-weight: bold !important;
   position: relative;
   top: 3px;
-  background-color: transparent!important;
+  background-color: transparent !important;
 }
-body .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft {
+body .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementLeft,
+body .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementRight,
+body .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementTop,
+body .MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom {
   color: #0288d1 !important;
 }
 body .MuiTooltip-tooltip .icon-bar {
-  border: 2px solid red!important;
-  font-size: 20px!important;
-  font-weight: bold!important;
+  border: 2px solid red !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
   color: #0288d1 !important;
   position: relative;
   top: 3px;
-  background-color: transparent!important;
+  background-color: transparent !important;
 }
 .drologpt-app-container {
   width: 100vw;
@@ -482,19 +485,26 @@ body .MuiTooltip-tooltip .icon-bar {
   height: 100%;
   object-fit: contain;
 }
-.drologpt-header .action-button-bar {
-  position: absolute;
-  place-content: center;
-  right: 0;
-  margin: 2%;
+.action-button-bar {
+  width: 100%;
+  max-width: 1280px;
+  height: inherit;
+  position: relative;
+  place-content: flex-end;
+  place-content: top;
+  top: 0px;
+  margin: 0 auto;
   opacity: 1;
   transition: opacity 0.5s;
-  height: 90vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   place-self: flex-start;
+  z-index: 0;
 }
-.drologpt-header .action-button-bar button {
+.action-button-bar:hover {
+  opacity: 1;
+}
+.action-button-bar button {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -504,17 +514,18 @@ body .MuiTooltip-tooltip .icon-bar {
   margin: 10px;
   transition: all 0.3s ease-in-out;
   opacity: 0.5;
+  place-self: self-start;
 }
-.drologpt-header .action-button-bar button:hover {
+.action-button-bar button:hover {
   opacity: 1;
 }
 .chat-container {
-  justify-content: center!important;
+  justify-content: center !important;
   background-image: url(../assets/background.png);
   background-repeat: no-repeat;
-  background-size: contain!important;
+  background-size: contain !important;
   background-position: center;
-  background-size: 350px 350px!important;
+  background-size: 350px 350px !important;
   width: 100%;
   height: 100%;
   display: flex;
@@ -536,7 +547,7 @@ body .MuiTooltip-tooltip .icon-bar {
   margin: 0 auto;
   margin-left: 0vh;
   bottom: 15vh;
-  overflow-y: auto!important;
+  overflow-y: auto !important;
   max-height: 80vh;
   padding-right: 15px;
 }
@@ -695,7 +706,7 @@ body.light-theme .drologpt-header {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  background: transparent!important;
+  background: transparent !important;
   position: absolute;
   bottom: 10px;
   opacity: 0.2;
@@ -707,11 +718,11 @@ body.light-theme .drologpt-header {
   opacity: 1;
 }
 .drologpt-export {
-  background: pink!important;
+  background: pink !important;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  background: transparent!important;
+  background: transparent !important;
   position: absolute;
   bottom: 10px;
   opacity: 0.2;
@@ -733,6 +744,7 @@ body.light-theme .drologpt-header {
 .settings-box .tabs-scroller .MuiButtonBase-root {
   display: flex;
   flex-direction: row;
+  place-self: self-end;
 }
 .settings-box .tabs-scroller .MuiButtonBase-root svg {
   position: relative;
@@ -743,16 +755,16 @@ body.light-theme .drologpt-header {
   display: inline-flex;
   height: 100%;
   width: 60%;
-  padding: 0!important;
+  padding: 0 !important;
 }
 .settings-box .tab-panels .tab-panel {
   width: 100%;
 }
 .settings-box .tab-panels .tab-panel .MuiBox-root {
-  padding: 0!important;
+  padding: 0 !important;
 }
 .settings-box .tab-panels .tab-panel .MuiBox-root h1 {
-  text-align: center!important;
+  text-align: center !important;
 }
 .settings-box .settings-header {
   display: flex;
@@ -770,4 +782,43 @@ body.light-theme .drologpt-header {
   height: 80px;
   margin-right: 10px;
   margin: 0 auto;
+}
+.settings-box .settings-form-group {
+  text-align: center;
+}
+.settings-box .settings-form-group .settings-form-label {
+  margin: 0 10px 0 20px;
+}
+.settings-box .settings-form-group .settings-form-input {
+  display: inline-flex;
+  padding: 0 0px;
+}
+.openai-settings {
+  padding: 20px;
+}
+.openai-settings .settings-form-group .settings-form-label {
+  margin: 0 10px 0 20px;
+  background-color: #dcdcdc;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.openai-settings .settings-form-group .settings-form-input,
+.openai-settings .settings-form-group .settings-form-select {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0px;
+  border-bottom: #aad5b8 1px solid;
+  border-radius: 0px;
+  background: transparent;
+  color: black;
+  font-size: 18px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.openai-settings .settings-form-group .settings-form-input:input,
+.openai-settings .settings-form-group .settings-form-select:input {
+  width: 100%;
+  padding: 0 0px;
+  border: 1px solid #dcdcdc;
 }
